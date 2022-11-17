@@ -14,7 +14,7 @@ Data d’edició: 28/oct/2022
 Nom del cicle formatiu: DAW
 Nom del mòdul: PG
  */
-public class Ejercicio26 {
+public class Ejercicio29 {
 
     private static final String MSG_1 = "Introduce 20 numeros: ";
 
@@ -24,19 +24,20 @@ public class Ejercicio26 {
         Scanner sc = new Scanner(System.in);
 
         System.out.println(MSG_1);
-
+        
         for (i = 0; i < arrayint.length; i++) {
-            arrayint[i] = sc.nextInt();
-            if (arrayint[i] % 5 == 0) {
-                arrayint[i] = arrayint[i] + 3;
-            } else {
-                if (arrayint[i] % 3 == 0) {
-                    arrayint[i] = arrayint[i] - 2;
-                }
-            }
+            do{
+                arrayint[i] = sc.nextInt();
+            }while (arrayint[i] <1 || arrayint[i] >9);
         }
+        
         System.out.println("\nResultat:");
         for (i = 0; i < arrayint.length; i++) {
+            System.out.print(arrayint[i] + " ");
+        }
+        System.out.println("\n");
+        System.out.println("\nResultat:");
+        for (i = arrayint.length-1; i >= 0; i--) {
             System.out.print(arrayint[i] + " ");
         }
         System.out.println("\n");
