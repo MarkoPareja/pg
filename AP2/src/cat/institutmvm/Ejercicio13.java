@@ -25,6 +25,7 @@ public class Ejercicio13 {
     private static final String MSG_8 = "--3. Multiplicar";
     private static final String MSG_9 = "--4. Dividir";
     private static final String MSG_10 = "El resultado de la operación es :";
+    private static final String MSG_11 = "--0. Salir";
     
     public static void main(String[] args){
         int num1=0, num2=0, sw = 0, res = 0;
@@ -57,6 +58,7 @@ public class Ejercicio13 {
         
         System.out.println(MSG_4);
         System.out.println(MSG_5);
+        System.out.println(MSG_11);
         System.out.println(MSG_6);
         System.out.println(MSG_7);
         System.out.println(MSG_8);
@@ -68,6 +70,8 @@ public class Ejercicio13 {
             if(valorCorrecte){
                 sw = sc.nextInt();
                 switch (sw) {
+                    case 0:
+                        break;
                     case 1:
                         System.out.print("\n" + MSG_10 + (num1+num2) + "\n");
                         break;
