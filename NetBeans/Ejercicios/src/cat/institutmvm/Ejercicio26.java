@@ -16,29 +16,28 @@ Nom del mòdul: PG
  */
 public class Ejercicio26 {
 
-    private static final String MSG_1 = "Introduce 20 numeros: ";
+    private static final String MSG_1 = "Introduce 20 números: ";
 
     public static void main(String[] args) {
-        int i;
-        int[] arrayint = new int[20];
+        int[] arrayInt = new int[20];
         Scanner sc = new Scanner(System.in);
 
         System.out.println(MSG_1);
 
-        for (i = 0; i < arrayint.length; i++) {
-            arrayint[i] = sc.nextInt();
-            if (arrayint[i] % 5 == 0) {
-                arrayint[i] = arrayint[i] + 3;
+        for (int i = 0; i < arrayInt.length; i++) {
+            arrayInt[i] = sc.nextInt();
+            if (arrayInt[i] % 5 == 0) {
+                arrayInt[i] = arrayInt[i] + 3;
             } else {
-                if (arrayint[i] % 3 == 0) {
-                    arrayint[i] = arrayint[i] - 2;
+                if (arrayInt[i] % 3 == 0) {
+                    arrayInt[i] = arrayInt[i] - 2;
                 }
             }
         }
         System.out.println("\nResultat:");
-        for (i = 0; i < arrayint.length; i++) {
-            System.out.print(arrayint[i] + " ");
+        for (int i = 0; i < arrayInt.length; i++) {
+            System.out.print(arrayInt[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
     }
 }

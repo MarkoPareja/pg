@@ -10,20 +10,25 @@ import java.util.Scanner;
  *
  * @author alumne_1r
  */
-public class Olimpiadas2 {
+public class Ejercicio22 {
+    private static final String MSG_1 ="Introdueix 20 nombres: ";
+    private static final String MSG_2 = "Introdueix el nombre que vols comprovar: ";
+    private static final String MSG_3 = "S'ha trobat un valor";
+    private static final String MSG_4 = "No s'ha trobat un valor";
+    
     public static void main(String[] args){
         int i, num = 0 ;
         boolean trobat = false;
         int[] arrayint = new int[20];
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("Introdueix 20 nombres: ");
+        System.out.println(MSG_1);
         
         for (i = 0; i < arrayint.length; i++) {
             arrayint[i] = sc.nextInt();
         }
         
-        System.out.println("Introdueix el nombre que vols comprovar: ");
+        System.out.println(MSG_2);
         num = sc.nextInt();
         
         for (i = 0; i < arrayint.length; i++){
@@ -32,10 +37,10 @@ public class Olimpiadas2 {
             }
         }
         if (trobat){
-            System.out.println("S'ha trobat un valor");
+            System.out.println(MSG_3);
         }
         else{
-            System.out.println("No s'ha trobat un valor");
+            System.out.println(MSG_4);
         }
         
     }

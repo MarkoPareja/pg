@@ -24,11 +24,11 @@ public class Ejercicio13 {
     private static final String MSG_7 = "--2. Restar";
     private static final String MSG_8 = "--3. Multiplicar";
     private static final String MSG_9 = "--4. Dividir";
-    private static final String MSG_10 = "El resultado de la operación es :";
+    private static final String MSG_10 = "El resultado de la operación es : ";
     private static final String MSG_11 = "--0. Salir";
     
     public static void main(String[] args){
-        int num1=0, num2=0, sw = 0, res = 0;
+        int num1=0, num2=0, sw = 0;
         boolean valorCorrecte;
         Scanner sc = new Scanner(System.in); 
         
