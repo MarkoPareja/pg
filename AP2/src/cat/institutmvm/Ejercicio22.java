@@ -6,9 +6,13 @@ package cat.institutmvm;
 
 import java.util.Scanner;
 
-/**
- *
- * @author alumne_1r
+/*
+Nom: Marko 
+Cognoms: Pareja Bailén
+INS Manuel Vázquez Montalbán
+Data d’edició: 22/nov/2022
+Nom del cicle formatiu: DAW
+Nom del mòdul: PG
  */
 public class Ejercicio22 {
     private static final String MSG_1 ="Introdueix 20 nombres: ";
