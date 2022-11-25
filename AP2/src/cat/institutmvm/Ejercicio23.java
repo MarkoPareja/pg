@@ -14,7 +14,7 @@ Data d’edició: 24/nov/2022
 Nom del cicle formatiu: DAW
 Nom del mòdul: PG
  */
-public class Ejercicio23 {
+public class Ejercicio23 { //Declaramos las constantes necesarias
     private static final String MSG_1 = "Introdueix la teva edad: ";
     private static final String MSG_2 = "Introdueix el teu sexe (H / D): ";
     private static final String MSG_3 = "Introdueix el teu salari: ";
@@ -22,14 +22,17 @@ public class Ejercicio23 {
     private static final String MSG_5 = "Persona    Edad    Sexe    Salari    Becari";
     
     public static void main(String[] args){
+        //Declaramos la variables necesarias
         int i=0, num = 0;
         int[] arrayint = new int[10];
         char[] arraychar = new char[10];
         float[] arrayfloat = new float[10];
         boolean[] arrayboolean = new boolean[10];
         boolean valorCorrecte = false, booleanCorrecte = false;
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); //Abrimos el flujo de scanner
         
+        //Creamos un blucle con for, lo que hace es repetir 4 do's 10 veces, 
+        //todo esta ligado a la misma i lo que hace que todo se haga 10 veces.
         for(i=0; i<arrayint.length; i++){
             do{
                 System.out.println(MSG_1);
@@ -79,9 +82,10 @@ public class Ejercicio23 {
             }while(num != 1);
             System.out.println("\nSiguiente alumno\n");
         }
+        //Printamos la estructura de la tabla y los resultados obtenidos
         System.out.println(MSG_5);
         for(i=0; i<arrayint.length; i++){
-            System.out.println(i + "      " + arrayint[i] + "            " + arraychar[i] + "     " +arrayfloat[i] + "      " + arrayboolean[i]);
+            System.out.println(i + "          " + arrayint[i] + "       " + arraychar[i] + "      " +arrayfloat[i] + "     " + arrayboolean[i]);
         }
     }
 }
