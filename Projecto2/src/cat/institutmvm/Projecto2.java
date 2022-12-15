@@ -15,7 +15,7 @@ Nom del cicle formatiu: DAW
 Nom del mòdul: PG
  */
 public class Projecto2 {
-    private static final String MSG_1 = "ID: ";
+    private static final String MSG_1 = "ID Usuario ";
     private static final String MSG_2 = "\nEdad: ";
     private static final String MSG_3 = "\nTipus de venda: ";
     private static final String MSG_4 = "0-Venda lliure\n1-Pensionista\n2-Carnet Jove\n3-Soci";
@@ -34,9 +34,10 @@ public class Projecto2 {
     private static final String MSG_17 = " registres de clients";
     private static final String MSG_18 = "Vols consultar per tipus de client?(si: 1/ no:0)";
     private static final String MSG_19 = "Quin tipus de client?";
+    private static final String MSG_20 = "Dades de clients de tipus ";
     
     public static void main(String[] args) {
-        int tipus = 0, res = 0, telefon = 0, i = 0, j = 0, num = 0, tipocli = 0;
+        int tipus = 0, res = 0, telefon = 0, i = 0, j = 0, num = 0, tipocli = 0, cont=0, usuario=1;
         boolean valorCorrecte = false, exit = false;
         Scanner sc = new Scanner(System.in);
         
@@ -63,12 +64,14 @@ public class Projecto2 {
         
         for(j=0; j<arrayint.length; j++){
             do {
-                System.out.println(MSG_1);
+                cont++;
+                System.out.println("\n"+MSG_1+usuario+" :");
                 valorCorrecte = sc.hasNextInt();
                 if (valorCorrecte) {
                     arrayid[j] = sc.nextInt();
                     if (arrayid[j] >= 111 && arrayid[j] <= 999) {
                         exit = true;
+                        usuario++;
                     } else {
                         System.out.println(MSG_10);
                         i++;
@@ -221,19 +224,79 @@ public class Projecto2 {
         }
         System.out.println("\n" + MSG_7);
             for(j=0; j<arrayint.length; j++){
-            System.out.println(arrayid[j] + "\t" + arrayedat[j] + "\t" + arraytipus[j] + "\t" + arraycompra[j] + "\t" + arraytlf[j]);
+                System.out.println("");
+                System.out.print(arrayid[j] + "\t" + arrayedat[j] + "\t");
+
+                switch (arraytipus[j]) {
+                    case 0:
+                        System.out.print(MSG_11);
+                        break;
+                    case 1:
+                        System.out.print(MSG_12);
+                        break;
+                    case 2:
+                        System.out.print(MSG_13);
+                        break;
+                    case 3:
+                        System.out.print(MSG_14);
+                        break;
+                    default:
+                        break;
+                }       
+                
+                System.out.print("\t" + arraycompra[j] + "\t" + arraytlf[j]);
         }
-        System.out.println("\n" + MSG_16 + num + MSG_17);
+        System.out.println("\n\n" + MSG_16 + num + MSG_17);
         
         System.out.print("\n" + MSG_18);
         tipocli = sc.nextInt();
         
         if (tipocli == 1){
-            System.out.print("\n" + MSG_19);
+            System.out.print("\n" + MSG_19 + " ");
             tipocli = sc.nextInt();
-            switch (tipocli){
-                case 1:
-                    System.out.println("hola");
+            System.out.print("\n"+MSG_20 + " ");
+            switch (tipocli) {
+                    case 0:
+                        System.out.print(MSG_11);
+                        break;
+                    case 1:
+                        System.out.print(MSG_12);
+                        break;
+                    case 2:
+                        System.out.print(MSG_13);
+                        break;
+                    case 3:
+                        System.out.print(MSG_14);
+                        break;
+                    default:
+                        break;
+                } 
+            System.out.println("\n" + MSG_7);
+            for (j = arraytipus.length - 1 ; j >=0; j--){      
+                System.out.println("");
+                if(arraytipus[j] == tipocli){
+                    
+                    System.out.print(arrayid[j] + "\t" + arrayedat[j] + "\t");
+
+                    switch (arraytipus[j]) {
+                        case 0:
+                            System.out.print(MSG_11);
+                            break;
+                        case 1:
+                            System.out.print(MSG_12);
+                            break;
+                        case 2:
+                            System.out.print(MSG_13);
+                            break;
+                        case 3:
+                            System.out.print(MSG_14);
+                            break;
+                        default:
+                            break;
+                    }       
+
+                    System.out.print("\t" + arraycompra[j] + "\t" + arraytlf[j]);
+                }
             }
         }
     }
