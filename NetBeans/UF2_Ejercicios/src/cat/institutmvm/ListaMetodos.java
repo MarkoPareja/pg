@@ -7,69 +7,62 @@ package cat.institutmvm;
 import java.util.Scanner;
 
 public class ListaMetodos {
-    
-    public int valorCorrecte(){
-        Scanner sc = new Scanner(System.in);
+
+    public int valorCorrecte(Scanner sc) {
         boolean valorCorrecte;
         int num = 0;
-        do{     
+        do {
             System.out.println("Introdueix un nombre: ");
             valorCorrecte = sc.hasNextInt();
-            if(valorCorrecte){
+            if (valorCorrecte) {
                 num = sc.nextInt();
-            }
-            else{
+            } else {
                 sc.next();
                 System.out.println("Error");
             }
-        }while(!valorCorrecte);
+        } while (!valorCorrecte);
         //sc.close();
         return num;
     }
-    
-    public void valida(int num1, int num2){
-        if(num1 > num2){
+
+    public void valida(int num1, int num2) {
+        if (num1 > num2) {
             System.out.println("El primer nombre es mes gran que el segon");
-        }
-        else if(num1 < num2){
+        } else if (num1 < num2) {
             System.out.println("El segon nombre es mes gran que el primer");
-        }
-        else{
+        } else {
             System.out.println("Els nombres son iguals");
         }
     }
-    
-    public void randomSearch(int num1){
+
+    public void randomSearch(int num1) {
         int min = 15, max = 200, i;
         int[] arrayint = new int[10];
         boolean exit = false, quit = false;
         Scanner sc = new Scanner(System.in);
-        
-        for(i = 0; i < arrayint.length; i++){
-        arrayint[i] = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+        for (i = 0; i < arrayint.length; i++) {
+            arrayint[i] = (int) Math.floor(Math.random() * (max - min + 1) + min);
         }
 
         i = 0;
-        do{
-            if(i < 10){
-                if(num1 == arrayint[i]){
+        do {
+            if (i < 10) {
+                if (num1 == arrayint[i]) {
                     exit = true;
-                }
-                else{
+                } else {
                     exit = false;
                 }
                 i++;
-            }
-            else{
+            } else {
                 exit = true;
-                quit=true;
+                quit = true;
             }
-        }while(!quit && !exit);
-        
-        if(quit){
+        } while (!quit && !exit);
+
+        if (quit) {
             System.out.println("El nombre no s'ha trobat a la llista");
-        }
-        else{
+        } else {
             System.out.println("El nombre s'ha trobat a la llista");
         }
     }

@@ -6,20 +6,19 @@ package cat.institutmvm;
 
 import java.util.Scanner;
 
-/**
- *
- * @author marko
- */
 public class Metodes13 {
+
     private static final String MSG_1 = "Introdueix un nombre";
-    
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         ListaMetodos method = new ListaMetodos();
-        
+
         int num1, num2;
 
-        num1 = method.valorCorrecte();
-        num2 = method.valorCorrecte();
+        num1 = method.valorCorrecte(sc);
+        num2 = method.valorCorrecte(sc);
         method.valida(num1, num2);
+        sc.close();
     }
 }

@@ -4,15 +4,21 @@
  */
 package cat.institutmvm;
 
+import java.util.Scanner;
+
 public class Metodes14 {
+
     private static final String MSG_1 = "Introdueix un nombre";
-    
+
     public static void main(String[] args) {
-      ListaMetodos method = new ListaMetodos();
-      
-      int num1;
-      
-      num1 = method.valorCorrecte();   
-      method.randomSearch(num1);
+        Scanner sc = new Scanner(System.in);
+
+        ListaMetodos method = new ListaMetodos();
+
+        int num1;
+
+        num1 = method.valorCorrecte(sc);
+        method.randomSearch(num1);
+        sc.close();
     }
 }
