@@ -6,12 +6,40 @@ package cat.institutmvm;
 
 import java.util.Scanner;
 
-/**
- *
- * @author marko
- */
-public class valida2 {
-    public void valida2(int num1){
+public class ListaMetodos {
+    
+    public int valorCorrecte(){
+        Scanner sc = new Scanner(System.in);
+        boolean valorCorrecte;
+        int num = 0;
+        do{     
+            System.out.println("Introdueix un nombre: ");
+            valorCorrecte = sc.hasNextInt();
+            if(valorCorrecte){
+                num = sc.nextInt();
+            }
+            else{
+                sc.next();
+                System.out.println("Error");
+            }
+        }while(!valorCorrecte);
+        //sc.close();
+        return num;
+    }
+    
+    public void valida(int num1, int num2){
+        if(num1 > num2){
+            System.out.println("El primer nombre es mes gran que el segon");
+        }
+        else if(num1 < num2){
+            System.out.println("El segon nombre es mes gran que el primer");
+        }
+        else{
+            System.out.println("Els nombres son iguals");
+        }
+    }
+    
+    public void randomSearch(int num1){
         int min = 15, max = 200, i;
         int[] arrayint = new int[10];
         boolean exit = false, quit = false;
@@ -20,9 +48,7 @@ public class valida2 {
         for(i = 0; i < arrayint.length; i++){
         arrayint[i] = (int)Math.floor(Math.random() * (max - min + 1) + min);
         }
-        //for(i = 0; i < arrayint.length; i++){
-        //    System.out.println(arrayint[i]);
-        //}
+
         i = 0;
         do{
             if(i < 10){
