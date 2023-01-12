@@ -12,7 +12,7 @@ public class ListaMetodos {
         boolean valorCorrecte;
         int num = 0;
         do {
-            System.out.println("Introdueix un nombre: ");
+            System.out.print("Introdueix un nombre: ");
             valorCorrecte = sc.hasNextInt();
             if (valorCorrecte) {
                 num = sc.nextInt();
@@ -41,11 +41,11 @@ public class ListaMetodos {
         num = (int) Math.floor(Math.random() * (max - min) + min);
         return num;
     }
-    
+
     public boolean searchNum(int num, int num2) {
         boolean trobat = false;
-        
-        if(num == num2){
+
+        if (num == num2) {
             trobat = true;
         }
         return trobat;
