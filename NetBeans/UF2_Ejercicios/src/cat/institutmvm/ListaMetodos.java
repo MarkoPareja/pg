@@ -50,4 +50,9 @@ public class ListaMetodos {
         }
         return trobat;
     }
+    
+    public int textCount(String txt){
+        int contador = txt.length();
+        return contador;
+    }
 }

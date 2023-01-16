@@ -44,12 +44,6 @@ public class Projecto2 {
     private static final String MSG_27 = "Histograma de número de clients per tipus: ";
     private static final String MSG_28 = "No hi han registres per mostrar.";
     private static final String MSG_29 = "Número de clients introduits: ";
-    private static final int MAXID = 999;
-    private static final int MINID = 111;
-    private static final int MAXEDAT = 120;
-    private static final int MINEDAT = 14;
-    private static final int MAXCOMPRA = 1000;
-    private static final int MINCOMPRA = 0;
     private static final int MAXTLF = 999999999;
     private static final int MINTLF = 111111111;
     private static final int TLF = 9;
@@ -96,7 +90,7 @@ public class Projecto2 {
                     valorCorrecte = sc.hasNextInt();
                     if (valorCorrecte) {
                         arrayId[i] = sc.nextInt();
-                        if (arrayId[i] <= MAXID && arrayId[i] >= MINID) {
+                        if (arrayId[i] <= 999 && arrayId[i] >= 111) {
                             exit = true;
                         } else {
                             System.out.println(MSG_9);
@@ -140,7 +134,7 @@ public class Projecto2 {
                             valorCorrecte = sc.hasNextInt();
                             if (valorCorrecte) {
                                 arrayEdat[i] = sc.nextInt();
-                                if (arrayEdat[i] >= MINEDAT && arrayEdat[i] <= MAXEDAT) {
+                                if (arrayEdat[i] >= 14 && arrayEdat[i] <= 100) {
                                     exit = true;
                                 } else {
                                     System.out.println(MSG_9);
@@ -245,7 +239,7 @@ public class Projecto2 {
                                             valorCorrecte = sc.hasNextInt();
                                             if (valorCorrecte) {
                                                 arrayImport[i] = sc.nextInt();
-                                                if (arrayImport[i] >= MINCOMPRA && arrayImport[i] <= MAXCOMPRA) {
+                                                if (arrayImport[i] >= 0 && arrayImport[i] <= 1000) {
                                                     exit = true;
                                                 } else {
                                                     System.out.println(MSG_9);
@@ -473,7 +467,7 @@ public class Projecto2 {
                     }
                 }
                 for (int i = 0; i < size; i++) {
-                    if (arrayTlf[i] > MINTLF && arrayTlf[i] < MAXTLF) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                         if (l == false && p == false && s == false && c == false) {
                             System.out.println(MSG_28);
                             i = 100;
@@ -481,7 +475,7 @@ public class Projecto2 {
                     }
                 }   
                 for (int i = 0; i < size; i++) {
-                    if (arrayTlf[i] > MINTLF && arrayTlf[i] < MAXTLF) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                         if (arrayTipus[i] == consultaclient) {
                             System.out.println(MSG_6);
                             i = 100;
@@ -490,7 +484,7 @@ public class Projecto2 {
                 }
                 for (int i = 0; i < size; i++) {
                     if (arrayTipus[i] == consultaclient) {
-                        if (arrayTlf[i] > MINTLF && arrayTlf[i] < MAXTLF) {
+                        if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                             switch (arrayTipus[i]) {
 
                                 case 0:
