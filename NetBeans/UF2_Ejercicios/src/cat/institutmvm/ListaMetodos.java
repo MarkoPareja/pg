@@ -21,7 +21,6 @@ public class ListaMetodos {
                 System.out.println("Error");
             }
         } while (!valorCorrecte);
-        //sc.close();
         return num;
     }
 
@@ -50,9 +49,21 @@ public class ListaMetodos {
         }
         return trobat;
     }
-    
-    public int textCount(String txt){
+
+    public int textCount(String txt) {
         int contador = txt.length();
         return contador;
+    }
+
+    public Boolean searchTxt(String txt, String letra) {
+        boolean trobat;
+
+        if (txt.contains(letra)) {
+            trobat = true;
+        } else {
+            trobat = false;
+        }
+
+        return trobat;
     }
 }
