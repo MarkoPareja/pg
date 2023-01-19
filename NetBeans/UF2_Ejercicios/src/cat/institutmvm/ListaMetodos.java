@@ -51,8 +51,7 @@ public class ListaMetodos {
     }
 
     public int textCount(String txt) {
-        int contador = txt.length();
-        return contador;
+        return txt.length();
     }
 
     public Boolean searchTxt(String txt, String letra) {
@@ -63,7 +62,6 @@ public class ListaMetodos {
         } else {
             trobat = false;
         }
-
         return trobat;
     }
 }

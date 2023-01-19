@@ -20,12 +20,12 @@ public class Metodes17 {
         ListaMetodos method = new ListaMetodos();
 
         System.out.println("Introdueix per teclat la paraula que vulguis "
-                + "saber els seus caractars");
+                + "saber els seus caràcters");
         
-        txt = sc.next();
+        txt = sc.nextLine();
         
         cont = method.textCount(txt);
         
-        System.out.println("La paraula té " + cont + " caracters");
+        System.out.println("La paraula té " + cont + " caràcters");
     }
 }
