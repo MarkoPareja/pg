@@ -44,8 +44,6 @@ public class Projecto2 {
     private static final String MSG_27 = "Histograma de número de clients per tipus: ";
     private static final String MSG_28 = "No hi han registres per mostrar.";
     private static final String MSG_29 = "Número de clients introduits: ";
-    private static final int MAXTLF = 999999999;
-    private static final int MINTLF = 111111111;
     private static final int TLF = 9;
 
     public static void main(String[] args) {
@@ -358,7 +356,7 @@ public class Projecto2 {
             System.out.println("\nA continuació mostrem les dades:");
             System.out.println("\n" + MSG_6);
             for (int i = 0; i < size; i++) {
-                if (arrayTlf[i] > MINTLF && arrayTlf[i] < MAXTLF) {
+                if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                     System.out.print(arrayId[i] + "\t" + arrayEdat[i] + "\t");
                     switch (arrayTipus[i]) {
 
