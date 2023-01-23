@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.institutmvm;
+package cat.institutmvm.app;
 
 import java.util.Scanner;
+
+import cat.institutmvm.metodos.metodos;
 
 /*
 Nom: Marko 
@@ -15,8 +17,8 @@ Nom del cicle formatiu: DAW
 Nom del mòdul: PG
  */
 
-public class Projecto2 {
-    private static final String MSG_1 = "ID Usuario ";
+public class main {
+    private static final String MSG_1 = "ID Usuario: ";
     private static final String MSG_2 = "\nEdad: ";
     private static final String MSG_3 = "\nTipus de venda: \n" + "0-Venda lliure\n1-Pensionista\n2-Carnet Jove\n3-Soci";
     private static final String MSG_4 = "Import de la compra: ";
@@ -54,22 +56,15 @@ public class Projecto2 {
         boolean valorCorrecte = false, exit = false;
         boolean l = false, p = false, c = false, s = false;
         Scanner sc = new Scanner(System.in);
-
-        System.out.println(MSG_7 + "\n" + MSG_14);
+        metodos method = new metodos();
+        
+        System.out.println(MSG_7);
         do {
-            valorCorrecte = sc.hasNextInt();
-            if (valorCorrecte) {
-                size = sc.nextInt();
-                if (size >= 1) {
-                    exit = true;
-                } else {
-                    System.out.println(MSG_9);
-                }
-            } else {
-                sc.next();
+            size = method.valorCorrecte(sc, MSG_14, MSG_9);
+            if(size <=0 ){
                 System.out.println(MSG_9);
             }
-        } while (exit != true);
+        } while (size <= 0);
 
         int[] arrayId = new int[size];
         int[] arrayEdat = new int[size];
@@ -81,8 +76,7 @@ public class Projecto2 {
         do {
             for (int i = 0; i < size; i++) {
                 exit = false;
-                seguiment = 3;
-                System.out.println(MSG_1);
+                System.out.print(MSG_1);
                 j = 0;
                 do {
                     valorCorrecte = sc.hasNextInt();
@@ -120,207 +114,202 @@ public class Projecto2 {
                 if (j == 3 && seguiment == 0) {
                     finalitza = 1;
                 }
-                if (seguiment == 0) {
-                } else {
-                    if (seguiment == 1) {
-                    } else {
-                        seguiment = 3;
-                        exit = false;
-                        j = 0;
-                        System.out.println(MSG_2);
-                        do {
-                            valorCorrecte = sc.hasNextInt();
-                            if (valorCorrecte) {
-                                arrayEdat[i] = sc.nextInt();
-                                if (arrayEdat[i] >= 14 && arrayEdat[i] <= 100) {
-                                    exit = true;
-                                } else {
-                                    System.out.println(MSG_9);
-                                    j++;
-                                }
+                if (seguiment == 1 && j == 0) {
+                    exit = false;
+                    j = 0;
+                    System.out.println(MSG_2);
+                    do {
+                        valorCorrecte = sc.hasNextInt();
+                        if (valorCorrecte) {
+                            arrayEdat[i] = sc.nextInt();
+                            if (arrayEdat[i] >= 14 && arrayEdat[i] <= 100) {
+                                exit = true;
                             } else {
-                                sc.next();
                                 System.out.println(MSG_9);
                                 j++;
                             }
-                            if (j == 3) {
-                                System.out.println(MSG_21);
-                                do {
-                                    valorCorrecte = sc.hasNextInt();
-                                    if (valorCorrecte) {
-                                        seguiment = sc.nextInt();
-                                        if (seguiment == 1 || seguiment == 0) {
+                        } else {
+                            sc.next();
+                            System.out.println(MSG_9);
+                            j++;
+                        }
+                        if (j == 3) {
+                            System.out.println(MSG_21);
+                            do {
+                                valorCorrecte = sc.hasNextInt();
+                                if (valorCorrecte) {
+                                    seguiment = sc.nextInt();
+                                    if (seguiment == 1 || seguiment == 0) {
+                                        exit = true;
+                                    } else {
+                                        System.out.println(MSG_9);
+                                    }
+                                } else {
+                                    sc.next();
+                                    System.out.println(MSG_9);
+                                }
+                            } while (exit != true);
+                        }
+                    } while (exit != true);
+                    if (j == 3 && seguiment == 0) {
+                        finalitza = 1;
+                    }
+                    if (seguiment == 1) {
+                    } else {
+                        if (seguiment == 0) {
+                        } else {
+                            seguiment = 3;
+                            j = 0;
+                            exit = false;
+                            System.out.println(MSG_3);
+                            do {
+                                valorCorrecte = sc.hasNextInt();
+                                if (valorCorrecte) {
+                                    arrayTipus[i] = sc.nextInt();
+                                    switch (arrayTipus[i]) { //Amb el switch case emmagatzarem el resultat de la variable out.
+
+                                        case 0:
+                                            System.out.println(MSG_10);
                                             exit = true;
+                                            break;
+                                        case 1:
+                                            System.out.println(MSG_11);
+                                            exit = true;
+                                            break;
+                                        case 2:
+                                            System.out.println(MSG_12);
+                                            exit = true;
+                                            break;
+                                        case 3:
+                                            System.out.println(MSG_13);
+                                            exit = true;
+                                            break;
+                                        default:
+                                            j++;
+                                            System.out.println(MSG_9);
+                                            break;
+                                    }
+                                } else {
+                                    sc.next();
+                                    System.out.println(MSG_9);
+                                    j++;
+                                }
+                                if (j == 3) {
+                                    System.out.println(MSG_21);
+                                    do {
+                                        valorCorrecte = sc.hasNextInt();
+                                        if (valorCorrecte) {
+                                            seguiment = sc.nextInt();
+                                            if (seguiment == 1 || seguiment == 0) {
+                                                exit = true;
+                                            } else {
+                                                System.out.println(MSG_9);
+                                            }
                                         } else {
+                                            sc.next();
                                             System.out.println(MSG_9);
                                         }
-                                    } else {
-                                        sc.next();
-                                        System.out.println(MSG_9);
-                                    }
-                                } while (exit != true);
-                            }
-                        } while (exit != true);
-                        if (j == 3 && seguiment == 0) {
-                            finalitza = 1;
-                        }
-                        if (seguiment == 1) {
-                        } else {
-                            if (seguiment == 0) {
-                            } else {
-                                seguiment = 3;
-                                j = 0;
-                                exit = false;
-                                System.out.println(MSG_3);
-                                do {
-                                    valorCorrecte = sc.hasNextInt();
-                                    if (valorCorrecte) {
-                                        arrayTipus[i] = sc.nextInt();
-                                        switch (arrayTipus[i]) { //Amb el switch case emmagatzarem el resultat de la variable out.
-
-                                            case 0:
-                                                System.out.println(MSG_10);
-                                                exit = true;
-                                                break;
-                                            case 1:
-                                                System.out.println(MSG_11);
-                                                exit = true;
-                                                break;
-                                            case 2:
-                                                System.out.println(MSG_12);
-                                                exit = true;
-                                                break;
-                                            case 3:
-                                                System.out.println(MSG_13);
-                                                exit = true;
-                                                break;
-                                            default:
-                                                j++;
-                                                System.out.println(MSG_9);
-                                                break;
-                                        }
-                                    } else {
-                                        sc.next();
-                                        System.out.println(MSG_9);
-                                        j++;
-                                    }
-                                    if (j == 3) {
-                                        System.out.println(MSG_21);
-                                        do {
-                                            valorCorrecte = sc.hasNextInt();
-                                            if (valorCorrecte) {
-                                                seguiment = sc.nextInt();
-                                                if (seguiment == 1 || seguiment == 0) {
-                                                    exit = true;
-                                                } else {
-                                                    System.out.println(MSG_9);
-                                                }
-                                            } else {
-                                                sc.next();
-                                                System.out.println(MSG_9);
-                                            }
-                                        } while (exit != true);
-                                    }
-                                } while (exit != true);
-                                if (j == 3 && seguiment == 0) {
-                                    finalitza = 1;
+                                    } while (exit != true);
                                 }
-                                if (seguiment == 1) {
+                            } while (exit != true);
+                            if (j == 3 && seguiment == 0) {
+                                finalitza = 1;
+                            }
+                            if (seguiment == 1) {
+                            } else {
+                                if (seguiment == 0) {
                                 } else {
-                                    if (seguiment == 0) {
-                                    } else {
-                                        seguiment = 3;
-                                        j = 0;
-                                        exit = false;
-                                        System.out.println("\n" + MSG_4);
-                                        do {
-                                            valorCorrecte = sc.hasNextInt();
-                                            if (valorCorrecte) {
-                                                arrayImport[i] = sc.nextInt();
-                                                if (arrayImport[i] >= 0 && arrayImport[i] <= 1000) {
-                                                    exit = true;
-                                                } else {
-                                                    System.out.println(MSG_9);
-                                                    j++;
-                                                }
+                                    seguiment = 3;
+                                    j = 0;
+                                    exit = false;
+                                    System.out.println("\n" + MSG_4);
+                                    do {
+                                        valorCorrecte = sc.hasNextInt();
+                                        if (valorCorrecte) {
+                                            arrayImport[i] = sc.nextInt();
+                                            if (arrayImport[i] >= 0 && arrayImport[i] <= 1000) {
+                                                exit = true;
                                             } else {
-                                                sc.next();
                                                 System.out.println(MSG_9);
                                                 j++;
                                             }
-                                            if (j == 3) {
-                                                System.out.println(MSG_21);
-                                                do {
-                                                    valorCorrecte = sc.hasNextInt();
-                                                    if (valorCorrecte) {
-                                                        seguiment = sc.nextInt();
-                                                        if (seguiment == 1 || seguiment == 0) {
-                                                            exit = true;
-                                                        } else {
-                                                            System.out.println(MSG_9);
-                                                        }
+                                        } else {
+                                            sc.next();
+                                            System.out.println(MSG_9);
+                                            j++;
+                                        }
+                                        if (j == 3) {
+                                            System.out.println(MSG_21);
+                                            do {
+                                                valorCorrecte = sc.hasNextInt();
+                                                if (valorCorrecte) {
+                                                    seguiment = sc.nextInt();
+                                                    if (seguiment == 1 || seguiment == 0) {
+                                                        exit = true;
                                                     } else {
-                                                        sc.next();
                                                         System.out.println(MSG_9);
                                                     }
-                                                } while (exit != true);
-                                            }
-                                        } while (exit != true);
-                                        if (j == 3 && seguiment == 0) {
-                                            finalitza = 1;
+                                                } else {
+                                                    sc.next();
+                                                    System.out.println(MSG_9);
+                                                }
+                                            } while (exit != true);
                                         }
-                                        if (seguiment == 1) {
+                                    } while (exit != true);
+                                    if (j == 3 && seguiment == 0) {
+                                        finalitza = 1;
+                                    }
+                                    if (seguiment == 1) {
+                                    } else {
+                                        if (seguiment == 0) {
                                         } else {
-                                            if (seguiment == 0) {
-                                            } else {
-                                                seguiment = 3;
-                                                j = 0;
-                                                System.out.println("\n" + MSG_5);
-                                                exit = false;
-                                                do { //Repetim amb la mateix estructura les altres variables, amb un while més. 
-                                                    res = 0;
-                                                    valorCorrecte = sc.hasNextInt();
-                                                    if (valorCorrecte) {
-                                                        arrayTelefon[i] = sc.nextInt();
-                                                        arrayTlf[i] = arrayTlf[i] + arrayTelefon[i];
-                                                        while (arrayTelefon[i] != 0) { //Aquí verificarem el número de xifres que te el valor.   
-                                                            arrayTelefon[i] = (arrayTelefon[i] / 10); //Dividem entre 10 per saber el número de xifres.
-                                                            res = res + 1;
-                                                        }
-                                                        if (res == TLF) { //Si el número de xifres es 9, s'emmagatzera.
-                                                            exit = true;
-                                                        } else {
-                                                            System.out.println(MSG_9);
-                                                            j++;
-                                                        }
+                                            seguiment = 3;
+                                            j = 0;
+                                            System.out.println("\n" + MSG_5);
+                                            exit = false;
+                                            do { //Repetim amb la mateix estructura les altres variables, amb un while més. 
+                                                res = 0;
+                                                valorCorrecte = sc.hasNextInt();
+                                                if (valorCorrecte) {
+                                                    arrayTelefon[i] = sc.nextInt();
+                                                    arrayTlf[i] = arrayTlf[i] + arrayTelefon[i];
+                                                    while (arrayTelefon[i] != 0) { //Aquí verificarem el número de xifres que te el valor.   
+                                                        arrayTelefon[i] = (arrayTelefon[i] / 10); //Dividem entre 10 per saber el número de xifres.
+                                                        res = res + 1;
+                                                    }
+                                                    if (res == TLF) { //Si el número de xifres es 9, s'emmagatzera.
+                                                        exit = true;
                                                     } else {
-                                                        sc.next();
                                                         System.out.println(MSG_9);
                                                         j++;
                                                     }
-                                                    if (j == 3) {
-                                                        System.out.println(MSG_21);
-                                                        do {
-                                                            valorCorrecte = sc.hasNextInt();
-                                                            if (valorCorrecte) {
-                                                                seguiment = sc.nextInt();
-                                                                if (seguiment == 1 || seguiment == 0) {
-                                                                    exit = true;
-                                                                } else {
-                                                                    System.out.println(MSG_9);
-                                                                }
+                                                } else {
+                                                    sc.next();
+                                                    System.out.println(MSG_9);
+                                                    j++;
+                                                }
+                                                if (j == 3) {
+                                                    System.out.println(MSG_21);
+                                                    do {
+                                                        valorCorrecte = sc.hasNextInt();
+                                                        if (valorCorrecte) {
+                                                            seguiment = sc.nextInt();
+                                                            if (seguiment == 1 || seguiment == 0) {
+                                                                exit = true;
                                                             } else {
-                                                                sc.next();
                                                                 System.out.println(MSG_9);
                                                             }
-                                                        } while (exit != true);
-                                                    }
-                                                } while (exit != true);
-                                                if (j == 3 && seguiment == 0) {
-                                                    finalitza = 1;
+                                                        } else {
+                                                            sc.next();
+                                                            System.out.println(MSG_9);
+                                                        }
+                                                    } while (exit != true);
                                                 }
-                                                if (seguiment == 1) {
-                                                }
+                                            } while (exit != true);
+                                            if (j == 3 && seguiment == 0) {
+                                                finalitza = 1;
+                                            }
+                                            if (seguiment == 1) {
                                             }
                                         }
                                     }
@@ -328,6 +317,7 @@ public class Projecto2 {
                             }
                         }
                     }
+                    
                 }
                 if (seguiment == 1 && size == 1) {
                     System.out.println("\n" + MSG_20);
