@@ -23,16 +23,16 @@ public class metodos {
         } while (!valorCorrecte);
         return num;
     }
-/*
-    public void valida(int num1, String MSG_1) {
-        if (num1 <= 999 && num1 >= 111) {
-            exit = true;
+
+    public boolean valida(int num1, int MAX, int MIN) {
+        boolean exit;
+        if (num1 <= MAX && num1 >= MIN) {
+            return exit = true;
         } else {
-            System.out.println(MSG_1);
-            j++;
+            return exit = false;
         }
     }
-*/
+
     public int random(int max) {
         int min = 0, num;
 
