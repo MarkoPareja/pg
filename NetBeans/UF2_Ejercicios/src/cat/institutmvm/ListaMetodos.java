@@ -74,4 +74,14 @@ public class ListaMetodos {
             hanoiTower(n - 1, aux, to_disc, from_disc);
         }
     }
+    
+    public int fibonacci(int num){
+        //condició base
+        if (num == 0 || num == 1){
+        return num;
+        }
+        else{
+        return fibonacci(num - 1) + fibonacci(num - 2);
+        }
+    }
 }

@@ -10,8 +10,9 @@ package cat.institutmvm;
  */
 public class Recursividad {
     public static void main(String[] args) {
-        int n = 3;
         ListaMetodos met = new ListaMetodos();
-        met.hanoiTower(n, 'A', 'C', 'B');
+        for (int n = 0; n <= 6; n++){
+        System.out.println(met.fibonacci(n));
+        }
     }
 }
