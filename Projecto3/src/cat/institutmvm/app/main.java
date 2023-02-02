@@ -85,7 +85,6 @@ public class main {
                     if (!exit) {
                         j++;
                     }
-                    while (!exit);
                     /*valorCorrecte = sc.hasNextInt();
                     if (valorCorrecte) {
                         arrayId[i] = sc.nextInt();
@@ -99,25 +98,14 @@ public class main {
                         sc.next();
                         System.out.println(MSG_9);
                         j++;
-                    }
-                    if (j == 3) {
-                        System.out.println(MSG_21);
-                        do {
-                            valorCorrecte = sc.hasNextInt();
-                            if (valorCorrecte) {
-                                seguiment = sc.nextInt();
-                                if (seguiment == 1 || seguiment == 0) {
-                                    exit = true;
-                                } else {
-                                    System.out.println(MSG_9);
-                                }
-                            } else {
-                                sc.next();
-                                System.out.println(MSG_9);
-                            }
-                        } while (exit != true);
                     }*/
-                } while (exit != true);
+                    if (j == 3) {
+                        do {
+                            seguiment = method.valorCorrecte(sc, MSG_21, MSG_9);
+                            exit = method.valida(arrayId[i], 1, 0);
+                        } while (!exit);
+                    }
+                } while (!exit);
                 if (j == 3 && seguiment == 0) {
                     finalitza = 1;
                 }
