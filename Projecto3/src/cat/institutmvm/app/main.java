@@ -20,7 +20,7 @@ public class main {
 
     private static final String MSG_1 = "ID Usuario: ";
     private static final String MSG_2 = "\nEdad: ";
-    private static final String MSG_3 = "\nTipus de venda: \n" + "0-Venda lliure\n1-Pensionista\n2-Carnet Jove\n3-Soci";
+    private static final String MSG_3 = "\nTipus de venda: \n" + "0-Venda lliure\n1-Pensionista\n2-Carnet Jove\n3-Soci\n";
     private static final String MSG_4 = "Import de la compra: ";
     private static final String MSG_5 = "Telèfon de contacte: ";
     private static final String MSG_6 = "ID\tEdad\tTipus\tImport\tTelefon";
@@ -49,6 +49,10 @@ public class main {
     private static final int TLF = 9;
     private static final int MAXID = 999;
     private static final int MINID = 111;
+    private static final int MAXSEG = 1;
+    private static final int MINSEG = 0;
+    private static final int MAXEDAD = 100;
+    private static final int MINEDAD = 14;
 
     public static void main(String[] args) {
         int res = 0, size = 0, numpersona = 0, resum = 0;
@@ -77,491 +81,487 @@ public class main {
 
         do {
             for (i = 0; i < size; i++) {
-                exit = false;
                 j = 0;
+                seguiment = 3;
+                exit = false;
                 do {
-                    arrayId[i] = method.valorCorrecte(sc, MSG_1, MSG_9);
-                    exit = method.valida(arrayId[i], MAXID, MINID);
+                    if (j < 3) {
+                        arrayId[i] = method.valorCorrecte(sc, MSG_1, MSG_9);
+                        exit = method.valida(arrayId[i], MAXID, MINID, MSG_9);
+                    }
                     if (!exit) {
                         j++;
                     }
-                    /*valorCorrecte = sc.hasNextInt();
-                    if (valorCorrecte) {
-                        arrayId[i] = sc.nextInt();
-                        if (arrayId[i] <= 999 && arrayId[i] >= 111) {
-                            exit = true;
-                        } else {
-                            System.out.println(MSG_9);
-                            j++;
-                        }
-                    } else {
-                        sc.next();
-                        System.out.println(MSG_9);
-                        j++;
-                    }*/
                     if (j == 3) {
-                        do {
-                            seguiment = method.valorCorrecte(sc, MSG_21, MSG_9);
-                            exit = method.valida(arrayId[i], 1, 0);
-                        } while (!exit);
+                        exit = true;
                     }
                 } while (!exit);
+
                 if (j == 3 && seguiment == 0) {
                     finalitza = 1;
                 }
-                if (seguiment == 1 && j == 0) {
-                    exit = false;
-                    j = 0;
-                    System.out.println(MSG_2);
-                    do {
-                        valorCorrecte = sc.hasNextInt();
-                        if (valorCorrecte) {
-                            arrayEdat[i] = sc.nextInt();
-                            if (arrayEdat[i] >= 14 && arrayEdat[i] <= 100) {
-                                exit = true;
-                            } else {
-                                System.out.println(MSG_9);
-                                j++;
-                            }
-                        } else {
-                            sc.next();
-                            System.out.println(MSG_9);
+
+                do {
+                    if (j == 3) {
+                        exit = false;
+                        seguiment = method.valorCorrecte(sc, MSG_21, MSG_9);
+                        exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
+                        if (!exit) {
                             j++;
                         }
                         if (j == 3) {
-                            System.out.println(MSG_21);
-                            do {
-                                valorCorrecte = sc.hasNextInt();
-                                if (valorCorrecte) {
-                                    seguiment = sc.nextInt();
-                                    if (seguiment == 1 || seguiment == 0) {
-                                        exit = true;
-                                    } else {
-                                        System.out.println(MSG_9);
-                                    }
-                                } else {
-                                    sc.next();
-                                    System.out.println(MSG_9);
-                                }
-                            } while (exit != true);
+                            exit = true;
                         }
-                    } while (exit != true);
+                    }
+                } while (exit != true);
+
+                if (j == 3 && seguiment == 0) {
+                    finalitza = 1;
+                }
+
+                if (seguiment == 3) {
+                    j = 0;
+                    exit = false;
+                    do {
+                        if (j < 3) {
+                            arrayEdat[i] = method.valorCorrecte(sc, MSG_2, MSG_9);
+                            exit = method.valida(arrayEdat[i], MAXEDAD, MINEDAD, MSG_9);
+                        }
+                        if (!exit) {
+                            j++;
+                        }
+                        if (j == 3) {
+                            exit = true;
+                        }
+                    } while (!exit);
+
                     if (j == 3 && seguiment == 0) {
                         finalitza = 1;
                     }
-                    if (seguiment == 1) {
-                    } else {
-                        if (seguiment == 0) {
-                        } else {
-                            seguiment = 3;
-                            j = 0;
-                            exit = false;
-                            System.out.println(MSG_3);
-                            do {
-                                valorCorrecte = sc.hasNextInt();
-                                if (valorCorrecte) {
-                                    arrayTipus[i] = sc.nextInt();
-                                    switch (arrayTipus[i]) { //Amb el switch case emmagatzarem el resultat de la variable out.
 
-                                        case 0:
-                                            System.out.println(MSG_10);
-                                            exit = true;
-                                            break;
-                                        case 1:
-                                            System.out.println(MSG_11);
-                                            exit = true;
-                                            break;
-                                        case 2:
-                                            System.out.println(MSG_12);
-                                            exit = true;
-                                            break;
-                                        case 3:
-                                            System.out.println(MSG_13);
-                                            exit = true;
-                                            break;
-                                        default:
-                                            j++;
-                                            System.out.println(MSG_9);
-                                            break;
-                                    }
-                                } else {
-                                    sc.next();
-                                    System.out.println(MSG_9);
+                    do {
+                        if (j == 3) {
+                            exit = false;
+                            seguiment = method.valorCorrecte(sc, MSG_21, MSG_9);
+                            exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
+                            if (!exit) {
+                                j++;
+                            }
+                            if (j == 3) {
+                                exit = true;
+                            }
+                        }
+                    } while (exit != true);
+
+                    if (j == 3 && seguiment == 0) {
+                        finalitza = 1;
+                    }
+                    
+                    if (seguiment == 3) {
+                        j = 0;
+                        exit = false;
+
+                        do {
+                            if (j < 3) {
+                                arrayTipus[i] = method.valorCorrecte(sc, MSG_3, MSG_9);
+                                switch (arrayTipus[i]) { //Amb el switch case emmagatzarem el resultat de la variable out.
+
+                                    case 0:
+                                        System.out.println(MSG_10);
+                                        exit = true;
+                                        break;
+                                    case 1:
+                                        System.out.println(MSG_11);
+                                        exit = true;
+                                        break;
+                                    case 2:
+                                        System.out.println(MSG_12);
+                                        exit = true;
+                                        break;
+                                    case 3:
+                                        System.out.println(MSG_13);
+                                        exit = true;
+                                        break;
+                                    default:
+                                        j++;
+                                        System.out.println(MSG_9);
+                                        break;
+                                }
+                            }
+                            if (!exit) {
+                                j++;
+                            }
+                            if (j == 3) {
+                                exit = true;
+                            }
+                        } while (!exit);
+
+                        do {
+                            if (j == 3) {
+                                exit = false;
+                                seguiment = method.valorCorrecte(sc, MSG_21, MSG_9);
+                                exit = method.valida(arrayId[i], MAXSEG, MINSEG, MSG_9);
+                                if (!exit) {
                                     j++;
                                 }
                                 if (j == 3) {
-                                    System.out.println(MSG_21);
-                                    do {
-                                        valorCorrecte = sc.hasNextInt();
-                                        if (valorCorrecte) {
-                                            seguiment = sc.nextInt();
-                                            if (seguiment == 1 || seguiment == 0) {
-                                                exit = true;
-                                            } else {
-                                                System.out.println(MSG_9);
-                                            }
-                                        } else {
-                                            sc.next();
-                                            System.out.println(MSG_9);
-                                        }
-                                    } while (exit != true);
+                                    exit = true;
                                 }
-                            } while (exit != true);
-                            if (j == 3 && seguiment == 0) {
-                                finalitza = 1;
                             }
-                            if (seguiment == 1) {
+                        } while (exit != true);
+
+                        if (j == 3 && seguiment == 0) {
+                            finalitza = 1;
+                        }
+                        if (seguiment == 1) {
+                        } else {
+                            if (seguiment == 0) {
                             } else {
-                                if (seguiment == 0) {
-                                } else {
-                                    seguiment = 3;
-                                    j = 0;
-                                    exit = false;
-                                    System.out.println("\n" + MSG_4);
-                                    do {
-                                        valorCorrecte = sc.hasNextInt();
-                                        if (valorCorrecte) {
-                                            arrayImport[i] = sc.nextInt();
-                                            if (arrayImport[i] >= 0 && arrayImport[i] <= 1000) {
-                                                exit = true;
-                                            } else {
-                                                System.out.println(MSG_9);
-                                                j++;
-                                            }
+                                seguiment = 3;
+                                j = 0;
+                                exit = false;
+                                System.out.println("\n" + MSG_4);
+                                do {
+                                    valorCorrecte = sc.hasNextInt();
+                                    if (valorCorrecte) {
+                                        arrayImport[i] = sc.nextInt();
+                                        if (arrayImport[i] >= 0 && arrayImport[i] <= 1000) {
+                                            exit = true;
                                         } else {
-                                            sc.next();
                                             System.out.println(MSG_9);
                                             j++;
                                         }
-                                        if (j == 3) {
-                                            System.out.println(MSG_21);
-                                            do {
-                                                valorCorrecte = sc.hasNextInt();
-                                                if (valorCorrecte) {
-                                                    seguiment = sc.nextInt();
-                                                    if (seguiment == 1 || seguiment == 0) {
-                                                        exit = true;
-                                                    } else {
-                                                        System.out.println(MSG_9);
-                                                    }
+                                    } else {
+                                        sc.next();
+                                        System.out.println(MSG_9);
+                                        j++;
+                                    }
+                                    if (j == 3) {
+                                        System.out.println(MSG_21);
+                                        do {
+                                            valorCorrecte = sc.hasNextInt();
+                                            if (valorCorrecte) {
+                                                seguiment = sc.nextInt();
+                                                if (seguiment == 1 || seguiment == 0) {
+                                                    exit = true;
                                                 } else {
-                                                    sc.next();
                                                     System.out.println(MSG_9);
                                                 }
-                                            } while (exit != true);
-                                        }
-                                    } while (exit != true);
-                                    if (j == 3 && seguiment == 0) {
-                                        finalitza = 1;
+                                            } else {
+                                                sc.next();
+                                                System.out.println(MSG_9);
+                                            }
+                                        } while (exit != true);
                                     }
-                                    if (seguiment == 1) {
+                                } while (exit != true);
+                                if (j == 3 && seguiment == 0) {
+                                    finalitza = 1;
+                                }
+                                if (seguiment == 1) {
+                                } else {
+                                    if (seguiment == 0) {
                                     } else {
-                                        if (seguiment == 0) {
-                                        } else {
-                                            seguiment = 3;
-                                            j = 0;
-                                            System.out.println("\n" + MSG_5);
-                                            exit = false;
-                                            do { //Repetim amb la mateix estructura les altres variables, amb un while més. 
-                                                res = 0;
-                                                valorCorrecte = sc.hasNextInt();
-                                                if (valorCorrecte) {
-                                                    arrayTelefon[i] = sc.nextInt();
-                                                    arrayTlf[i] = arrayTlf[i] + arrayTelefon[i];
-                                                    while (arrayTelefon[i] != 0) { //Aquí verificarem el número de xifres que te el valor.   
-                                                        arrayTelefon[i] = (arrayTelefon[i] / 10); //Dividem entre 10 per saber el número de xifres.
-                                                        res = res + 1;
-                                                    }
-                                                    if (res == TLF) { //Si el número de xifres es 9, s'emmagatzera.
-                                                        exit = true;
-                                                    } else {
-                                                        System.out.println(MSG_9);
-                                                        j++;
-                                                    }
+                                        seguiment = 3;
+                                        j = 0;
+                                        System.out.println("\n" + MSG_5);
+                                        exit = false;
+                                        do { //Repetim amb la mateix estructura les altres variables, amb un while més. 
+                                            res = 0;
+                                            valorCorrecte = sc.hasNextInt();
+                                            if (valorCorrecte) {
+                                                arrayTelefon[i] = sc.nextInt();
+                                                arrayTlf[i] = arrayTlf[i] + arrayTelefon[i];
+                                                while (arrayTelefon[i] != 0) { //Aquí verificarem el número de xifres que te el valor.   
+                                                    arrayTelefon[i] = (arrayTelefon[i] / 10); //Dividem entre 10 per saber el número de xifres.
+                                                    res = res + 1;
+                                                }
+                                                if (res == TLF) { //Si el número de xifres es 9, s'emmagatzera.
+                                                    exit = true;
                                                 } else {
-                                                    sc.next();
                                                     System.out.println(MSG_9);
                                                     j++;
                                                 }
-                                                if (j == 3) {
-                                                    System.out.println(MSG_21);
-                                                    do {
-                                                        valorCorrecte = sc.hasNextInt();
-                                                        if (valorCorrecte) {
-                                                            seguiment = sc.nextInt();
-                                                            if (seguiment == 1 || seguiment == 0) {
-                                                                exit = true;
-                                                            } else {
-                                                                System.out.println(MSG_9);
-                                                            }
+                                            } else {
+                                                sc.next();
+                                                System.out.println(MSG_9);
+                                                j++;
+                                            }
+                                            if (j == 3) {
+                                                System.out.println(MSG_21);
+                                                do {
+                                                    valorCorrecte = sc.hasNextInt();
+                                                    if (valorCorrecte) {
+                                                        seguiment = sc.nextInt();
+                                                        if (seguiment == 1 || seguiment == 0) {
+                                                            exit = true;
                                                         } else {
-                                                            sc.next();
                                                             System.out.println(MSG_9);
                                                         }
-                                                    } while (exit != true);
-                                                }
-                                            } while (exit != true);
-                                            if (j == 3 && seguiment == 0) {
-                                                finalitza = 1;
+                                                    } else {
+                                                        sc.next();
+                                                        System.out.println(MSG_9);
+                                                    }
+                                                } while (exit != true);
                                             }
-                                            if (seguiment == 1) {
-                                            }
+                                        } while (exit != true);
+                                        if (j == 3 && seguiment == 0) {
+                                            finalitza = 1;
+                                        }
+                                        if (seguiment == 1) {
                                         }
                                     }
                                 }
                             }
                         }
                     }
-
                 }
-                if (seguiment == 1 && size == 1) {
+
+            }
+            if (seguiment == 1 && size == 1) {
+                System.out.println("\n" + MSG_20);
+            } else {
+                numpersona++;
+                if (numpersona < size && finalitza == 0) {
                     System.out.println("\n" + MSG_20);
-                } else {
-                    numpersona++;
-                    if (numpersona < size && finalitza == 0) {
-                        System.out.println("\n" + MSG_20);
-                    }
-                }
-                if (j == 3) {
-                    if (i != 0 && finalitza == 0) {
-                        i--;
-                        numpersona--;
-                    }
-                }
-                if (finalitza == 1) {
-                    i = 100;
-                }
-
-                if (numpersona == size) {
-                    finalitza = 1;
                 }
             }
-            while (finalitza == 0);
-            if (seguiment == 0 && size == 1) {
-            } else {
-                System.out.println("\nA continuació mostrem les dades:");
-                System.out.println("\n" + MSG_6);
-                for (i = 0; i < size; i++) {
-                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                        System.out.print(arrayId[i] + "\t" + arrayEdat[i] + "\t");
-                        switch (arrayTipus[i]) {
-
-                            case 0:
-                                System.out.print(MSG_10);
-                                lliure++;
-                                l = true;
-                                break;
-                            case 1:
-                                System.out.print(MSG_8);
-                                pensio++;
-                                p = true;
-                                break;
-                            case 2:
-                                System.out.print(MSG_12);
-                                jove++;
-                                c = true;
-                                break;
-                            case 3:
-                                System.out.print(MSG_13);
-                                soci++;
-                                s = true;
-                                break;
-                        }
-                        System.out.print("\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\n");
-                    }
+            if (j == 3) {
+                if (i != 0 && finalitza == 0) {
+                    i--;
+                    numpersona--;
                 }
-                System.out.println(MSG_15 + numpersona + MSG_16 + "\n");
-                System.out.println(MSG_17);
+            }
+            if (finalitza == 1) {
+                i = 100;
+            }
+            if (numpersona == size) {
+                finalitza = 1;
+            }
+        } while (finalitza == 0);
+        if (seguiment == 0 && size == 1) {
+        } else {
+            System.out.println("\nA continuació mostrem les dades:");
+            System.out.println("\n" + MSG_6);
+            for (i = 0; i < size; i++) {
+                if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                    System.out.print(arrayId[i] + "\t" + arrayEdat[i] + "\t");
+                    switch (arrayTipus[i]) {
+
+                        case 0:
+                            System.out.print(MSG_10);
+                            lliure++;
+                            l = true;
+                            break;
+                        case 1:
+                            System.out.print(MSG_8);
+                            pensio++;
+                            p = true;
+                            break;
+                        case 2:
+                            System.out.print(MSG_12);
+                            jove++;
+                            c = true;
+                            break;
+                        case 3:
+                            System.out.print(MSG_13);
+                            soci++;
+                            s = true;
+                            break;
+                    }
+                    System.out.print("\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\n");
+                }
+            }
+            System.out.println(MSG_15 + numpersona + MSG_16 + "\n");
+            System.out.println(MSG_17);
+            exit = false;
+            do {
+                valorCorrecte = sc.hasNextInt();
+                if (valorCorrecte) {
+                    consultaclient = sc.nextInt();
+                    if (consultaclient == 1 || consultaclient == 0) {
+                        exit = true;
+                    } else {
+                        System.out.println(MSG_9);
+                    }
+                } else {
+                    sc.next();
+                    System.out.println(MSG_9);
+                }
+            } while (exit != true);
+            if (consultaclient == 1) {
+                System.out.print(MSG_18);
                 exit = false;
                 do {
                     valorCorrecte = sc.hasNextInt();
                     if (valorCorrecte) {
                         consultaclient = sc.nextInt();
-                        if (consultaclient == 1 || consultaclient == 0) {
-                            exit = true;
-                        } else {
-                            System.out.println(MSG_9);
-                        }
-                    } else {
-                        sc.next();
-                        System.out.println(MSG_9);
-                    }
-                } while (exit != true);
-                if (consultaclient == 1) {
-                    System.out.print(MSG_18);
-                    exit = false;
-                    do {
-                        valorCorrecte = sc.hasNextInt();
-                        if (valorCorrecte) {
-                            consultaclient = sc.nextInt();
-                            for (i = 0; i < size; i++) {
-                                if (arrayTipus[i] != consultaclient) {
-                                    exit = true;
-                                } else {
-                                    switch (consultaclient) { //Amb el switch case emmagatzarem el resultat de la variable out.
-
-                                        case 0:
-                                            System.out.println(MSG_19 + MSG_10);
-                                            exit = true;
-                                            break;
-                                        case 1:
-                                            System.out.println(MSG_19 + MSG_8);
-                                            exit = true;
-                                            break;
-                                        case 2:
-                                            System.out.println(MSG_19 + MSG_12);
-                                            exit = true;
-                                            break;
-                                        case 3:
-                                            System.out.println(MSG_19 + MSG_13);
-                                            exit = true;
-                                            break;
-                                        default:
-                                            j++;
-                                            System.out.println(MSG_9);
-                                            break;
-                                    }
-                                    i = 100;
-                                }
-                            }
-                        } else {
-                            sc.next();
-                            System.out.println(MSG_9);
-                        }
-                    } while (exit != true);  //Aquí
-                    for (i = 0; i < size - 1; i++) {
-                        for (int k = i + 1; k < size; k++) {
-                            if (arrayEdat[i] > arrayEdat[k]) {
-                                int canvi = arrayEdat[i];
-                                arrayEdat[i] = arrayEdat[k];
-                                arrayEdat[k] = canvi;
-                                canvi = arrayId[i];
-                                arrayId[i] = arrayId[k];
-                                arrayId[k] = canvi;
-                                canvi = arrayTipus[i];
-                                arrayTipus[i] = arrayTipus[k];
-                                arrayTipus[k] = canvi;
-                                canvi = arrayImport[i];
-                                arrayImport[i] = arrayImport[k];
-                                arrayImport[k] = canvi;
-                                canvi = arrayTlf[i];
-                                arrayTlf[i] = arrayTlf[k];
-                                arrayTlf[k] = canvi;
-                            }
-                        }
-                    }
-                    for (i = 0; i < size; i++) {
-                        if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                            if (l == false && p == false && s == false && c == false) {
-                                System.out.println(MSG_28);
-                                i = 100;
-                            }
-                        }
-                    }
-                    for (i = 0; i < size; i++) {
-                        if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                            if (arrayTipus[i] == consultaclient) {
-                                System.out.println(MSG_6);
-                                i = 100;
-                            }
-                        }
-                    }
-                    for (i = 0; i < size; i++) {
-                        if (arrayTipus[i] == consultaclient) {
-                            if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                                switch (arrayTipus[i]) {
+                        for (i = 0; i < size; i++) {
+                            if (arrayTipus[i] != consultaclient) {
+                                exit = true;
+                            } else {
+                                switch (consultaclient) { //Amb el switch case emmagatzarem el resultat de la variable out.
 
                                     case 0:
-                                        System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                        System.out.println(MSG_19 + MSG_10);
+                                        exit = true;
                                         break;
                                     case 1:
-                                        System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                        System.out.println(MSG_19 + MSG_8);
+                                        exit = true;
                                         break;
                                     case 2:
-                                        System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                        System.out.println(MSG_19 + MSG_12);
+                                        exit = true;
                                         break;
                                     case 3:
-                                        System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                        System.out.println(MSG_19 + MSG_13);
+                                        exit = true;
+                                        break;
+                                    default:
+                                        j++;
+                                        System.out.println(MSG_9);
                                         break;
                                 }
+                                i = 100;
                             }
-                        }
-                    }
-                }
-                exit = false;
-                System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic
-                do {
-                    valorCorrecte = sc.hasNextInt();
-                    if (valorCorrecte) {
-                        resum = sc.nextInt();
-                        if (resum == 1 || resum == 0) {
-                            exit = true;
-                        } else {
-                            System.out.println(MSG_9);
                         }
                     } else {
                         sc.next();
                         System.out.println(MSG_9);
                     }
-                } while (exit != true);
-                if (resum == 1) {
-                    System.out.println("\n" + MSG_29 + size + "\n");
-                    for (i = 0; i < size; i++) {
-                        mitjana = mitjana + arrayEdat[i];
-                    }
-                    System.out.println(MSG_23 + mitjana / size + " anys" + "\n");
-                    System.out.println(MSG_25 + "\n");
-                    if (l == true) {
-                        System.out.println("Lliure: " + lliure);
-                    }
-                    if (p == true) {
-                        System.out.println("Pensio: " + pensio);
-                    }
-                    if (c == true) {
-                        System.out.println("Jove: " + jove);
-                    }
-                    if (s == true) {
-                        System.out.println("Soci: " + soci);
-                    }
-                    System.out.println("\n" + MSG_27);
-                    System.out.println("-----------------------------");
-                    if (lliure != 0) {
-                        System.out.print("Lliure: ");
-                        for (i = 0; i < lliure; i++) {
-                            System.out.print("*");
+                } while (exit != true);  //Aquí
+                for (i = 0; i < size - 1; i++) {
+                    for (int k = i + 1; k < size; k++) {
+                        if (arrayEdat[i] > arrayEdat[k]) {
+                            int canvi = arrayEdat[i];
+                            arrayEdat[i] = arrayEdat[k];
+                            arrayEdat[k] = canvi;
+                            canvi = arrayId[i];
+                            arrayId[i] = arrayId[k];
+                            arrayId[k] = canvi;
+                            canvi = arrayTipus[i];
+                            arrayTipus[i] = arrayTipus[k];
+                            arrayTipus[k] = canvi;
+                            canvi = arrayImport[i];
+                            arrayImport[i] = arrayImport[k];
+                            arrayImport[k] = canvi;
+                            canvi = arrayTlf[i];
+                            arrayTlf[i] = arrayTlf[k];
+                            arrayTlf[k] = canvi;
                         }
-                        System.out.println("");
                     }
-                    if (pensio != 0) {
-                        System.out.print("Pensio: ");
-                        for (i = 0; i < pensio; i++) {
-                            System.out.print("*");
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                        if (l == false && p == false && s == false && c == false) {
+                            System.out.println(MSG_28);
+                            i = 100;
                         }
-                        System.out.println("");
                     }
-                    if (jove != 0) {
-                        System.out.print("Jove: ");
-                        for (i = 0; i < jove; i++) {
-                            System.out.print("*");
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                        if (arrayTipus[i] == consultaclient) {
+                            System.out.println(MSG_6);
+                            i = 100;
                         }
-                        System.out.println("");
                     }
-                    if (soci != 0) {
-                        System.out.print("Soci: ");
-                        for (i = 0; i < soci; i++) {
-                            System.out.print("*");
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTipus[i] == consultaclient) {
+                        if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                            switch (arrayTipus[i]) {
+
+                                case 0:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 1:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 2:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 3:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                            }
                         }
-                        System.out.println("");
                     }
-                    for (i = 0; i < size; i++) {
-                        total = total + arrayImport[i];
-                    }
-                    System.out.println("\n" + MSG_26 + total);
                 }
             }
-            if (seguiment == 0 && size == 1) {
-                System.out.print("\n" + MSG_22);
+            exit = false;
+            System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic
+            do {
+                valorCorrecte = sc.hasNextInt();
+                if (valorCorrecte) {
+                    resum = sc.nextInt();
+                    if (resum == 1 || resum == 0) {
+                        exit = true;
+                    } else {
+                        System.out.println(MSG_9);
+                    }
+                } else {
+                    sc.next();
+                    System.out.println(MSG_9);
+                }
+            } while (exit != true);
+            if (resum == 1) {
+                System.out.println("\n" + MSG_29 + size + "\n");
+                for (i = 0; i < size; i++) {
+                    mitjana = mitjana + arrayEdat[i];
+                }
+                System.out.println(MSG_23 + mitjana / size + " anys" + "\n");
+                System.out.println(MSG_25 + "\n");
+                if (l == true) {
+                    System.out.println("Lliure: " + lliure);
+                }
+                if (p == true) {
+                    System.out.println("Pensio: " + pensio);
+                }
+                if (c == true) {
+                    System.out.println("Jove: " + jove);
+                }
+                if (s == true) {
+                    System.out.println("Soci: " + soci);
+                }
+                System.out.println("\n" + MSG_27);
+                System.out.println("-----------------------------");
+                if (lliure != 0) {
+                    System.out.print("Lliure: ");
+                    for (i = 0; i < lliure; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (pensio != 0) {
+                    System.out.print("Pensio: ");
+                    for (i = 0; i < pensio; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (jove != 0) {
+                    System.out.print("Jove: ");
+                    for (i = 0; i < jove; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (soci != 0) {
+                    System.out.print("Soci: ");
+                    for (i = 0; i < soci; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                for (i = 0; i < size; i++) {
+                    total = total + arrayImport[i];
+                }
+                System.out.println("\n" + MSG_26 + total);
             }
-        }while(j==3);
+        }
+        if (seguiment == 0 && size == 1) {
+            System.out.print("\n" + MSG_22);
+        }
     }
 }

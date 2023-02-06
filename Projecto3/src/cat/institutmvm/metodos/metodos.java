@@ -11,24 +11,23 @@ public class metodos {
     public int valorCorrecte(Scanner sc, String MSG_1, String MSG_2) {
         boolean valorCorrecte;
         int num = 0;
-        do {
-            System.out.print(MSG_1);
-            valorCorrecte = sc.hasNextInt();
-            if (valorCorrecte) {
-                num = sc.nextInt();
-            } else {
-                sc.next();
-                System.out.println(MSG_2);
-            }
-        } while (!valorCorrecte);
+        System.out.print(MSG_1);
+        valorCorrecte = sc.hasNextInt();
+        if (valorCorrecte) {
+            num = sc.nextInt();
+        } else {
+            sc.next();
+            System.out.println(MSG_2);
+        }
         return num;
     }
 
-    public boolean valida(int num1, int MAX, int MIN) {
+    public boolean valida(int num1, int MAX, int MIN, String MSG_1) {
         boolean exit;
         if (num1 <= MAX && num1 >= MIN) {
             return exit = true;
         } else {
+            System.out.println(MSG_1);
             return exit = false;
         }
     }
