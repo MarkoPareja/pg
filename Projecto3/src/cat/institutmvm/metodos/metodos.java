@@ -51,6 +51,18 @@ public class metodos {
     public int textCount(String txt) {
         return txt.length();
     }
+    
+    public int numCount(int num) {
+        int count = 0;
+        if (num == 0) {
+            return 1;
+        }
+        while (num != 0) {
+            count++;
+            num /= 10;
+        }
+        return count;
+    }
 
     public Boolean searchTxt(String txt, String letra) {
         boolean trobat;
