@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class metodos {
 
-    public int valorCorrecte(Scanner sc, String MSG_1, String MSG_2) {
+    public int valorCorrecte(Scanner sc, String MSG_1) {
         boolean valorCorrecte;
         int num = 0;
         System.out.print(MSG_1);
         valorCorrecte = sc.hasNextInt();
         if (valorCorrecte) {
             num = sc.nextInt();
-        } else {
+        }
+        else{
             sc.next();
-            System.out.println(MSG_2);
         }
         return num;
     }
