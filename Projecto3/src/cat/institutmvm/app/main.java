@@ -467,7 +467,7 @@ public class main {
                 }
             }
             exit = false;
-            System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic
+            System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic.
             do {
                 valorCorrecte = sc.hasNextInt();
                 if (valorCorrecte) {
