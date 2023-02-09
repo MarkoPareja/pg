@@ -374,8 +374,7 @@ public class main {
                         for (i = 0; i < size; i++) {
                             if (arrayTipus[i] != consultaclient) {
                                 exit = true;
-                            } 
-                            else {
+                            } else {
                                 switch (consultaclient) { //Amb el switch case emmagatzarem el resultat de la variable out.
 
                                     case 0:
@@ -401,144 +400,145 @@ public class main {
                                 }
                                 i = 100;
                             }
+                        }
+                    } else {
+                        sc.next();
+                        System.out.println(MSG_9);
+                    }
+                } while (exit != true);
+
+                for (i = 0; i < size - 1; i++) {
+                    for (int k = i + 1; k < size; k++) {
+                        if (arrayEdat[i] > arrayEdat[k]) {
+                            int canvi = arrayEdat[i];
+                            arrayEdat[i] = arrayEdat[k];
+                            arrayEdat[k] = canvi;
+                            canvi = arrayId[i];
+                            arrayId[i] = arrayId[k];
+                            arrayId[k] = canvi;
+                            canvi = arrayTipus[i];
+                            arrayTipus[i] = arrayTipus[k];
+                            arrayTipus[k] = canvi;
+                            canvi = arrayImport[i];
+                            arrayImport[i] = arrayImport[k];
+                            arrayImport[k] = canvi;
+                            canvi = arrayTlf[i];
+                            arrayTlf[i] = arrayTlf[k];
+                            arrayTlf[k] = canvi;
+                        }
+                    }
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                        if (l == false && p == false && s == false && c == false) {
+                            System.out.println(MSG_28);
+                            i = 100;
+                        }
+                    }
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                        if (arrayTipus[i] == consultaclient) {
+                            System.out.println(MSG_6);
+                            i = 100;
+                        }
+                    }
+                }
+                for (i = 0; i < size; i++) {
+                    if (arrayTipus[i] == consultaclient) {
+                        if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
+                            switch (arrayTipus[i]) {
+
+                                case 0:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 1:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 2:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                                case 3:
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+            exit = false;
+            System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic
+            do {
+                valorCorrecte = sc.hasNextInt();
+                if (valorCorrecte) {
+                    resum = sc.nextInt();
+                    if (resum == 1 || resum == 0) {
+                        exit = true;
+                    } else {
+                        System.out.println(MSG_9);
                     }
                 } else {
                     sc.next();
                     System.out.println(MSG_9);
                 }
             } while (exit != true);
-            for (i = 0; i < size - 1; i++) {
-                for (int k = i + 1; k < size; k++) {
-                    if (arrayEdat[i] > arrayEdat[k]) {
-                        int canvi = arrayEdat[i];
-                        arrayEdat[i] = arrayEdat[k];
-                        arrayEdat[k] = canvi;
-                        canvi = arrayId[i];
-                        arrayId[i] = arrayId[k];
-                        arrayId[k] = canvi;
-                        canvi = arrayTipus[i];
-                        arrayTipus[i] = arrayTipus[k];
-                        arrayTipus[k] = canvi;
-                        canvi = arrayImport[i];
-                        arrayImport[i] = arrayImport[k];
-                        arrayImport[k] = canvi;
-                        canvi = arrayTlf[i];
-                        arrayTlf[i] = arrayTlf[k];
-                        arrayTlf[k] = canvi;
-                    }
+            if (resum == 1) {
+                System.out.println("\n" + MSG_29 + size + "\n");
+                for (i = 0; i < size; i++) {
+                    mitjana = mitjana + arrayEdat[i];
                 }
-            }
-            for (i = 0; i < size; i++) {
-                if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                    if (l == false && p == false && s == false && c == false) {
-                        System.out.println(MSG_28);
-                        i = 100;
-                    }
+                System.out.println(MSG_23 + mitjana / size + " anys" + "\n");
+                System.out.println(MSG_25 + "\n");
+                if (l == true) {
+                    System.out.println("Lliure: " + lliure);
                 }
-            }
-            for (i = 0; i < size; i++) {
-                if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                    if (arrayTipus[i] == consultaclient) {
-                        System.out.println(MSG_6);
-                        i = 100;
-                    }
+                if (p == true) {
+                    System.out.println("Pensio: " + pensio);
                 }
-            }
-            for (i = 0; i < size; i++) {
-                if (arrayTipus[i] == consultaclient) {
-                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
-                        switch (arrayTipus[i]) {
-
-                            case 0:
-                                System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
-                                break;
-                            case 1:
-                                System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
-                                break;
-                            case 2:
-                                System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
-                                break;
-                            case 3:
-                                System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
-                                break;
-                        }
-                    }
+                if (c == true) {
+                    System.out.println("Jove: " + jove);
                 }
+                if (s == true) {
+                    System.out.println("Soci: " + soci);
+                }
+                System.out.println("\n" + MSG_27);
+                System.out.println("-----------------------------");
+                if (lliure != 0) {
+                    System.out.print("Lliure: ");
+                    for (i = 0; i < lliure; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (pensio != 0) {
+                    System.out.print("Pensio: ");
+                    for (i = 0; i < pensio; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (jove != 0) {
+                    System.out.print("Jove: ");
+                    for (i = 0; i < jove; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                if (soci != 0) {
+                    System.out.print("Soci: ");
+                    for (i = 0; i < soci; i++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+                for (i = 0; i < size; i++) {
+                    total = total + arrayImport[i];
+                }
+                System.out.println("\n" + MSG_26 + total);
             }
         }
-        exit = false;
-        System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic
-        do {
-            valorCorrecte = sc.hasNextInt();
-            if (valorCorrecte) {
-                resum = sc.nextInt();
-                if (resum == 1 || resum == 0) {
-                    exit = true;
-                } else {
-                    System.out.println(MSG_9);
-                }
-            } else {
-                sc.next();
-                System.out.println(MSG_9);
-            }
-        } while (exit != true);
-        if (resum == 1) {
-            System.out.println("\n" + MSG_29 + size + "\n");
-            for (i = 0; i < size; i++) {
-                mitjana = mitjana + arrayEdat[i];
-            }
-            System.out.println(MSG_23 + mitjana / size + " anys" + "\n");
-            System.out.println(MSG_25 + "\n");
-            if (l == true) {
-                System.out.println("Lliure: " + lliure);
-            }
-            if (p == true) {
-                System.out.println("Pensio: " + pensio);
-            }
-            if (c == true) {
-                System.out.println("Jove: " + jove);
-            }
-            if (s == true) {
-                System.out.println("Soci: " + soci);
-            }
-            System.out.println("\n" + MSG_27);
-            System.out.println("-----------------------------");
-            if (lliure != 0) {
-                System.out.print("Lliure: ");
-                for (i = 0; i < lliure; i++) {
-                    System.out.print("*");
-                }
-                System.out.println("");
-            }
-            if (pensio != 0) {
-                System.out.print("Pensio: ");
-                for (i = 0; i < pensio; i++) {
-                    System.out.print("*");
-                }
-                System.out.println("");
-            }
-            if (jove != 0) {
-                System.out.print("Jove: ");
-                for (i = 0; i < jove; i++) {
-                    System.out.print("*");
-                }
-                System.out.println("");
-            }
-            if (soci != 0) {
-                System.out.print("Soci: ");
-                for (i = 0; i < soci; i++) {
-                    System.out.print("*");
-                }
-                System.out.println("");
-            }
-            for (i = 0; i < size; i++) {
-                total = total + arrayImport[i];
-            }
-            System.out.println("\n" + MSG_26 + total);
+        if (seguiment == 0 && size == 1) {
+            System.out.print("\n" + MSG_22);
         }
-    }
-    if (seguiment == 0 && size == 1) {
-        System.out.print("\n" + MSG_22);
-    }
     }
 }
