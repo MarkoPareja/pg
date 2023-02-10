@@ -352,6 +352,7 @@ public class Projecto2 {
             }
         } while (finalitza == 0);
         if (seguiment == 0 && size == 1) {
+            
         } else {
             System.out.println("\nA continuació mostrem les dades:");
             System.out.println("\n" + MSG_6);

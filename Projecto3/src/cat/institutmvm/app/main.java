@@ -303,30 +303,29 @@ public class main {
                         }
                     }
                 }
-
-            }
-            if (seguiment == 1 && size == 1) {
-                System.out.println("\n" + MSG_20);
-            } else {
-                numpersona++;
-                if (numpersona < size && finalitza == 0) {
+                if (seguiment == 1 || seguiment == 0 && size >= 1) {
                     System.out.println("\n" + MSG_20);
+                } else {
+                    numpersona++;
+                    if (numpersona < size && finalitza == 0) {
+                        System.out.println("\n" + MSG_20);
+                    }
                 }
-            }
-            if (j == 3) {
-                if (i != 0 && finalitza == 0) {
-                    i--;
-                    numpersona--;
+                if (j == 3) {
+                    if (i != 0 && finalitza == 0) {
+                        i--;
+                        numpersona--;
+                    }
                 }
-            }
-            if (finalitza == 1) {
-                i = 100;
-            }
-            if (numpersona == size) {
-                finalitza = 1;
+                if (finalitza == 1) {
+                    i = 100;
+                }
+                if (numpersona == size) {
+                    finalitza = 1;
+                }
             }
         } while (finalitza == 0);
-        if (seguiment == 3 && size == 1) {
+        if (size >= 1) {
             System.out.println("\n" + MSG_30);
             System.out.println("\n" + MSG_6);
             for (i = 0; i < size; i++) {
@@ -406,43 +405,21 @@ public class main {
                         System.out.println(MSG_9);
                     }
                 } while (exit != true);
-
-                for (i = 0; i < size - 1; i++) {
-                    for (int k = i + 1; k < size; k++) {
-                        if (arrayEdat[i] > arrayEdat[k]) {
-                            int canvi = arrayEdat[i];
-                            arrayEdat[i] = arrayEdat[k];
-                            arrayEdat[k] = canvi;
-                            canvi = arrayId[i];
-                            arrayId[i] = arrayId[k];
-                            arrayId[k] = canvi;
-                            canvi = arrayTipus[i];
-                            arrayTipus[i] = arrayTipus[k];
-                            arrayTipus[k] = canvi;
-                            canvi = arrayImport[i];
-                            arrayImport[i] = arrayImport[k];
-                            arrayImport[k] = canvi;
-                            canvi = arrayTlf[i];
-                            arrayTlf[i] = arrayTlf[k];
-                            arrayTlf[k] = canvi;
-                        }
-                    }
-                }
+                
+                i=0;
+                method.bubbleSort(arrayEdat, arrayId, arrayTipus, arrayImport, arrayTlf, i, size);
+                
                 for (i = 0; i < size; i++) {
-                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                         if (l == false && p == false && s == false && c == false) {
                             System.out.println(MSG_28);
                             i = 100;
                         }
-                    }
                 }
                 for (i = 0; i < size; i++) {
-                    if (arrayTlf[i] > 111111111 && arrayTlf[i] < 999999999) {
                         if (arrayTipus[i] == consultaclient) {
                             System.out.println(MSG_6);
                             i = 100;
                         }
-                    }
                 }
                 for (i = 0; i < size; i++) {
                     if (arrayTipus[i] == consultaclient) {

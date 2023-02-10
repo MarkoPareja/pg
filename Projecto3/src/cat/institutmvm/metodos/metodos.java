@@ -38,6 +38,32 @@ public class metodos {
         num = (int) Math.floor(Math.random() * (max - min) + min);
         return num;
     }
+    
+   public void bubbleSort(int arrayEdat[], int arrayId[], int arrayTipus[], int arrayImport[], int arrayTlf[], int i, int size) {
+        if (i == size - 1) {
+            return;
+        }
+        for (int k = i + 1; k < size - 1; k++) {
+            if (arrayEdat[i] > arrayEdat[k]) {
+                int canvi = arrayEdat[k];
+                arrayEdat[k] = arrayEdat[k];
+                arrayEdat[k] = canvi;
+                canvi = arrayId[k];
+                arrayId[k] = arrayId[k + 1];
+                arrayId[k] = canvi;
+                canvi = arrayTipus[k];
+                arrayTipus[k] = arrayTipus[k];
+                arrayTipus[k] = canvi;
+                canvi = arrayImport[k];
+                arrayImport[k] = arrayImport[k];
+                arrayImport[k] = canvi;
+                canvi = arrayTlf[k];
+                arrayTlf[k] = arrayTlf[k];
+                arrayTlf[k] = canvi;
+            }
+        }
+        bubbleSort(arrayEdat, arrayId, arrayTipus, arrayImport, arrayTlf, i + 1, size);
+    }
 
     public boolean searchNum(int num, int num2) {
         boolean trobat = false;
