@@ -73,10 +73,6 @@ public class metodos {
         }
         return trobat;
     }
-
-    public int textCount(String txt) {
-        return txt.length();
-    }
     
     public int numCount(int num) {
         int count = 0;

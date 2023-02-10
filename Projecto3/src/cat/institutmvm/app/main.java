@@ -23,7 +23,7 @@ public class main {
     private static final String MSG_3 = "\nTipus de venda: \n" + "0-Venda lliure\n1-Pensionista\n2-Carnet Jove\n3-Soci\n\nVenda: ";
     private static final String MSG_4 = "\nImport de la compra: ";
     private static final String MSG_5 = "\nTelèfon de contacte: ";
-    private static final String MSG_6 = "ID\tEdad\tTipus\tImport\tTelefon";
+    private static final String MSG_6 = "ID\tEdad\tTipus\tImport\tTelefon\tNum. Sorteig";
     private static final String MSG_7 = "A continuació et demanarem les teves dades i les ompliras per teclat";
     private static final String MSG_8 = "Pensio";
     private static final String MSG_9 = "Error";
@@ -35,8 +35,8 @@ public class main {
     private static final String MSG_15 = "S'han introduit ";
     private static final String MSG_16 = " registres de clients";
     private static final String MSG_17 = "Vols consultar per tipus de client?(si: 1/ no:0)";
-    private static final String MSG_18 = "Quin tipus de client? : ";
-    private static final String MSG_19 = "Dades de clients de tipus ";
+    private static final String MSG_18 = "\nQuin tipus de client? : ";
+    private static final String MSG_19 = "\nDades de clients de tipus ";
     private static final String MSG_20 = "Seguent registre: ";
     private static final String MSG_21 = "\nErrors complerts" + "\nVols introdïr un nou registre? (si: 1/ no:0)";
     private static final String MSG_22 = "Vols veure un resum estadístic de les dades? (si: 1/ no:0) ";
@@ -60,10 +60,11 @@ public class main {
     private static final int MINTLF = 111111111;
     private static final int MAXCCLI = 1;
     private static final int MINCCLI = 0;
+    private static final int MAXSOR = 4;
 
     public static void main(String[] args) {
         int res = 0, size = 0, numpersona = 0, resum = 0;
-        int j = 0, consultaclient = 0, seguiment = 0, finalitza = 0, i = 0;
+        int j = 0, consultaclient = 0, seguiment = 0, finalitza = 0, i = 0, t=0, y = 0;
         int lliure = 0, pensio = 0, jove = 0, soci = 0;
         double mitjana = 0, total = 0;
         boolean valorCorrecte = false, exit = false;
@@ -85,6 +86,7 @@ public class main {
         int[] arrayImport = new int[size];
         int[] arrayTelefon = new int[size];
         int[] arrayTlf = new int[size];
+        int[] arraySort = new int[size];
 
         do {
             for (i = 0; i < size; i++) {
@@ -306,7 +308,21 @@ public class main {
                 if (seguiment == 1 || seguiment == 0 && size >= 1) {
                     System.out.println("\n" + MSG_20);
                 } else {
+                    exit=false;
                     numpersona++;
+                    do{
+                        arraySort[i] = method.random(MAXSOR);
+                        y = i;
+                        if(y>0){
+                            y--;  
+                            if(arraySort[i] == arraySort[y]){
+                                exit=false;
+                            } 
+                        }
+                        else{
+                            exit=true;
+                        }
+                    }while (!exit);
                     if (numpersona < size && finalitza == 0) {
                         System.out.println("\n" + MSG_20);
                     }
@@ -354,7 +370,7 @@ public class main {
                             s = true;
                             break;
                     }
-                    System.out.print("\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\n");
+                    System.out.print("\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\t" + arraySort[i] +"\n");
                 }
             }
             System.out.println(MSG_15 + numpersona + MSG_16 + "\n");
@@ -364,62 +380,55 @@ public class main {
                 exit = method.valida(consultaclient, MAXCCLI, MINCCLI, MSG_9);
             } while (!exit);
             if (consultaclient == 1) {
-                System.out.print(MSG_18);
                 exit = false;
                 do {
-                    valorCorrecte = sc.hasNextInt();
-                    if (valorCorrecte) {
-                        consultaclient = sc.nextInt();
-                        for (i = 0; i < size; i++) {
-                            if (arrayTipus[i] != consultaclient) {
-                                exit = true;
-                            } else {
-                                switch (consultaclient) { //Amb el switch case emmagatzarem el resultat de la variable out.
+                    consultaclient = method.valorCorrecte(sc, MSG_18);
+                    for (i = 0; i < size; i++) {
+                        if (arrayTipus[i] != consultaclient) {
+                            exit = true;
+                        } else {
+                            switch (consultaclient) { //Amb el switch case emmagatzarem el resultat de la variable out.
 
-                                    case 0:
-                                        System.out.println(MSG_19 + MSG_10);
-                                        exit = true;
-                                        break;
-                                    case 1:
-                                        System.out.println(MSG_19 + MSG_8);
-                                        exit = true;
-                                        break;
-                                    case 2:
-                                        System.out.println(MSG_19 + MSG_12);
-                                        exit = true;
-                                        break;
-                                    case 3:
-                                        System.out.println(MSG_19 + MSG_13);
-                                        exit = true;
-                                        break;
-                                    default:
-                                        j++;
-                                        System.out.println(MSG_9);
-                                        break;
-                                }
-                                i = 100;
+                                case 0:
+                                    System.out.println(MSG_19 + MSG_10);
+                                    exit = true;
+                                    break;
+                                case 1:
+                                    System.out.println(MSG_19 + MSG_8);
+                                    exit = true;
+                                    break;
+                                case 2:
+                                    System.out.println(MSG_19 + MSG_12);
+                                    exit = true;
+                                    break;
+                                case 3:
+                                    System.out.println(MSG_19 + MSG_13);
+                                    exit = true;
+                                    break;
+                                default:
+                                    j++;
+                                    System.out.println(MSG_9);
+                                    break;
                             }
+                            i = 100;
                         }
-                    } else {
-                        sc.next();
-                        System.out.println(MSG_9);
                     }
                 } while (exit != true);
-                
-                i=0;
+
+                i = 0;
                 method.bubbleSort(arrayEdat, arrayId, arrayTipus, arrayImport, arrayTlf, i, size);
-                
+
                 for (i = 0; i < size; i++) {
-                        if (l == false && p == false && s == false && c == false) {
-                            System.out.println(MSG_28);
-                            i = 100;
-                        }
+                    if (l == false && p == false && s == false && c == false) {
+                        System.out.println(MSG_28);
+                        i = 100;
+                    }
                 }
                 for (i = 0; i < size; i++) {
-                        if (arrayTipus[i] == consultaclient) {
-                            System.out.println(MSG_6);
-                            i = 100;
-                        }
+                    if (arrayTipus[i] == consultaclient) {
+                        System.out.println(MSG_6);
+                        i = 100;
+                    }
                 }
                 for (i = 0; i < size; i++) {
                     if (arrayTipus[i] == consultaclient) {
