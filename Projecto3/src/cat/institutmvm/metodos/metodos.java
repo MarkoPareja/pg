@@ -64,6 +64,25 @@ public class metodos {
         }
         bubbleSort(arrayEdat, arrayId, arrayTipus, arrayImport, arrayTlf, i + 1, size);
     }
+   
+    public static boolean binarySearch(int arr[], int i) {
+        int t = i;
+        boolean exit = false;
+        if(i == 0){
+            exit=true;
+        }
+        else{
+            for(t = i - 1 ; t >= 0 ; t--){
+                if (arr[i] == arr[t]){
+                    exit=false;
+                }
+                else{
+                    exit = true;
+                }
+            }
+        }
+        return exit;
+    }
 
     public boolean searchNum(int num, int num2) {
         boolean trobat = false;

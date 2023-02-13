@@ -60,7 +60,7 @@ public class main {
     private static final int MINTLF = 111111111;
     private static final int MAXCCLI = 1;
     private static final int MINCCLI = 0;
-    private static final int MAXSOR = 4;
+    private static final int MAXSOR = 5000;
 
     public static void main(String[] args) {
         int res = 0, size = 0, numpersona = 0, resum = 0;
@@ -310,19 +310,10 @@ public class main {
                 } else {
                     exit=false;
                     numpersona++;
-                    do{
-                        arraySort[i] = method.random(MAXSOR);
-                        y = i;
-                        if(y>0){
-                            y--;  
-                            if(arraySort[i] == arraySort[y]){
-                                exit=false;
-                            } 
-                        }
-                        else{
-                            exit=true;
-                        }
-                    }while (!exit);
+                        do{
+                            arraySort[i] = method.random(MAXSOR);
+                            exit = method.binarySearch(arraySort, i);
+                        }while(!exit);
                     if (numpersona < size && finalitza == 0) {
                         System.out.println("\n" + MSG_20);
                     }
