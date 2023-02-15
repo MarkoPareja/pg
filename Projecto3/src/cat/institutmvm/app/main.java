@@ -12,7 +12,7 @@ import cat.institutmvm.metodos.metodos;
 Nom: Marko 
 Cognoms: Pareja Bailén
 INS Manuel Vázquez Montalbán
-Data d’edició: 25/nov/2022
+Data d’edició: 15/feb/2023
 Nom del cicle formatiu: DAW
 Nom del mòdul: PG
  */
@@ -34,12 +34,12 @@ public class main {
     private static final String MSG_14 = "Cuants clients vols introduir: ";
     private static final String MSG_15 = "S'han introduit ";
     private static final String MSG_16 = " registres de clients";
-    private static final String MSG_17 = "Vols consultar per tipus de client?(si: 1/ no:0)";
+    private static final String MSG_17 = "Vols consultar per tipus de client?(si: 1/ no:0)\n";
     private static final String MSG_18 = "\nQuin tipus de client? : ";
     private static final String MSG_19 = "\nDades de clients de tipus ";
     private static final String MSG_20 = "Seguent registre: ";
-    private static final String MSG_21 = "\nErrors complerts" + "\nVols introdïr un nou registre? (si: 1/ no:0)";
-    private static final String MSG_22 = "Vols veure un resum estadístic de les dades? (si: 1/ no:0) ";
+    private static final String MSG_21 = "\nErrors complerts" + "\nVols introdïr un nou registre? (si: 1/ no:0)\n";
+    private static final String MSG_22 = "Vols veure un resum estadístic de les dades? (si: 1/ no:0)\n";
     private static final String MSG_23 = "Mitjana d’edat: ";
     private static final String MSG_25 = "Número de clients per tipus: ";
     private static final String MSG_26 = "Import total: ";
@@ -47,6 +47,10 @@ public class main {
     private static final String MSG_28 = "No hi han registres per mostrar.";
     private static final String MSG_29 = "Número de clients introduits: ";
     private static final String MSG_30 = "A continuació mostrem les dades:";
+    private static final String MSG_31 = "\nVols fer el sorteig? (si: 1/ no:0)\n";
+    private static final String MSG_32 = "El numero guanyador es el ";
+    private static final String MSG_33 = "Usuari guanyador es el numero ";
+    private static final String MSG_34 = "No hi ha guanyador";
     private static final int TLF = 9;
     private static final int MAXID = 999;
     private static final int MINID = 111;
@@ -61,11 +65,13 @@ public class main {
     private static final int MAXCCLI = 1;
     private static final int MINCCLI = 0;
     private static final int MAXSOR = 5000;
+    private static final int MAXSO = 1;
+    private static final int MINSO = 0;
 
     public static void main(String[] args) {
-        int res = 0, size = 0, numpersona = 0, resum = 0;
+        int res = 0, size = 0, numpersona = 0, resum = 0, sorteig = 0, numsorteig = 0;
         int j = 0, consultaclient = 0, seguiment = 0, finalitza = 0, i = 0, t=0, y = 0;
-        int lliure = 0, pensio = 0, jove = 0, soci = 0;
+        int lliure = 0, pensio = 0, jove = 0, soci = 0, guanyador = 0;
         double mitjana = 0, total = 0;
         boolean valorCorrecte = false, exit = false;
         boolean l = false, p = false, c = false, s = false;
@@ -310,10 +316,7 @@ public class main {
                 } else {
                     exit=false;
                     numpersona++;
-                        do{
-                            arraySort[i] = method.random(MAXSOR);
-                            exit = method.binarySearch(arraySort, i);
-                        }while(!exit);
+                    arraySort[i] = method.random(MAXSOR);
                     if (numpersona < size && finalitza == 0) {
                         System.out.println("\n" + MSG_20);
                     }
@@ -444,20 +447,9 @@ public class main {
                 }
             }
             exit = false;
-            System.out.print("\n" + MSG_22 + "\n"); // Aquí preguntarem si volem fer un resum estadístic.
             do {
-                valorCorrecte = sc.hasNextInt();
-                if (valorCorrecte) {
-                    resum = sc.nextInt();
-                    if (resum == 1 || resum == 0) {
-                        exit = true;
-                    } else {
-                        System.out.println(MSG_9);
-                    }
-                } else {
-                    sc.next();
-                    System.out.println(MSG_9);
-                }
+                resum = method.valorCorrecte(sc, MSG_22);
+                exit = method.valida(resum, MAXSO, MINSO, MSG_9);
             } while (exit != true);
             if (resum == 1) {
                 System.out.println("\n" + MSG_29 + size + "\n");
@@ -513,6 +505,19 @@ public class main {
                 }
                 System.out.println("\n" + MSG_26 + total);
             }
+            exit = false;
+            do {
+                    sorteig = method.valorCorrecte(sc, MSG_31);
+                    exit = method.valida(sorteig, MAXSO, MINSO, MSG_9);
+            } while (exit != true);
+            numsorteig = method.random(MAXSOR);
+            System.out.println(MSG_32 + numsorteig);
+            guanyador = method.binarySearch(arraySort, arrayId, 0, arrayId.length - 1, numsorteig);
+            if (guanyador != 0) {
+                System.out.println(MSG_33 + guanyador);
+            } else {
+                System.out.println(MSG_34);
+            } 
         }
         if (seguiment == 0 && size == 1) {
             System.out.print("\n" + MSG_22);

@@ -65,32 +65,20 @@ public class metodos {
         bubbleSort(arrayEdat, arrayId, arrayTipus, arrayImport, arrayTlf, i + 1, size);
     }
    
-    public static boolean binarySearch(int arr[], int i) {
-        int t = i;
-        boolean exit = false;
-        if(i == 0){
-            exit=true;
+    public static int binarySearch(int arr[], int arr1[], int inicia, int finaliza, int num) {
+        if(inicia > finaliza){
+            return 0;
+        }
+        int medio = (inicia + finaliza) / 2;
+        if (arr[medio] == num){
+            return arr1[medio];
+        }
+        else if(arr[medio] > num){
+            return binarySearch(arr, arr1, inicia, medio - 1, num);
         }
         else{
-            for(t = i - 1 ; t >= 0 ; t--){
-                if (arr[i] == arr[t]){
-                    exit=false;
-                }
-                else{
-                    exit = true;
-                }
-            }
+            return binarySearch(arr, arr1, medio + 1, finaliza,num);
         }
-        return exit;
-    }
-
-    public boolean searchNum(int num, int num2) {
-        boolean trobat = false;
-
-        if (num == num2) {
-            trobat = true;
-        }
-        return trobat;
     }
     
     public int numCount(int num) {
@@ -103,16 +91,5 @@ public class metodos {
             num /= 10;
         }
         return count;
-    }
-
-    public Boolean searchTxt(String txt, String letra) {
-        boolean trobat;
-
-        if (txt.contains(letra)) {
-            trobat = true;
-        } else {
-            trobat = false;
-        }
-        return trobat;
     }
 }
