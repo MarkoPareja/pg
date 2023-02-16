@@ -39,7 +39,7 @@ public class main {
     private static final String MSG_19 = "\nDades de clients de tipus ";
     private static final String MSG_20 = "Seguent registre: ";
     private static final String MSG_21 = "\nErrors complerts" + "\nVols introdïr un nou registre? (si: 1/ no:0)\n";
-    private static final String MSG_22 = "Vols veure un resum estadístic de les dades? (si: 1/ no:0)\n";
+    private static final String MSG_22 = "\nVols veure un resum estadístic de les dades? (si: 1/ no:0)\n";
     private static final String MSG_23 = "Mitjana d’edat: ";
     private static final String MSG_25 = "Número de clients per tipus: ";
     private static final String MSG_26 = "Import total: ";
@@ -67,6 +67,10 @@ public class main {
     private static final int MAXSOR = 5000;
     private static final int MAXSO = 1;
     private static final int MINSO = 0;
+    private static final int MAXINTENTOS = 3;
+    private static final int DEFAULT = 3;
+    private static final int SEGUIR = 1;
+    private static final int PARAR = 0;
 
     public static void main(String[] args) {
         int res = 0, size = 0, numpersona = 0, resum = 0, sorteig = 0, numsorteig = 0;
@@ -97,87 +101,87 @@ public class main {
         do {
             for (i = 0; i < size; i++) {
                 j = 0;
-                seguiment = 3;
+                seguiment = DEFAULT;
                 exit = false;
                 do {
-                    if (j < 3) {
+                    if (j < MAXINTENTOS) {
                         arrayId[i] = method.valorCorrecte(sc, MSG_1);
                         exit = method.valida(arrayId[i], MAXID, MINID, MSG_9);
                     }
                     if (!exit) {
                         j++;
                     }
-                    if (j == 3) {
+                    if (j == MAXINTENTOS) {
                         exit = true;
                     }
                 } while (!exit);
 
-                if (j == 3 && seguiment == 0) {
+                if (j == MAXINTENTOS && seguiment == PARAR) {
                     finalitza = 1;
                 }
 
                 do {
-                    if (j == 3) {
+                    if (j == MAXINTENTOS) {
                         exit = false;
                         seguiment = method.valorCorrecte(sc, MSG_21);
                         exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
                         if (!exit) {
                             j++;
                         }
-                        if (j == 3) {
+                        if (j == MAXINTENTOS) {
                             exit = true;
                         }
                     }
                 } while (exit != true);
 
-                if (j == 3 && seguiment == 0) {
+                if (j == MAXINTENTOS && seguiment == PARAR) {
                     finalitza = 1;
                 }
 
-                if (seguiment == 3) {
+                if (seguiment == DEFAULT) {
                     j = 0;
                     exit = false;
                     do {
-                        if (j < 3) {
+                        if (j < MAXINTENTOS) {
                             arrayEdat[i] = method.valorCorrecte(sc, MSG_2);
                             exit = method.valida(arrayEdat[i], MAXEDAD, MINEDAD, MSG_9);
                         }
                         if (!exit) {
                             j++;
                         }
-                        if (j == 3) {
+                        if (j == MAXINTENTOS) {
                             exit = true;
                         }
                     } while (!exit);
 
-                    if (j == 3 && seguiment == 0) {
+                    if (j == MAXINTENTOS && seguiment == PARAR) {
                         finalitza = 1;
                     }
 
                     do {
-                        if (j == 3) {
+                        if (j == MAXINTENTOS) {
                             exit = false;
                             seguiment = method.valorCorrecte(sc, MSG_21);
                             exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
                             if (!exit) {
                                 j++;
                             }
-                            if (j == 3) {
+                            if (j == MAXINTENTOS) {
                                 exit = true;
                             }
                         }
                     } while (exit != true);
 
-                    if (j == 3 && seguiment == 0) {
+                    if (j == MAXINTENTOS && seguiment == PARAR) {
                         finalitza = 1;
                     }
 
-                    if (seguiment == 3) {
+                    if (seguiment == DEFAULT) {
                         j = 0;
                         exit = false;
 
                         do {
-                            if (j < 3) {
+                            if (j < MAXINTENTOS) {
                                 arrayTipus[i] = method.valorCorrecte(sc, MSG_3);
                                 switch (arrayTipus[i]) { //Amb el switch case emmagatzarem el resultat de la variable out.
 
@@ -206,50 +210,50 @@ public class main {
                             if (!exit) {
                                 j++;
                             }
-                            if (j == 3) {
+                            if (j == MAXINTENTOS) {
                                 exit = true;
                             }
                         } while (!exit);
 
                         do {
-                            if (j == 3) {
+                            if (j == MAXINTENTOS) {
                                 exit = false;
                                 seguiment = method.valorCorrecte(sc, MSG_21);
                                 exit = method.valida(arrayId[i], MAXSEG, MINSEG, MSG_9);
                                 if (!exit) {
                                     j++;
                                 }
-                                if (j == 3) {
+                                if (j == MAXINTENTOS) {
                                     exit = true;
                                 }
                             }
                         } while (exit != true);
 
-                        if (j == 3 && seguiment == 0) {
+                        if (j == MAXINTENTOS && seguiment == PARAR) {
                             finalitza = 1;
                         }
-                        if (seguiment == 3) {
+                        if (seguiment == DEFAULT) {
                             j = 0;
                             exit = false;
                             do {
-                                if (j < 3) {
+                                if (j < MAXINTENTOS) {
                                     arrayImport[i] = method.valorCorrecte(sc, MSG_4);
                                     exit = method.valida(arrayImport[i], MAXIMP, MINIMP, MSG_9);
                                 }
                                 if (!exit) {
                                     j++;
                                 }
-                                if (j == 3) {
+                                if (j == MAXINTENTOS) {
                                     exit = true;
                                 }
                             } while (!exit);
 
-                            if (j == 3 && seguiment == 0) {
+                            if (j == MAXINTENTOS && seguiment == PARAR) {
                                 finalitza = 1;
                             }
 
                             do {
-                                if (j == 3) {
+                                if (j == MAXINTENTOS) {
                                     exit = false;
                                     seguiment = method.valorCorrecte(sc, MSG_21);
                                     exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
@@ -262,15 +266,15 @@ public class main {
                                 }
                             } while (exit != true);
 
-                            if (j == 3 && seguiment == 0) {
+                            if (j == MAXINTENTOS && seguiment == PARAR) {
                                 finalitza = 1;
                             }
 
-                            if (seguiment == 3) {
+                            if (seguiment == DEFAULT) {
                                 j = 0;
                                 exit = false;
                                 do {
-                                    if (j < 3) {
+                                    if (j < MAXINTENTOS) {
                                         arrayTlf[i] = method.valorCorrecte(sc, MSG_5);
                                         arrayTelefon[i] = method.numCount(arrayTlf[i]);
                                         if (arrayTelefon[i] == TLF) {
@@ -280,38 +284,38 @@ public class main {
                                     if (!exit) {
                                         j++;
                                     }
-                                    if (j == 3) {
+                                    if (j == MAXINTENTOS) {
                                         exit = true;
                                     }
                                 } while (!exit);
 
-                                if (j == 3 && seguiment == 0) {
+                                if (j == MAXINTENTOS && seguiment == PARAR) {
                                     finalitza = 1;
                                 }
 
                                 do {
-                                    if (j == 3) {
+                                    if (j == MAXINTENTOS) {
                                         exit = false;
                                         seguiment = method.valorCorrecte(sc, MSG_21);
                                         exit = method.valida(seguiment, MAXSEG, MINSEG, MSG_9);
                                         if (!exit) {
                                             j++;
                                         }
-                                        if (j == 3) {
+                                        if (j == MAXINTENTOS) {
                                             exit = true;
                                         }
                                     }
                                 } while (exit != true);
-                                if (j == 3 && seguiment == 0) {
+                                if (j == MAXINTENTOS && seguiment == PARAR) {
                                     finalitza = 1;
                                 }
-                                if (seguiment == 1) {
+                                if (seguiment == SEGUIR) {
                                 }
                             }
                         }
                     }
                 }
-                if (seguiment == 1 || seguiment == 0 && size >= 1) {
+                if (seguiment == SEGUIR || seguiment == PARAR && size >= 1) {
                     System.out.println("\n" + MSG_20);
                 } else {
                     exit=false;
@@ -430,16 +434,16 @@ public class main {
                             switch (arrayTipus[i]) {
 
                                 case 0:
-                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_10 + "\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\t" + arraySort[i]);
                                     break;
                                 case 1:
-                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_8 + "\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\t" + arraySort[i]);
                                     break;
                                 case 2:
-                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_12 + "\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\t" + arraySort[i]);
                                     break;
                                 case 3:
-                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i]);
+                                    System.out.println(arrayId[i] + "\t" + arrayEdat[i] + "\t" + MSG_13 + "\t" + arrayImport[i] + "\t" + arrayTlf[i] + "\t" + arraySort[i]);
                                     break;
                             }
                         }
