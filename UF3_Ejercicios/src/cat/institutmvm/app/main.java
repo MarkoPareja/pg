@@ -235,7 +235,70 @@ public class main {
         }
         sc.close();
          */
-        /*Ejercicio8*/
+ /*Ejercicio8*/
+ /*
+        String fileName = "";
+        String textName = "";
+        Scanner sc = new Scanner(System.in);
         
+        System.out.print(MSG_4);
+        textName = sc.nextLine();
+        System.out.print("\n" + MSG_1);
+        fileName = sc.next();
+        fileName = method.sufix(fileName);
+        
+        //FILE WRITER
+        try{
+            FileWriter fw = new FileWriter("files/" + fileName);
+            fw.write(textName);
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println("An error occurred : ");
+            ex.printStackTrace();
+        } finally {
+            System.out.println("El fitxer s'ha creat correctament.\n");
+        }
+        
+        System.out.print(MSG_4);
+        sc.nextLine();
+        textName = sc.nextLine();
+        System.out.print("\n" + MSG_1);
+        fileName = sc.next();
+        fileName = method.sufix(fileName);
+        
+        //BUFFERED WRITER
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("files/" + fileName));
+            bw.write(textName);
+            bw.close();
+        } catch (IOException ex) {
+            System.out.println("An error occurred : ");
+            ex.printStackTrace();
+        }finally {
+            System.out.println("El fitxer s'ha creat correctament.\n");    
+        }
+        
+        System.out.print(MSG_4);
+        sc.nextLine();
+        textName = sc.nextLine();
+        System.out.print("\n" + MSG_1);
+        fileName = sc.next();
+        fileName = method.sufix(fileName);
+        
+        //BUFFERED WRITER NEW LINE
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("files/" + fileName, true));
+            bw.newLine();
+            bw.write(textName);
+            bw.close();
+        } catch (IOException ex) {
+            System.out.println("An error occurred : ");
+            ex.printStackTrace();
+        }finally {
+            System.out.println("S'ha afegit el text correctament.");    
+        }
+         */
+ /*Ejercicio9*/
+ //No lo pides en ningun sitio, pero lo tengo hecho en otro documento
     }
 }
