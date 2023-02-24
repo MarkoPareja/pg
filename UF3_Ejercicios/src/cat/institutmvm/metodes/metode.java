@@ -4,6 +4,8 @@
  */
 package cat.institutmvm.metodes;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -76,6 +78,35 @@ public class metode {
             ex.printStackTrace();
         } finally {
             System.out.println("El fitxer s'ha creat correctament.");
+        }
+    }
+    
+    public void afegirText(String fileName, String textName){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("files/" + fileName, true));
+            bw.newLine();
+            bw.write(textName);
+            bw.close();
+        } catch (IOException ex) {
+            System.out.println("An error occurred : ");
+            ex.printStackTrace();
+        }
+    }
+    
+    public void contarChar(String fileName){
+        int cont = 0;
+        try{      
+            File file = new File("files/" + fileName);
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine()){
+                String datos = sc.nextLine();
+                cont += datos.length();
+            }
+            System.out.println(cont + " caracters");   
+        }catch(FileNotFoundException e){
+            System.out.println("An error occurred : ");
+            e.printStackTrace();
         }
     }
 }

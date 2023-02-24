@@ -22,7 +22,9 @@ public class main {
     private static final String MSG_2 = "Ha ocurrido un error";
     private static final String MSG_3 = "No se encontro el archivo";
     private static final String MSG_4 = "Indroduce el texto que deseas guardar: ";
-    private static final String MSG_MENU = "-----------------------------------------\n" + "-------------------MENU------------------\n" + "-----1 -> Llegir fitxer------------------\n" + "-----2 -> Guardar text en fitxer---------\n" + "-----3 -> Afegir text en fitxer----------\n" + "-----4 -> Comptar longitud del document--\n" + "-----------------------------------------";
+    public static final String ANSI_PURPLE = "\033[0;34m";
+    public static final String ANSI_RESET = "\033[0;30m";
+    public static final String msgMenu = ANSI_PURPLE + "-----------------------------------------\n" + ANSI_PURPLE + "-------------------" + ANSI_RESET + "MENU" + ANSI_PURPLE + "------------------\n" + "-----" + ANSI_RESET + "1 -> Llegir fitxer" + ANSI_PURPLE + "------------------\n" + "-----" + ANSI_RESET + "2 -> Guardar text en fitxer" + ANSI_PURPLE + "---------\n" + "-----" + ANSI_RESET + "3 -> Afegir text en fitxer" + ANSI_PURPLE + "----------\n" + "-----" + ANSI_RESET + "4 -> Comptar longitud del document" + ANSI_PURPLE + "--\n" + ANSI_PURPLE + "-----------------------------------------" + ANSI_RESET;
 
     public static void main(String[] args) {
         int i;
@@ -130,7 +132,6 @@ public class main {
             e.printStackTrace();
         }
          */
-
  /*Ejercicio5*/
  /*
         Scanner sc = new Scanner(System.in);
@@ -177,59 +178,64 @@ public class main {
         }
          */
  /*Ejercicio7*/
+ /*
         int option = 0;
         String fileName = "";
         String textName = "";
         boolean exit = false;
-        System.out.println(MSG_MENU);
+        System.out.println(msgMenu);
 
         Scanner sc = new Scanner(System.in);
-        /*do {
+        do {
             option = method.valorCorrecte(sc, "\nOpción: ");
             exit = method.valida(option, 4, 1, "Error");
         } while (!exit);
-        */
-        
-        do{
-            System.out.print("\nOpció: ");
-            option = method.valida(sc.nextInt(), 1, 4);
-        }while(option<1 || option>4);
-        
+
+        if (option == 1) {
+            System.out.print(MSG_1);
+            fileName = sc.next();
+            fileName = method.sufix(fileName);
+        } else if (option == 2) {
+            System.out.print(MSG_4);
+            sc.nextLine();
+            textName = sc.nextLine();
+            System.out.print("\n" + MSG_1);
+            fileName = sc.next();
+            fileName = method.sufix(fileName);
+        } else if (option == 3) {
+            System.out.print(MSG_4);
+            sc.nextLine();
+            textName = sc.nextLine();
+            System.out.print("\n" + MSG_1);
+            fileName = sc.next();
+            fileName = method.sufix(fileName);
+        } else if (option == 4) {
+            System.out.print(MSG_1);
+            fileName = sc.next();
+            fileName = method.sufix(fileName);
+        }
+
         switch (option) {
 
             case 1:
-                System.out.print(MSG_1);
-                fileName = sc.next();
-                
-                fileName = method.sufix(fileName);
                 method.llegir(fileName);
                 break;
             case 2:
-                System.out.print(MSG_4);
-                if(sc.hasNextLine()){
-                    textName = sc.nextLine();
-                }
-                else{
-                    System.out.println("error");
-                    sc.next();
-                }                /*
-                System.out.print("\n"+MSG_1);
-                fileName = sc.next();
-                
-                fileName = method.sufix(fileName);
-                
-                method.escriureNou(fileName, textName); */ 
+                method.escriureNou(fileName, textName);
                 break;
             case 3:
-
+                method.afegirText(fileName, textName);
                 break;
             case 4:
-
+                method.contarChar(fileName);
                 break;
             default:;
                 System.out.println("Error");
                 break;
         }
         sc.close();
+         */
+        /*Ejercicio8*/
+        
     }
 }
