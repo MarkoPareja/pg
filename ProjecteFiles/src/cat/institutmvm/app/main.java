@@ -25,8 +25,6 @@ public class main {
     private static final String MSG_1 = "Quina opció vols?: ";
     private static final String MSG_2 = "Indica el nom del document: ";
     private static final String MSG_3 = "La llista d'articles és la seguent:";
-    private static final String ANSI_BLUE = "\033[0;34m";
-    private static final String ANSI_RESET = "\033[0;30m";
     private static final String MSG_4 = "Codi article: ";
     
     
@@ -47,7 +45,7 @@ public class main {
         
         switch(opcio){
             case "A" :
-                System.out.print("\n"+MSG_2+ANSI_BLUE);
+                System.out.print("\n"+MSG_2);
                 sc.nextLine();
                 String fileName = sc.nextLine();
                 if (!fileName.endsWith(".txt")) {
