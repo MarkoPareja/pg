@@ -26,7 +26,7 @@ public class main {
     public static final String ANSI_RESET = "\033[0;30m";
     public static final String msgMenu = ANSI_PURPLE + "-----------------------------------------\n" + ANSI_PURPLE + "-------------------" + ANSI_RESET + "MENU" + ANSI_PURPLE + "------------------\n" + "-----" + ANSI_RESET + "1 -> Llegir fitxer" + ANSI_PURPLE + "------------------\n" + "-----" + ANSI_RESET + "2 -> Guardar text en fitxer" + ANSI_PURPLE + "---------\n" + "-----" + ANSI_RESET + "3 -> Afegir text en fitxer" + ANSI_PURPLE + "----------\n" + "-----" + ANSI_RESET + "4 -> Comptar longitud del document" + ANSI_PURPLE + "--\n" + ANSI_PURPLE + "-----------------------------------------" + ANSI_RESET;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int i;
         metode method = new metode();
 
@@ -299,9 +299,30 @@ public class main {
         }
          */
  /*Ejercicio9*/
- //No lo pides en ningun sitio, pero lo tengo hecho en otro documento
- 
- /*Ejercicio10*/
-        
+        //No lo pides en ningun sitio, pero lo tengo hecho en otro documento
+        /*Ejercicio10*/
+ /*
+        String csvFile = "ruta_del_archivo.csv";
+        String line = "";
+        String cvsSplitBy = ",";
+        int rowCounter = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader("files/dades.csv"))) {
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(cvsSplitBy);
+                if (rowCounter == 0) {
+                    // Imprime la cabecera de la tabla
+                    System.out.format("%-20s%-20s%-20s%-20s\n", data[0], data[1], data[2], data[3]);
+                    // Cambia los números (4) por la cantidad de columnas que tenga tu archivo CSV
+                } else {
+                    // Imprime los datos de cada fila
+                    System.out.format("%-20s%-20s%-20s%-20s\n", data[0], data[1], data[2], data[3]);
+                }
+                rowCounter++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         */
     }
 }
