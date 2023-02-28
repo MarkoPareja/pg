@@ -3,3 +3,5 @@ ART001,Vestit,Roba,150,25.95
 ART002,Ulleres,Complements,50,75.99
 ART003,Sabatilles,Sabates,200,9.95
 ART004,Bikini,Bany,75,34.95
+ART005,Samarreta,Roba,20,12.95
+ART006,Sudadera,Roba,50,45.99

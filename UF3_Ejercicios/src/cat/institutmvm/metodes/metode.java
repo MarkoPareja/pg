@@ -82,9 +82,13 @@ public class metode {
     }
     
     public void afegirText(String fileName, String textName){
+        int i = 0;
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("files/" + fileName, true));
-            bw.newLine();
+            if(i < 1){
+                bw.newLine();
+            }
+            i++;
             bw.write(textName);
             bw.close();
         } catch (IOException ex) {
