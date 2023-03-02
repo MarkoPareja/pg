@@ -63,7 +63,7 @@ public class method {
     
     public void escribirTabla(String sb, String fileName){
         try{
-            FileWriter fw = new FileWriter("files/" + fileName);
+            FileWriter fw = new FileWriter("files/" + fileName, true);
             fw.write(sb + "\n");
             fw.close();
         } catch (IOException ex) {

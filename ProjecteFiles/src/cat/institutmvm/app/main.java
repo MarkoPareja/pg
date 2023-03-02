@@ -4,21 +4,11 @@
  */
 package cat.institutmvm.app;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 import cat.institutmvm.method.method;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 
 public class main {
     private static final String MENU = "Escull una opció:\nA. Veure articles\nB. Enregistrar un nou article\nC. Mostrar total d'articles\nD. Sortir";
@@ -58,17 +48,25 @@ public class main {
             System.out.print("\n"+MSG_1);
             opcio = sc.next();
 
-
+            
 
             switch(opcio){
                 case "A" :
                     System.out.print("\n"+MSG_2);
                     sc.nextLine();
                     fileName = sc.nextLine();
-
+                    
                     fileName = method.comprovarExtensio(fileName);
-                    System.out.println("\n"+MSG_3);
-                    fileName = method.leerTabla(fileName);
+                    
+                    File file = new File("files/" + fileName);
+                    if (file.isFile()){
+                        System.out.println("\n"+MSG_3);
+                        fileName = method.leerTabla(fileName);
+                    }
+                    else{
+                        System.out.println("Error");
+                    }
+                   
                     break;
                 case "B" :
                     System.out.println(MSG_9);
@@ -84,8 +82,10 @@ public class main {
                         fileName = sc.nextLine();
                         fileName = method.comprovarExtensio(fileName);
                     }
-
-                    if (tipusDocument == 1){
+                    
+                    File file1 = new File("files/" + fileName);
+                    
+                    if (tipusDocument == 1 && !file1.isFile()){
                         sb.append(MSG_11 + "\n");
                     }
                     System.out.println(MSG_4);
@@ -116,11 +116,15 @@ public class main {
                     sc.nextLine();
                     fileName = sc.nextLine();
                     fileName = method.comprovarExtensio(fileName);
-
-                    num = method.registres(fileName);
-                    num --;
-
-                    System.out.println(MSG_13 + num + MSG_14);
+                    File file2 = new File("files/" + fileName);
+                    if (file2.isFile()){
+                        num = method.registres(fileName);
+                        num --;
+                        System.out.println(MSG_13 + num + MSG_14);
+                    }
+                    else{
+                        System.out.println("Error");
+                    }
                     break;
                 case "D":
                     System.out.println(MSG_12);
