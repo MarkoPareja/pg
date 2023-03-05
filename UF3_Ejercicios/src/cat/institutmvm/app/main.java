@@ -178,7 +178,7 @@ public class main {
         }
          */
  /*Ejercicio7*/
- /*
+ 
         int option = 0;
         String fileName = "";
         String textName = "";
@@ -234,7 +234,7 @@ public class main {
                 break;
         }
         sc.close();
-         */
+         
  /*Ejercicio8*/
  /*
         String fileName = "";
@@ -299,8 +299,8 @@ public class main {
         }
          */
  /*Ejercicio9*/
-        //No lo pides en ningun sitio, pero lo tengo hecho en otro documento
-        /*Ejercicio10*/
+        //No lo pides en ningun sitio, pero lo tengo hecho en otro documento      
+/*Ejercicio10*/
  /*
         String csvFile = "ruta_del_archivo.csv";
         String line = "";
