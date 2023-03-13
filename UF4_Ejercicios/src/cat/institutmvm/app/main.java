@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package cat.institutmvm.app;
-import cat.institutmvm.utils.Person;
-import cat.institutmvm.utils.Carta;
-import cat.institutmvm.utils.Llum;
-import cat.institutmvm.utils.Vol;
+import cat.institutmvm.entities.Bici;
+import cat.institutmvm.entities.Person;
+import cat.institutmvm.entities.Carta;
+import cat.institutmvm.entities.Llum;
+import cat.institutmvm.entities.Vol;
 
 public class main {
 
@@ -36,7 +37,11 @@ public class main {
         vol.setIdVol("ART0032");
         System.out.println(vol.getFullVol());
         //Ejercicio4
-        
+        Bici bici = new Bici();
+        bici.setColor("roja");
+        bici.setAlçada("1.2m");
+        bici.setPes("3kg");
+        System.out.println(bici.getFullBici());
     }
     
 }

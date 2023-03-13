@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.institutmvm.utils;
+package cat.institutmvm.entities;
 
 public class Vol {
     private String desti, hora_arrivada, hora_sortida, id_vol;
