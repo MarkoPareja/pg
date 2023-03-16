@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package cat.institutmvm.app;
+package cat.institutmvm.ui;
 import cat.institutmvm.entities.Bici;
 import cat.institutmvm.entities.Person;
 import cat.institutmvm.entities.Carta;
+import cat.institutmvm.entities.Cat;
 import cat.institutmvm.entities.Llum;
 import cat.institutmvm.entities.Vol;
 
@@ -42,6 +43,16 @@ public class main {
         bici.setAlçada("1.2m");
         bici.setPes("3kg");
         System.out.println(bici.getFullBici());
+        //Ejercicio5
+        Cat cat = new Cat("Marina", "5", "Regular", "Fodder");
+        cat.meow();
+        cat.play();
+        cat.wash();
+        cat.eat();
+        cat.hunt();
+        System.out.println(cat.getFullCat());
+        //Ejercicio6
+        
     }
     
 }
