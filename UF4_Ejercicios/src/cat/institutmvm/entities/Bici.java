@@ -27,11 +27,11 @@ public class Bici {
        this.pes = pes;
     }
     
-    public String getAlçada() {
+    public String getAlcada() {
        return alçada;
     }
 
-    public void setAlçada(String alçada) {
+    public void setAlcada(String alçada) {
        this.alçada = alçada;
     }
 
@@ -41,7 +41,7 @@ public class Bici {
        sb.append(" ");
        sb.append(this.getPes());
        sb.append(" ");
-       sb.append(this.getAlçada());
+       sb.append(this.getAlcada());
        return sb.toString();
     }
 }

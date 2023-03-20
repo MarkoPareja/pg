@@ -7,8 +7,10 @@ import cat.institutmvm.entities.Bici;
 import cat.institutmvm.entities.Person;
 import cat.institutmvm.entities.Carta;
 import cat.institutmvm.entities.Cat;
+import cat.institutmvm.entities.Cat1;
 import cat.institutmvm.entities.Llum;
 import cat.institutmvm.entities.Vol;
+import cat.institutmvm.entities.Animal;
 
 public class main {
 
@@ -40,7 +42,7 @@ public class main {
         //Ejercicio4
         Bici bici = new Bici();
         bici.setColor("roja");
-        bici.setAlçada("1.2m");
+        bici.setAlcada("1.2m");
         bici.setPes("3kg");
         System.out.println(bici.getFullBici());
         //Ejercicio5
@@ -52,6 +54,22 @@ public class main {
         cat.hunt();
         System.out.println(cat.getFullCat());
         //Ejercicio6
+        /**
+         * Esto es el constructor del objeto Cat, dentro tenemos varios estados
+         * como nombre, edad, etc.
+         * @param Cat
+         * @return sb.toString()
+         * @author main
+         */
+        //Ejercicio7
+        Cat1 cat1 = new Cat1(true, true, false, "Logan", 12, "Regular", "Fodder");      
+        System.out.println(cat1.getFullAnimal());
+        cat1.meow();
+        cat1.play();
+        cat1.wash();
+        cat1.eat();
+        cat1.hunt();
+        //Ejercicio8
         
     }
     
