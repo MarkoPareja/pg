@@ -11,6 +11,8 @@ import cat.institutmvm.entities.Cat1;
 import cat.institutmvm.entities.Llum;
 import cat.institutmvm.entities.Vol;
 import cat.institutmvm.entities.Animal;
+import cat.institutmvm.entities.Bicicleta;
+import cat.institutmvm.entities.Coche;
 
 public class main {
 
@@ -70,7 +72,16 @@ public class main {
         cat1.eat();
         cat1.hunt();
         //Ejercicio8
+        System.out.println("----COCHE----");
+        Coche coche1 = new Coche ("Leon","Seat","Negro","Terrestre","Propulsion",560,5,1600);
+        coche1.printInformation();
+        System.out.println(coche1.identificador());
+        coche1.KilometrosRecorridos();
+        System.out.println("----BICI----");
+        Bicicleta bici1 = new Bicicleta("Terrestre","Propulsion",2,7,130);
+        bici1.printInformation();
+        //Ejercicio9
         
-    }
+    }   
     
 }

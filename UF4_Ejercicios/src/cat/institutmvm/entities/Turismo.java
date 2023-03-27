@@ -4,19 +4,23 @@
  */
 package cat.institutmvm.entities;
 
+import java.util.Scanner;
+
 /**
  *
  * @author alumne_1r
  */
-public abstract class Turismo extends WheeledVehicle{
+public abstract class Turismo extends WheeledVehicle  implements InterCoche{
     private String model, marca, color;
     
     public Turismo(String model, String marca, String color, String terreno, String metode_moviment, int peso_kg, int diametreRoda, int suportPes) {
         super(terreno, metode_moviment, peso_kg, diametreRoda, suportPes);
         this.setModel(model);
         this.setMarca(marca);
-        this.setColor(color);
+        this.setColor(color); 
     }
+    
+    public abstract String identificador();
     
     //<editor-fold defaultstate="collapsed" desc="setter">
     
@@ -46,8 +50,14 @@ public abstract class Turismo extends WheeledVehicle{
     public String getColor() {
         return color;
     }
-//</editor-fold>
+//</editor-fold>    
 
-    
+    @Override
+    public void KilometrosRecorridos() {
+        System.out.println("Cuantos kilometros he hecho el coche: ");
+        Scanner sc = new Scanner(System.in);
+        int km = sc.nextInt();
+        System.out.println("El coche tiene "+km+" kilometros ");
+    }
     
 }

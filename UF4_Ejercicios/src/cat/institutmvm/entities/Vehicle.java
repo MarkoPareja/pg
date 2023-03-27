@@ -18,8 +18,6 @@ public abstract class Vehicle {
         this.setPeso_kg(peso_kg);
     }
     
-    public abstract int identificador();
-    
     //<editor-fold defaultstate="collapsed" desc="setter">
     public String getTerreno() {
         return terreno;

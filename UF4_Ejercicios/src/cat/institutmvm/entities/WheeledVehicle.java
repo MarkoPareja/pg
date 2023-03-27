@@ -20,7 +20,7 @@ public abstract class WheeledVehicle extends Vehicle{
         this.setSuportPes(suportPes);
     }
     
-    public abstract String printInformation();
+    public abstract void printInformation();
     
     //<editor-fold defaultstate="collapsed" desc="setter">
     public void setDiametreRoda(int diametreRoda) {
