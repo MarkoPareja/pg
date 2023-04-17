@@ -16,7 +16,7 @@ public class Urgencia implements Torn{
         this.setData(data);
         this.setTorn(torn);
         this.setDni(dni);
-        this.setTorn(torn);
+        this.setNivell(nivell);
     }
     
     public String getData() {
