@@ -1,9 +1,21 @@
 package cat.institutmvm.entities;
 
 public class Company {
+    //<editor-fold defaultstate="collapsed" desc="Atributs/Estat">
     private String companyName;
     private Employee empl;
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Comportament/Mètodes">
+    
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
+     public Company(String companyName, Employee empl) {
+        this.setCompanyName(companyName);
+        this.setEmpl(empl);
+    }
+   //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public String getCompanyName() {
         return companyName;
     }
@@ -11,12 +23,7 @@ public class Company {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
-    public Company(String companyName, Employee empl) {
-        this.setCompanyName(companyName);
-        this.setEmpl(empl);
-    }
-
+    
     public Employee getEmpl() {
         return this.empl;
     }
@@ -24,7 +31,9 @@ public class Company {
     public void setEmpl(Employee empl) {
         this.empl = empl;
     }
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Overrides (sobreescriptura de mètodes)">
     @Override
     public String toString() {
         var sb = new StringBuilder();
@@ -35,6 +44,7 @@ public class Company {
         sb.append(String.format("%s %n", this.getEmpl()));
         return sb.toString();
     }
+    //</editor-fold>
     
-    
+   //</editor-fold>   
 }
