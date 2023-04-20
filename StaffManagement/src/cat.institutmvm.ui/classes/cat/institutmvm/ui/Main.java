@@ -258,9 +258,8 @@ public class Main {
         var min = players.stream().mapToInt(p -> p.getAge())
                         .min();
         System.out.println("- Minima edat: "+min.getAsInt()+ " anys");
-        
-        
-        
+
+       
         
         System.out.println("\nInfo sobre l'alçada dels jugadors");
         System.out.println("--------------------------------------");
@@ -277,8 +276,7 @@ public class Main {
         var min1 = players.stream().mapToDouble(p -> p.getHeight())
                         .min();
         System.out.println("- Minima alçada: "+min1.getAsDouble()+ " m");
-        
-        
+
         
         
         System.out.println("\nInfo sobre el pes dels jugadors");
