@@ -5,13 +5,19 @@
 package cat.institutmvm.entities;
 
 /**
- *
+ * Esta clase urgencia recibe datos ya obtenidos en la clase Pacient pero con un Override de el Metodo de Torn.
  * @author marko
  */
 public class Urgencia implements Torn{
     private String data, dni;
     private int min, max, torn, nivell;
-
+    
+    /**
+     * 
+     * @param data
+     * @param dni
+     * @param nivell 
+     */
     public Urgencia(String data, String dni, int nivell) {
         this.setData(data);
         this.setTorn(torn);
@@ -51,6 +57,11 @@ public class Urgencia implements Torn{
         this.nivell = nivell;
     }
     
+    /**
+     * 
+     * @param max
+     * @return 
+     */
      @Override
     public int random(int max) {
         int min = 0;

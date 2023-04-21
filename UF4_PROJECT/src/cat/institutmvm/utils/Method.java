@@ -5,7 +5,7 @@
 package cat.institutmvm.utils;
 
 /**
- *
+ * En esta clase se declaran todos los metodos genericos que utilizemos .
  * @author marko
  */
 public class Method {

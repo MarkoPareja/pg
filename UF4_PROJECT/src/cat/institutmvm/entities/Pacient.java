@@ -5,12 +5,19 @@
 package cat.institutmvm.entities;
 
 /**
- *
+ * La clase Pacient es una case para gestionar los datos de el paciente.
  * @author marko
  */
 public class Pacient {
     private String dni, nom, cognom, tsi, motiu;
-
+    /**
+     * 
+     * @param dni
+     * @param nom
+     * @param cognom
+     * @param tsi
+     * @param motiu 
+     */
     public Pacient(String dni, String nom, String cognom, String tsi, String motiu) {
         this.setDni(dni);
         this.setMotiu(motiu);

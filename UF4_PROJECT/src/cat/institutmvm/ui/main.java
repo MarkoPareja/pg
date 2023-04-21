@@ -6,7 +6,10 @@ package cat.institutmvm.ui;
 import cat.institutmvm.entities.Pacient;
 import cat.institutmvm.entities.Urgencia;
 import java.util.Scanner;
-
+/**
+ * Este programa gestiona urgencias medicas, recibiendo informacion sobre el paciente.
+ * @author alumne_1r
+ */
 public class main {
     private static final String MSG_1 = "+---------------------+";
     private static final String MSG_2 = "|    DADES PACIENT    |";
@@ -17,7 +20,10 @@ public class main {
     private static final String MSG_7 = "TSI: ";
     private static final String MSG_8 = "MOTIU DE LA VISITA: ";
     private static final String MSG_9 = "REGISTRE DE VISITA";
-    
+    /**
+     * En esta clase gestionamos los datos del paciente.
+     * @param args 
+     */
     public static void main(String[] args) {
         String dni, nom, cognom, tsi, motiu;
         Scanner sc = new Scanner(System.in);
