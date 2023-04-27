@@ -60,7 +60,7 @@ public class Urgencia implements Torn{
     /**
      * 
      * @param max
-     * @return 
+     * @return torn
      */
      @Override
     public int random(int max) {
