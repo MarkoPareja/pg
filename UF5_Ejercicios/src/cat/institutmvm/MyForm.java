@@ -43,7 +43,7 @@ public class MyForm extends JFrame{
         //</editor-fold>
         
         
-        this.setTitle("Window Title");
+        this.setTitle("Formulari");
         JPanel cuestionari = new JPanel();
         JPanel cuestionariNom = new JPanel();
         JPanel cuestionariCognom = new JPanel();
