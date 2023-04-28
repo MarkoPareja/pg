@@ -40,5 +40,7 @@ public class MyGrid extends JFrame{
         setLocation(screenWidth / 4, screenHeight / 4);
         this.setResizable(false);
         //</editor-fold>
+        
+        
     }
 }

@@ -104,7 +104,7 @@ public class MyForm extends JFrame{
         cuestionariBoton.setBorder(new EmptyBorder(20,0,0,160));
         cuestionariBoton.setBackground(Color.white);
         
-        //Creem el camp de text
+        //Creem el camp de text);
         JTextField txtOut = new JTextField("");
         txtOut.setEditable(false);
         txtOut.setBorder(new EmptyBorder(0,0,350,0));
@@ -112,14 +112,16 @@ public class MyForm extends JFrame{
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                txtOut.setText("El nom de l'usuari és "+txtNombres.getText()+" "+txtApellidos.getText()+". Te "+edad.getSelectedItem()+" anys.");
+                txtOut.setText("El nom de l'usuari és "+txtNombres.getText()+
+                        " "+txtApellidos.getText()+". Te "+edad.getSelectedItem()+" anys.");
             }
         });
         
         
         
         JSplitPane mainPanel 
-                = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, cuestionari, txtOut);
+                = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, 
+                        cuestionari, txtOut);
         mainPanel.setDividerSize(0);
         mainPanel.setDividerLocation(320);
         mainPanel.setEnabled(false);
