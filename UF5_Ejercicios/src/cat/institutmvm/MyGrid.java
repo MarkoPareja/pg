@@ -4,26 +4,16 @@
  */
 package cat.institutmvm;
 
-import javax.swing.JFrame;
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.JComboBox;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,16 +21,42 @@ import javax.swing.border.EmptyBorder;
  */
 public class MyGrid extends JFrame{
     public MyGrid(){
-           //<editor-fold desc="Centrar frame">
-        Toolkit screen = Toolkit.getDefaultToolkit();
+          Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screenSize = screen.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
-        this.setResizable(false);
-        //</editor-fold>
+        this.setMinimumSize(new Dimension (250, 100) );
+
+        String[] columnNames = {"Nom", "Cognoms", "Edat", "Salari", "Comercial"};
+        Object[][] datos = {
+            {"Juan", "Guarzillo", 25, 9342, true},
+            {"Sonia", "Trillao", 45, 5453, false},
+            {"Pedro", "Loquillo", 43, 4345, false},
+            {"Marc", "Planget", 32, 10532, true},
+            {"Pere", "Trusquillo", 21, 5532, false}};
+
+        DefaultTableModel dtm = new DefaultTableModel(datos, columnNames);
+
+        JPanel grid = new JPanel();
+        final JTable table = new JTable(dtm);
+        grid.add(table);
         
-        
-    }
+        // Modificar celda especifica
+        table.getTableHeader().setReorderingAllowed(false);
+        table.setEnabled(false);
+        table.setDragEnabled(rootPaneCheckingEnabled);
+        table.setPreferredScrollableViewportSize(new Dimension(250, 100));
+        JScrollPane scrollPane = new JScrollPane(table);
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }         
+        });
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }   
 }

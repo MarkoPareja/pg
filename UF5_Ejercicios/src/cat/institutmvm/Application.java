@@ -6,6 +6,7 @@ package cat.institutmvm;
 
 import cat.institutmvm.MyEventFrame;
 import cat.institutmvm.MyFrame;
+import cat.institutmvm.MyGrid;
 import javax.swing.JFrame;
 
 public class Application {
@@ -23,6 +24,8 @@ public class Application {
         
         //var efrm = new MyEventFrame();
         
-        var efrm = new MyForm();
+        //var efrm = new MyForm();
+        
+        var efrg = new MyGrid();
     }  
 }
