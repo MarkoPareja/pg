@@ -178,7 +178,7 @@ public class main {
         }
          */
  /*Ejercicio7*/
- 
+ /*
         int option = 0;
         String fileName = "";
         String textName = "";
@@ -234,7 +234,7 @@ public class main {
                 break;
         }
         sc.close();
-         
+ */        
  /*Ejercicio8*/
  /*
         String fileName = "";
