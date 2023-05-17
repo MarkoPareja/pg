@@ -4,17 +4,13 @@
  */
 package cat.institutmvm.app;
 
-/**
- *
- * @author marko
- */
-public class main {
+import cat.institutmvm.ui.MyFrame;
+import javax.swing.JFrame;
 
-    /**
-     * @param args the command line arguments
-     */
+public class main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        var efrm = new MyFrame();
+        efrm.setVisible(true);
+        efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
 }
