@@ -24,8 +24,8 @@ public class Application {
         
         //var efrm = new MyEventFrame();
         
-        //var efrm = new MyForm();
+        var efrm = new MyForm();
         
-        var efrg = new MyGrid();
+        //var efrg = new MyGrid();
     }  
 }
