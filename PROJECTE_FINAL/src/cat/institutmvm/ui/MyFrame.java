@@ -43,7 +43,8 @@ public class MyFrame extends JFrame{
         int screenWidth = screenSize.width;
         setSize(screenWidth / 4, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
-        this.setResizable(false);
+        this.setResizable(true);
+        this.setMinimumSize(new Dimension(485, 550));
         //</editor-fold>
         
         
