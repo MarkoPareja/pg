@@ -130,16 +130,7 @@ public class MyFrame extends JFrame{
         cuestionariTsitxt.setBorder(new EmptyBorder(0, 0, 0, 0));
         cuestionariMotiu.setBorder(new EmptyBorder(0, 0, 0, 220));
         cuestionariMotiutxt.setBorder(new EmptyBorder(0, 0, 0, 0));
-        /*cuestionari.setBackground(Color.white);
-        cuestionariNom.setBackground(Color.white);
-        cuestionariCognom.setBackground(Color.white);
-        cuestionariNomtxt.setBackground(Color.white);
-        cuestionariCognomtxt.setBackground(Color.white);
-        cuestionariTsi.setBackground(Color.white);
-        cuestionariTsitxt.setBackground(Color.white);
-        cuestionariMotiu.setBackground(Color.white);
-        cuestionariMotiutxt.setBackground(Color.white);
-        */
+        
            /*---------- Botones ----------*/
         JPanel cuestionariBoton1 = new JPanel();
         JPanel cuestionariBoton2 = new JPanel();
@@ -182,8 +173,6 @@ public class MyFrame extends JFrame{
             }
         });
         */
-        
-        
         JSplitPane mainPanel 
                 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, 
                         cuestionari, txtOut);
