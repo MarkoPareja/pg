@@ -9,5 +9,5 @@ package cat.institutmvm.buisness.entities;
  * @author marko
  */
 public class Urgencia {
-    
+    private String data
 }

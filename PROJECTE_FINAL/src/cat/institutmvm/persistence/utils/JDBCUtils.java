@@ -28,7 +28,7 @@ public final class JDBCUtils {
                                            props.getProperty("mysql.username"),
                                            props.getProperty("mysql.password"));
     }
-    
+    /*
     public static Color getColor(ResultSet reader) throws SQLException {
        Color c =  new Color(reader.getString("name"), reader.getInt("red"), reader.getInt("green"), reader.getInt("blue"));
        c.setId(reader.getInt("id"));
@@ -49,4 +49,5 @@ public final class JDBCUtils {
         comp.setId(reader.getString("companyId"));
         return comp;
     }
+    */
 }

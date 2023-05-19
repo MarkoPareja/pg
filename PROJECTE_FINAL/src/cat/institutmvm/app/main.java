@@ -12,7 +12,8 @@ public class main {
         var efrm = new MyFrame();
         efrm.setVisible(true);
         efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+        
+        /*
         ColorJDBCDAO colorDAO = new ColorJDBCDAO();
         
         try {
@@ -45,6 +46,6 @@ public class main {
         } catch (DAOException ex) {
             System.out.printf("Error:: %s %n", ex.getMessage());
         }
-    
+        */
     }
 }

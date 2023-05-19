@@ -32,8 +32,9 @@ import javax.swing.border.TitledBorder;
  * @author marko
  */
 public class MyFrame extends JFrame{
-       private JLabel labelSubtitulo,labelDni,labelNom, labelEdat, labelTsi, labelMotiu;
-       private JTextField txtDni,txtNom, txtTsi;
+       private JLabel labelSubtitulo,labelDni,labelNom, labelTsi,
+               labelMotiu, labelData, labelEdat, labelGen;
+       private JTextField txtDni,txtNom, txtTsi, txtData, txtEdat, txtGen;
        private JTextArea txtMotiu;
        public MyFrame(){
            //<editor-fold desc="Centrar frame">
@@ -44,7 +45,7 @@ public class MyFrame extends JFrame{
         setSize(screenWidth / 4, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
         this.setResizable(true);
-        this.setMinimumSize(new Dimension(485, 550));
+        this.setMinimumSize(new Dimension(485, 740));
         //</editor-fold>
         
         
@@ -58,7 +59,12 @@ public class MyFrame extends JFrame{
         JPanel cuestionariMotiu = new JPanel();
         JPanel cuestionariTsitxt = new JPanel();
         JPanel cuestionariMotiutxt = new JPanel();
-        
+        JPanel cuestionariData = new JPanel();
+        JPanel cuestionariEdat = new JPanel();
+        JPanel cuestionariGenere = new JPanel();
+        JPanel cuestionariDatatxt = new JPanel();
+        JPanel cuestionariEdattxt = new JPanel();
+        JPanel cuestionariGeneretxt = new JPanel();
         JPanel cuestionariBoton5 = new JPanel();
         
         
@@ -80,7 +86,25 @@ public class MyFrame extends JFrame{
         txtTsi = new JTextField(30);
         
         txtTsi.setEditable(false);
+        
+        labelData = new JLabel("Data naixement:");
+        
+        txtData = new JTextField(30);
+        
+        txtData.setEditable(false);
+        
+        labelEdat = new JLabel("Edat:");
+        
+        txtEdat = new JTextField(30);
+        
+        txtEdat.setEditable(false);
+        
+        labelGen = new JLabel("Genere:");
+        
+        txtGen = new JTextField(30);
        
+        txtGen.setEditable(false);
+        
         labelMotiu = new JLabel("Motiu de la urgència:");
        
         txtMotiu = new  JTextArea(9, 31);
@@ -110,6 +134,12 @@ public class MyFrame extends JFrame{
         cuestionariTsi.add(labelTsi);
         cuestionariTsitxt.add(txtTsi);
         cuestionariMotiu.add(labelMotiu);
+        cuestionariData.add(labelData);
+        cuestionariDatatxt.add(txtData);
+        cuestionariEdat.add(labelEdat);
+        cuestionariEdattxt.add(txtEdat);
+        cuestionariGenere.add(labelGen);
+        cuestionariGeneretxt.add(txtGen);
         cuestionariMotiutxt.add(scroll);
         cuestionariBoton5.add(btnCheck);
         cuestionari.add(cuestionariNom);
@@ -119,6 +149,12 @@ public class MyFrame extends JFrame{
         cuestionari.add(cuestionariCognomtxt);
         cuestionari.add(cuestionariTsi);
         cuestionari.add(cuestionariTsitxt);
+        cuestionari.add(cuestionariData);
+        cuestionari.add(cuestionariDatatxt);
+        cuestionari.add(cuestionariEdat);
+        cuestionari.add(cuestionariEdattxt);
+        cuestionari.add(cuestionariGenere);
+        cuestionari.add(cuestionariGeneretxt);
         cuestionari.add(cuestionariMotiu);
         cuestionari.add(cuestionariMotiutxt);
         cuestionariNom.setBorder(new EmptyBorder(10, 0, 0, 310));
@@ -128,6 +164,12 @@ public class MyFrame extends JFrame{
         cuestionariCognomtxt.setBorder(new EmptyBorder(0, 0, 0, 0));
         cuestionariTsi.setBorder(new EmptyBorder(0, 0, 0, 315));
         cuestionariTsitxt.setBorder(new EmptyBorder(0, 0, 0, 0));
+        cuestionariData.setBorder(new EmptyBorder(0, 0, 0, 245));
+        cuestionariDatatxt.setBorder(new EmptyBorder(0, 0, 0, 0));
+        cuestionariEdat.setBorder(new EmptyBorder(0, 0, 0, 305));
+        cuestionariEdattxt.setBorder(new EmptyBorder(0, 0, 0, 0));
+        cuestionariGenere.setBorder(new EmptyBorder(0, 0, 0, 295));
+        cuestionariGeneretxt.setBorder(new EmptyBorder(0, 0, 0, 0));
         cuestionariMotiu.setBorder(new EmptyBorder(0, 0, 0, 220));
         cuestionariMotiutxt.setBorder(new EmptyBorder(0, 0, 0, 0));
         
