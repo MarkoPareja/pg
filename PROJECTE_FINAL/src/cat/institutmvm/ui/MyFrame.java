@@ -5,6 +5,7 @@
 package cat.institutmvm.ui;
 
 import cat.institutmvm.buisness.entities.Pacient;
+import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.daos.impl.PacientJDBCDAO;
 import cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
@@ -22,6 +23,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.BorderFactory;
@@ -218,7 +220,7 @@ public class MyFrame extends JFrame {
                 Pacient dbPacient;
                 try {
                     dbPacient = pac.getPacientByDni(txtDni.getText());
-                    txtNom.setText(dbPacient.getNom()+ " " + dbPacient.getCognoms());
+                    txtNom.setText(dbPacient.getNom() + " " + dbPacient.getCognoms());
                     txtData.setText(dbPacient.getDataNaixement().toString());
                     txtGen.setText(dbPacient.getGenere());
                     txtTsi.setText(dbPacient.getTsi());
@@ -228,7 +230,21 @@ public class MyFrame extends JFrame {
                 }
             }
         });
-        
+
+        btnAfegir.addActionListener(new ActionListener() {
+            UrgenciaJDBCDAO urg = new UrgenciaJDBCDAO();
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Urgencia dbUrgencia;
+                try {
+                    dbUrgencia = urg.getUrgenciaByDni(txtDni.getText(), txtData.getText(), txtMotiu.getText(), 0, 1);
+                } catch (DAOException ex) {
+                    txtMotiu.setText("Les dades no s'han inserit");
+                }
+            }
+        });
+
         JSplitPane mainPanel
                 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                         cuestionari, txtOut);

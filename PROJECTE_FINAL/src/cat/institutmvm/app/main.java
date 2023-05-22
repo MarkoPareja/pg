@@ -4,8 +4,6 @@
  */
 package cat.institutmvm.app;
 
-import cat.institutmvm.buisness.entities.Pacient;
-import cat.institutmvm.persistence.utils.JDBCUtils;
 import cat.institutmvm.ui.MyFrame;
 import javax.swing.JFrame;
 

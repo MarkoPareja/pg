@@ -5,18 +5,12 @@
 package cat.institutmvm.persistence.daos.impl;
 
 import cat.institutmvm.buisness.entities.Pacient;
-import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.daos.contracts.PacientDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
-//import cat.institutmvm.persistence.utils.JDBCUtils;
 import java.io.IOException;
-import java.util.List;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import cat.institutmvm.persistence.daos.contracts.UrgenciaDAO;
 import cat.institutmvm.persistence.utils.JDBCUtils;
 
 public class PacientJDBCDAO implements PacientDAO{

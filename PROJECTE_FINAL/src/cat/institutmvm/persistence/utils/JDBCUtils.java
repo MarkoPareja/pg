@@ -5,7 +5,6 @@
 package cat.institutmvm.persistence.utils;
 
 import cat.institutmvm.buisness.entities.Pacient;
-import cat.institutmvm.buisness.entities.Persona;
 import cat.institutmvm.buisness.entities.Urgencia;
 import java.io.FileReader;
 import java.io.IOException;

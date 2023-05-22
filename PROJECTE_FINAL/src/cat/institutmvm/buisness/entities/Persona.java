@@ -5,7 +5,6 @@
 package cat.institutmvm.buisness.entities;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 /**
  *
