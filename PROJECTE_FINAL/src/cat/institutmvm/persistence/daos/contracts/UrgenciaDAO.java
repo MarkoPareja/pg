@@ -9,6 +9,6 @@ import cat.institutmvm.persistence.exceptions.DAOException;
 import java.util.List;
 
 public interface UrgenciaDAO {
-    Employee getEmployeeById(String id) throws DAOException;
-    List<Employee> getEmployees() throws DAOException;
+    Urgencia getUrgenciaByDni(String dni) throws DAOException;
+    List<Urgencia> getUrgencia() throws DAOException;
 }

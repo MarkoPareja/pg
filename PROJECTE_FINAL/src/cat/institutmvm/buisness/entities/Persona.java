@@ -12,9 +12,10 @@ import java.time.Period;
  * @author marko
  */
 public class Persona {
-    private String dni, nom, cognoms, dataNaixement, genere;
+    private String dni, nom, cognoms, genere;
+    private LocalDate dataNaixement;
 
-    public Persona(String dni, String nom, String cognoms, String dataNaixement, String genere) {
+    public Persona(String dni, String nom, String cognoms, LocalDate dataNaixement, String genere) {
         this.setDni(dni);
         this.setNom(nom);
         this.setCognoms(cognoms);
@@ -35,7 +36,7 @@ public class Persona {
         return cognoms;
     }
     
-    public String getDataNaixement() {
+    public LocalDate getDataNaixement() {
         return dataNaixement;
     }
     
@@ -57,7 +58,7 @@ public class Persona {
         this.cognoms = cognoms;
     }
 
-    public void setDataNaixement(String dataNaixement) {
+    public void setDataNaixement(LocalDate dataNaixement) {
         this.dataNaixement = dataNaixement;
     }
 

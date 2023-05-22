@@ -4,11 +4,11 @@
  */
 package cat.institutmvm.persistence.daos.contracts;
 
-import cat.institutmvm.buisness.entities.Urgencia;
+import cat.institutmvm.buisness.entities.Pacient;
 import cat.institutmvm.persistence.exceptions.DAOException;
 import java.util.List;
 
 public interface PacientDAO {
-    Employee getEmployeeById(String id) throws DAOException;
-    List<Employee> getEmployees() throws DAOException;
+    Pacient getPacientByDni(String dni) throws DAOException;
+    List<Pacient> getPacient() throws DAOException;
 }

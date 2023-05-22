@@ -15,20 +15,22 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import cat.institutmvm.persistence.daos.contracts.UrgenciaDAO;
+import cat.institutmvm.persistence.utils.JDBCUtils;
 
 public class UrgenciaJDBCDAO implements UrgenciaDAO{
 
     @Override
-    public Employee getEmployeeById(String id) throws DAOException {
-        Employee empl = null;
+    public Urgencia getUrgenciaByDni(String dni) throws DAOException {
+        Urgencia urg = null;
         
         try (var connection = JDBCUtils.openConnection();
-            PreparedStatement sentSQL = connection.prepareStatement("SELECT id,firstname, lastname, height, weight, salary, birthDate FROM employee WHERE id = ?")) {
-            sentSQL.setString(1, id);
+            PreparedStatement sentSQL = connection.prepareStatement("SELECT codi, data, dni, motiu, nivell, torn FROM Urgencia WHERE dni = ?")) {
+            
+            sentSQL.setString(1, dni);
             try (ResultSet reader = sentSQL.executeQuery()) {
                 if (reader.next()) {
                     // ORM: [--,--,--,--,--,--] -----> []Color
-                    empl = JDBCUtils.geEmployee(reader);
+                    urg = JDBCUtils.getUrgencia(reader);
                 }            
             }
         }
@@ -37,12 +39,13 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
             throw new DAOException(ex);
         }
         
-        return empl;
+        return urg;
     }
 
     @Override
-    public List<Employee> getEmployees() throws DAOException {
+    public List<Urgencia> getUrgencia() throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     
 }

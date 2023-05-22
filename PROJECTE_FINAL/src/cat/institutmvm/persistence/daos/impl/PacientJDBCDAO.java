@@ -4,7 +4,9 @@
  */
 package cat.institutmvm.persistence.daos.impl;
 
+import cat.institutmvm.buisness.entities.Pacient;
 import cat.institutmvm.buisness.entities.Urgencia;
+import cat.institutmvm.persistence.daos.contracts.PacientDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
 //import cat.institutmvm.persistence.utils.JDBCUtils;
 import java.io.IOException;
@@ -15,20 +17,25 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import cat.institutmvm.persistence.daos.contracts.UrgenciaDAO;
+import cat.institutmvm.persistence.utils.JDBCUtils;
 
-public class PacientJDBCDAO implements UrgenciaDAO{
+public class PacientJDBCDAO implements PacientDAO{
 
     @Override
-    public Employee getEmployeeById(String id) throws DAOException {
-        Employee empl = null;
+    public Pacient getPacientByDni(String dni) throws DAOException {
+        Pacient pac = null;
         
         try (var connection = JDBCUtils.openConnection();
-            PreparedStatement sentSQL = connection.prepareStatement("SELECT id,firstname, lastname, height, weight, salary, birthDate FROM employee WHERE id = ?")) {
-            sentSQL.setString(1, id);
+            PreparedStatement sentSQL = connection.prepareStatement
+        ("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, "
+                + "p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p "
+                + "WHERE p.dni = pa.dni AND pa.dni = ?")) {
+            
+            sentSQL.setString(1, dni);
             try (ResultSet reader = sentSQL.executeQuery()) {
                 if (reader.next()) {
                     // ORM: [--,--,--,--,--,--] -----> []Color
-                    empl = JDBCUtils.geEmployee(reader);
+                    pac = JDBCUtils.getPacient(reader);
                 }            
             }
         }
@@ -37,11 +44,11 @@ public class PacientJDBCDAO implements UrgenciaDAO{
             throw new DAOException(ex);
         }
         
-        return empl;
+        return pac;
     }
 
     @Override
-    public List<Employee> getEmployees() throws DAOException {
+    public List<Pacient> getPacient() throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

@@ -4,6 +4,9 @@
  */
 package cat.institutmvm.ui;
 
+import cat.institutmvm.buisness.entities.Pacient;
+import cat.institutmvm.persistence.daos.impl.PacientJDBCDAO;
+import cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -206,15 +209,26 @@ public class MyFrame extends JFrame{
         txtOut.setEditable(false);
         txtOut.setBorder(new EmptyBorder(0,0,350,0));
         txtOut.setBackground(Color.white);
-        /*
-        btnGuardar.addActionListener(new ActionListener() {
+        
+        //Override de botones
+        btnCheck.addActionListener(new ActionListener() {
+            PacientJDBCDAO pac = new PacientJDBCDAO();
+            Pacient dbPacient;
             @Override
             public void actionPerformed(ActionEvent ev) {
-                txtOut.setText("El nom de l'usuari és "+txtNombres.getText()+
-                        " "+txtApellidos.getText()+". Te "+edad.getSelectedItem()+" anys.");
+                try{
+                    dbPacient = pac.getPacientByDni(txtDni.getText());
+                    txtNom.setText(dbPacient.getNom() + " " + dbPacient.getCognoms());
+                    //txtData.setText(dbPacient.getDataNaixement().toString());
+                    //txtGen.setText(dbPacient.getGenere());
+                    //txtTsi.setText(dbPacient.getTsi());
+                    //txtEdat.setText(dbPacient.toString(dbPacient.getAge()));
+                }catch (Exception ex){
+                    txtDni.setText("No hi ha registres");
+                }
             }
         });
-        */
+        
         JSplitPane mainPanel 
                 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, 
                         cuestionari, txtOut);
