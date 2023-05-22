@@ -218,11 +218,11 @@ public class MyFrame extends JFrame {
                 Pacient dbPacient;
                 try {
                     dbPacient = pac.getPacientByDni(txtDni.getText());
-                    txtNom.setText(dbPacient.getNom() + " " + dbPacient.getCognoms());
-                    //txtData.setText(dbPacient.getDataNaixement().toString());
-                    //txtGen.setText(dbPacient.getGenere());
-                    //txtTsi.setText(dbPacient.getTsi());
-                    //txtEdat.setText(dbPacient.toString(dbPacient.getAge()));
+                    txtNom.setText(dbPacient.getNom()+ " " + dbPacient.getCognoms());
+                    txtData.setText(dbPacient.getDataNaixement().toString());
+                    txtGen.setText(dbPacient.getGenere());
+                    txtTsi.setText(dbPacient.getTsi());
+                    txtEdat.setText(dbPacient.toString(dbPacient.getAge()));
                 } catch (DAOException ex) {
                     txtDni.setText("No hi ha registres");
                 }

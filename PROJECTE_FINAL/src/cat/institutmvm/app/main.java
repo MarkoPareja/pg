@@ -14,39 +14,5 @@ public class main {
         MyFrame efrm = new MyFrame();
         efrm.setVisible(true);
         efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-        ColorJDBCDAO colorDAO = new ColorJDBCDAO();
-        
-        try {
-            Color c = colorDAO.getColorById(5);
-            if (c != null) {
-                System.out.println(c.toString());
-            }            
-        } catch (DAOException ex) {
-            System.out.printf("Error:: %s %n", ex.getMessage());
-        }
-        
-        EmployeeJDBCDAO emplDAO = new EmployeeJDBCDAO();
-        
-        try {
-            Employee e = emplDAO.getEmployeeById("E001");
-            if (e != null) {
-                System.out.println(e.toString());
-            }            
-        } catch (DAOException ex) {
-            System.out.printf("Error:: %s %n", ex.getMessage());
-        }
-        
-        CompanyJDBCDAO compDAO = new CompanyJDBCDAO();
-        
-        try {
-            Company comp = compDAO.getCompanyById("C001");
-            if (comp != null) {
-                System.out.println(comp.toString());
-            }            
-        } catch (DAOException ex) {
-            System.out.printf("Error:: %s %n", ex.getMessage());
-        }
-        */
     }
 }
