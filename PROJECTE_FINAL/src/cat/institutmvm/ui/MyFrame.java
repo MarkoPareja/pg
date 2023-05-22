@@ -212,14 +212,12 @@ public class MyFrame extends JFrame {
         //Override de botones
         btnCheck.addActionListener(new ActionListener() {
             PacientJDBCDAO pac = new PacientJDBCDAO();
-            Pacient dbPacient;
 
             @Override
             public void actionPerformed(ActionEvent ev) {
+                Pacient dbPacient;
                 try {
                     dbPacient = pac.getPacientByDni(txtDni.getText());
-                    dbPacient.toString();
-                    System.out.println(dbPacient.getNom());
                     txtNom.setText(dbPacient.getNom() + " " + dbPacient.getCognoms());
                     //txtData.setText(dbPacient.getDataNaixement().toString());
                     //txtGen.setText(dbPacient.getGenere());
@@ -230,7 +228,7 @@ public class MyFrame extends JFrame {
                 }
             }
         });
-
+        
         JSplitPane mainPanel
                 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                         cuestionari, txtOut);

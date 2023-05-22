@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 public class main {
     public static void main(String[] args) {
-        var efrm = new MyFrame();
+        MyFrame efrm = new MyFrame();
         efrm.setVisible(true);
         efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*

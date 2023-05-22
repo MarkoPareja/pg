@@ -24,21 +24,14 @@ public class PacientJDBCDAO implements PacientDAO{
     @Override
     public Pacient getPacientByDni(String dni) throws DAOException {
         Pacient pac = null;
-        /*
-        try {
-            var connection = JDBCUtils.openConnection();
-            PreparedStatement sentSQL = connection.prepareStatement ("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p WHERE p.dni = pa.dni AND pa.dni = ?");
+        //String sql = "SELECT p.dni, pa.tsi, p.cognom, p.nom, p.data_naixement, p.genere FROM Persona AS p JOIN Pacient AS pa WHERE pa.dni = p.dni AND p.dni = "+dni;
+        //System.out.println(sql);
+        try (var connection = JDBCUtils.openConnection();
+            PreparedStatement sentSQL = connection.prepareStatement("SELECT p.dni, pa.tsi, p.cognom, p.nom, p.data_naixement, p.genere FROM Persona AS p JOIN Pacient AS pa WHERE pa.dni = p.dni AND p.dni = ?")) {
             sentSQL.setString(1, dni);
             try (ResultSet reader = sentSQL.executeQuery()) {
                 if (reader.next()) {
-                    pac = JDBCUtils.getPacient(reader);
-                }            
-            }
-        }*/
-        try(var connection = JDBCUtils.openConnection(); var sql = connection.prepareCall("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p WHERE p.dni = pa.dni AND pa.dni = ?")){
-            sql.setString(1, dni);
-            try (ResultSet reader = sql.executeQuery()) {
-                if (reader.next()) {
+                    // ORM: [--,--,--,--,--,--] -----> []Color
                     pac = JDBCUtils.getPacient(reader);
                 }            
             }

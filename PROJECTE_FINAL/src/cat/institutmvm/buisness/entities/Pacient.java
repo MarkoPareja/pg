@@ -33,7 +33,9 @@ public class Pacient extends Persona {
         return Period.between(this.getDataNaixement(), LocalDate.now()).getYears();
     }
 
-    public String toString(int age) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String toString(int integer) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(integer);
+        return sb.toString();
     }
 }

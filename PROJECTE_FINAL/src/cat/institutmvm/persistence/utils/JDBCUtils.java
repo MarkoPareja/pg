@@ -52,28 +52,5 @@ public final class JDBCUtils {
         reader.getString("p.nom"), reader.getString("p.cognom"), 
         reader.getDate("p.data_naixement").toLocalDate(), reader.getString("p.genere"));
         return pac;
-    }
-    
-    /*
-    public static Color getColor(ResultSet reader) throws SQLException {
-       Color c =  new Color(reader.getString("name"), reader.getInt("red"), reader.getInt("green"), reader.getInt("blue"));
-       c.setId(reader.getInt("id"));
-       return c;
-    }
-    
-    public static Employee geEmployee(ResultSet reader) throws SQLException {
-       Employee e =  new Employee(reader.getString("firstname"), reader.getString("lastname"), reader.getDouble("height"), reader.getInt("weight"), reader.getInt("salary"), reader.getDate("birthDate").toLocalDate());
-       e.setId(reader.getString("id"));
-       return e;
-    }
-    
-    public static Company getCompany(ResultSet reader) throws SQLException {
-        Employee empl = new Employee(reader.getString("e.firstname"), reader.getString("e.lastname"), reader.getDouble("e.height"), reader.getInt("e.weight"), reader.getInt("e.salary"), reader.getDate("e.birthDate").toLocalDate());
-        empl.setId(reader.getString("employeeId"));
-                    
-        Company comp = new Company(reader.getString("companyName"), empl);
-        comp.setId(reader.getString("companyId"));
-        return comp;
-    }
-    */
+    }  
 }
