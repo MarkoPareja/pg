@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface PacientDAO {
     Pacient getPacientByDni(String dni) throws DAOException;
-    List<Pacient> getPacient() throws DAOException;
 }

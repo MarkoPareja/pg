@@ -4,6 +4,8 @@
  */
 package cat.institutmvm.app;
 
+import cat.institutmvm.buisness.entities.Pacient;
+import cat.institutmvm.persistence.utils.JDBCUtils;
 import cat.institutmvm.ui.MyFrame;
 import javax.swing.JFrame;
 
@@ -12,7 +14,6 @@ public class main {
         var efrm = new MyFrame();
         efrm.setVisible(true);
         efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         /*
         ColorJDBCDAO colorDAO = new ColorJDBCDAO();
         

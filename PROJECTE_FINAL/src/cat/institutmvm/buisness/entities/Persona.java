@@ -23,6 +23,8 @@ public class Persona {
         this.setGenere(genere);
     }
     
+    public Persona(){}
+    
     //<editor-fold defaultstate="collapsed" desc="getter">
     public String getDni() {
         return dni;

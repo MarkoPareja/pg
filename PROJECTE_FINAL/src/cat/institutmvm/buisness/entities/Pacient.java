@@ -13,11 +13,13 @@ import java.time.Period;
  */
 public class Pacient extends Persona {
     private String tsi;
-
+    
     public Pacient(String tsi, String dni, String nom, String cognoms, LocalDate dataNaixement, String genere) {
         super(dni, nom, cognoms, dataNaixement, genere);
         this.setTsi(tsi);
     }
+    
+    public Pacient(){}
 
     public String getTsi() {
         return tsi;

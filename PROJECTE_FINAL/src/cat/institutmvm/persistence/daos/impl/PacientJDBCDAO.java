@@ -24,32 +24,28 @@ public class PacientJDBCDAO implements PacientDAO{
     @Override
     public Pacient getPacientByDni(String dni) throws DAOException {
         Pacient pac = null;
-        
-        try (var connection = JDBCUtils.openConnection();
-            PreparedStatement sentSQL = connection.prepareStatement
-        ("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, "
-                + "p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p "
-                + "WHERE p.dni = pa.dni AND pa.dni = ?")) {
-            
+        /*
+        try {
+            var connection = JDBCUtils.openConnection();
+            PreparedStatement sentSQL = connection.prepareStatement ("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p WHERE p.dni = pa.dni AND pa.dni = ?");
             sentSQL.setString(1, dni);
             try (ResultSet reader = sentSQL.executeQuery()) {
                 if (reader.next()) {
-                    // ORM: [--,--,--,--,--,--] -----> []Color
+                    pac = JDBCUtils.getPacient(reader);
+                }            
+            }
+        }*/
+        try(var connection = JDBCUtils.openConnection(); var sql = connection.prepareCall("SELECT pa.dni, p.nom, p.cognom, p.data_naixement, p.genere, pa.tsi FROM Pacient AS pa JOIN Persona AS p WHERE p.dni = pa.dni AND pa.dni = ?")){
+            sql.setString(1, dni);
+            try (ResultSet reader = sql.executeQuery()) {
+                if (reader.next()) {
                     pac = JDBCUtils.getPacient(reader);
                 }            
             }
         }
         catch (SQLException  | IOException ex) {
-            //Logger
             throw new DAOException(ex);
         }
-        
         return pac;
     }
-
-    @Override
-    public List<Pacient> getPacient() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

@@ -20,6 +20,12 @@ public final class JDBCUtils {
     
     private JDBCUtils() {
     }
+    
+    private static String url = "jdbc:mysql://mysql-marko.alwaysdata.net/marko_uf6";
+    private static String server = "jdbc:mysql://mysql-marko.alwaysdata.net/";
+    private static String bbdd = "marko_uf6";
+    private static String user = "marko";
+    private static String paswd = "Carlos0022";
 
     public static Connection openConnection() throws SQLException, IOException {
         Properties props = new Properties();
@@ -27,6 +33,7 @@ public final class JDBCUtils {
         return DriverManager.getConnection(props.getProperty("mysql.url"),
                                            props.getProperty("mysql.username"),
                                            props.getProperty("mysql.password"));
+        //return DriverManager.getConnection(server+bbdd, user, paswd);
     }
     
     public static Urgencia getUrgencia(ResultSet reader) throws SQLException {
