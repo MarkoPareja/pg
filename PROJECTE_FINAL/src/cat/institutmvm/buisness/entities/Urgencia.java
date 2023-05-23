@@ -16,7 +16,6 @@ public class Urgencia implements Visita {
     private int torn, nivell;
     private LocalDate data;
 
-    public Urgencia(){}
     
     public Urgencia(String dni, String motiu, int torn, int nivell, LocalDate data) {
         this.setDni(dni);
@@ -25,6 +24,8 @@ public class Urgencia implements Visita {
         this.setNivell(nivell);
         this.setData(data);
     }
+    
+    public Urgencia(){}
     
     //<editor-fold defaultstate="collapsed" desc="getter">
     public String getDni() {
