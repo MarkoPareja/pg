@@ -233,12 +233,12 @@ public class MyFrame extends JFrame {
 
         btnAfegir.addActionListener(new ActionListener() {
             UrgenciaJDBCDAO urg = new UrgenciaJDBCDAO();
-            Urgencia urgencia;
+            Urgencia urge;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    urg.getUrgenciaByDni(txtDni.getText(), urgencia.dataActual(), txtMotiu.getText(), urgencia.nivell(), urgencia.random(99999));
+                    urg.getUrgenciaByDni(txtDni.getText(), urge.dataActual(), txtMotiu.getText(), urge.nivell(), urge.random(99999));
                 } catch (DAOException ex) {
                     txtMotiu.setText("Les dades no s'han inserit");
                 }
