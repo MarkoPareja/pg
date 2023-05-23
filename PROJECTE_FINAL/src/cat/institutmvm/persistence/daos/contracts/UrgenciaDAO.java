@@ -7,8 +7,9 @@ package cat.institutmvm.persistence.daos.contracts;
 import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.exceptions.DAOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface UrgenciaDAO {
-    Urgencia getUrgenciaByDni(String dni, String data, String motiu, int nivell, int torn) throws DAOException;
+    Urgencia getUrgenciaByDni(String dni, LocalDate data, String motiu, int nivell, int torn) throws DAOException;
 }

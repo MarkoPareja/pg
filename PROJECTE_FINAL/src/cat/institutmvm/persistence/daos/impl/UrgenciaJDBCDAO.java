@@ -13,18 +13,19 @@ import java.sql.ResultSet;
 import cat.institutmvm.persistence.daos.contracts.UrgenciaDAO;
 import cat.institutmvm.persistence.utils.JDBCUtils;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class UrgenciaJDBCDAO implements UrgenciaDAO{
 
     @Override
-    public Urgencia getUrgenciaByDni(String dni, String data, String motiu, int nivell, int torn) throws DAOException {
+    public Urgencia getUrgenciaByDni(String dni, LocalDate data, String motiu, int nivell, int torn) throws DAOException {
         Urgencia urg = null;
         
         try (var connection = JDBCUtils.openConnection();
             PreparedStatement sentSQL = connection.prepareStatement("INSERT INTO Urgencia(dni, data, motiu, nivell, torn) VALUES (?,?,?,?,?,?)")) {
             
             sentSQL.setString(1, dni);
-            sentSQL.setString(2, data);
+            sentSQL.setString(2, data.toString());
             sentSQL.setString(3, motiu);
             sentSQL.setInt(4, nivell);
             sentSQL.setInt(5, torn);

@@ -5,16 +5,19 @@
 package cat.institutmvm.buisness.entities;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author marko
  */
-public class Urgencia {
+public class Urgencia implements Visita {
     private String dni, motiu;
     private int torn, nivell;
     private LocalDate data;
 
+    public Urgencia(){}
+    
     public Urgencia(String dni, String motiu, int torn, int nivell, LocalDate data) {
         this.setDni(dni);
         this.setMotiu(motiu);
@@ -67,5 +70,26 @@ public class Urgencia {
     }
 //</editor-fold>
 
+    @Override
+    public int random(int max) {
+        int min = 0;
+        torn = (int) Math.floor(Math.random() * (max - min) + min);
+        return torn;
+    }
+
+    @Override
+    public LocalDate dataActual() {
+        return LocalDate.now();
+    }
+
+    @Override
+    public int nivell() {
+        return 0;
+    }
     
+    public String toString(int integer) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(integer);
+        return sb.toString();
+    }
 }
