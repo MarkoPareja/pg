@@ -29,10 +29,11 @@ public final class JDBCUtils {
     }
     
     public static Urgencia getUrgencia(ResultSet reader) throws SQLException {
+        /*
         Pacient pac = new Pacient(reader.getString("pa.tsi"), reader.getString("p.dni"), 
         reader.getString("p.nom"), reader.getString("p.cognom"), 
         reader.getDate("p.data_naixement").toLocalDate(), reader.getString("p.genere"));
-        
+        */
         Urgencia urg = new Urgencia(reader.getString("u.dni"), 
                 reader.getString("u.motiu"), reader.getInt("u.torn"),
                 reader.getInt("u.nivell"), reader.getDate("u.data").toLocalDate());

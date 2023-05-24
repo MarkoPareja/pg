@@ -11,28 +11,28 @@ import cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,7 +52,7 @@ public class MyFrame extends JFrame {
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
         setSize(screenWidth / 4, screenHeight / 2);
-        setLocation(screenWidth / 4, screenHeight / 4);
+        setLocation(screenWidth / 3, screenHeight / 9);
         this.setResizable(true);
         this.setMinimumSize(new Dimension(485, 740));
         //</editor-fold>
@@ -233,14 +233,72 @@ public class MyFrame extends JFrame {
 
         btnAfegir.addActionListener(new ActionListener() {
             UrgenciaJDBCDAO urg = new UrgenciaJDBCDAO();
-            Urgencia urge;
-            
+            Urgencia urge = new Urgencia();
+
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ev) {
                 try {
-                    urge = urg.getUrgenciaByDni(txtDni.getText(), urge.dataActual(), txtMotiu.getText(), urge.nivell(), urge.random(99999));
+                    urg.getUrgenciaByDni(txtDni.getText(), urge.dataActual(), txtMotiu.getText(), urge.nivell(), urge.random(50000));
+                    txtMotiu.setText("Les dades s'han inserit correctament");
                 } catch (DAOException ex) {
                     txtMotiu.setText("Les dades no s'han inserit");
+                }
+            }
+        });
+
+        btnMostrar.addActionListener(new ActionListener() {
+            UrgenciaJDBCDAO urg = new UrgenciaJDBCDAO();
+            Urgencia urge = new Urgencia();
+            boolean isExpanded = false;
+            boolean enabled = false;
+
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                Urgencia dbUrgencia;
+                
+                //Creem la taula
+                    String[] columnNames = {"DNI", "Data", "Motiu", "Nivell", "Torn"};
+                    DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+                    
+                    JTable table = new JTable();
+                    table.setModel(tableModel);
+                    JPanel tabla1 = new JPanel();
+
+                    tabla1.add(table);
+                    cuestionari.add(tabla1);
+                    tabla1.setVisible(false);
+                    tabla1.setBorder(new EmptyBorder(50, 0, 0, 0));
+                    table.setEnabled(true);
+                
+                try {
+                    dbUrgencia = urg.getUrgenciaByDni(urge.dataActual());
+                    
+                    // Agregar los registros filtrados a la tabla
+                    //while (dbUrgencia.) {
+                        if (isExpanded) {
+                            setSize(485, 740);
+                            isExpanded = false;
+                            tabla1.setVisible(false);
+                        } else if(enabled && !isExpanded){
+                            setSize(485, 740 + 200);
+                            isExpanded = true;
+                            tabla1.setVisible(true);
+                        } else {
+                            enabled = true;
+                            String dni = dbUrgencia.getDni();
+                            LocalDate data = dbUrgencia.getData();
+                            String motiu = dbUrgencia.getMotiu();
+                            int nivell = dbUrgencia.getNivell();
+                            int torn = dbUrgencia.getTorn();
+                            
+                            tableModel.addRow(new Object[]{dni, data, motiu, nivell, torn});
+                            setSize(485, 740 + 200);
+                            isExpanded = true;
+                            tabla1.setVisible(true);
+                        }
+                    //}
+                } catch (DAOException e) {
+                    e.printStackTrace();
                 }
             }
         });

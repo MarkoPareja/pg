@@ -11,5 +11,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface UrgenciaDAO {
-    Urgencia getUrgenciaByDni(String dni, LocalDate data, String motiu, int nivell, int torn) throws DAOException;
+    void getUrgenciaByDni(String dni, LocalDate data, String motiu, int nivell, int torn) throws DAOException;
+    Urgencia getUrgenciaByDni(LocalDate data) throws DAOException;
 }
