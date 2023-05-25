@@ -6,8 +6,15 @@ package cat.institutmvm.app;
 
 import cat.institutmvm.ui.MyFrame;
 import javax.swing.JFrame;
-
+/**
+ * 
+ * @author marko
+ */
 public class main {
+    /**
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         MyFrame efrm = new MyFrame();
         efrm.setVisible(true);

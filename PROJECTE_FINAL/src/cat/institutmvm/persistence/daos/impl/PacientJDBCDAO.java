@@ -15,9 +15,17 @@ import java.sql.ResultSet;
 import cat.institutmvm.persistence.utils.JDBCUtils;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 
+ * @author marko
+ */
 public class PacientJDBCDAO implements PacientDAO{
-
+    /**
+     * 
+     * @param dni
+     * @return Pacient
+     * @throws DAOException 
+     */
     @Override
     public Pacient getPacientByDni(String dni) throws DAOException {
         Pacient pac = null;
@@ -39,6 +47,11 @@ public class PacientJDBCDAO implements PacientDAO{
         return pac;
     }
     
+    /**
+     * 
+     * @return List<Pacient>
+     * @throws DAOException 
+     */
     @Override
     public List<Pacient> getList() throws DAOException {
         List<Pacient> pac = new ArrayList<>();

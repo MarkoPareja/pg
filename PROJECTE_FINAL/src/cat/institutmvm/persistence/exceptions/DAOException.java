@@ -9,15 +9,27 @@ package cat.institutmvm.persistence.exceptions;
  * @author marko
  */
 public class DAOException extends Exception {
-
+    /**
+     * 
+     * @param message
+     * @param cause 
+     */
     public DAOException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /**
+     * 
+     * @param cause 
+     */
     public DAOException(Throwable cause) {
         this(cause.toString(), cause);
     }
 
+    /**
+     * 
+     * @param message 
+     */
     public DAOException(String message) {
         this(message, null);
     }

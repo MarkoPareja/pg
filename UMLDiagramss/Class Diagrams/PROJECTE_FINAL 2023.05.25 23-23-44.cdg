@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="PROJECTE_FINAL">
+  <ClassDiagramComponents>
+    <Class name="main" package="cat.institutmvm.app" visibility="public" xPosition="391.0" yPosition="754.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pacient" package="cat.institutmvm.buisness.entities" visibility="public" xPosition="184.0" yPosition="29.0">
+      <Fields>
+        <Field name="tsi" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="tsi"/>
+          <Argument type="String" name="dni"/>
+          <Argument type="String" name="nom"/>
+          <Argument type="String" name="cognoms"/>
+          <Argument type="LocalDate" name="dataNaixement"/>
+          <Argument type="String" name="genere"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getTsi" returnType="String" visibility="public"/>
+        <Method name="setTsi" returnType="void" visibility="public">
+          <Argument type="String" name="tsi"/>
+        </Method>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public">
+          <Argument type="int" name="integer"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="cat.institutmvm.buisness.entities" visibility="public" xPosition="1352.0" yPosition="42.0">
+      <Fields>
+        <Field name="dni" type="String" visibility="private"/>
+        <Field name="dataNaixement" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="dni"/>
+          <Argument type="String" name="nom"/>
+          <Argument type="String" name="cognoms"/>
+          <Argument type="LocalDate" name="dataNaixement"/>
+          <Argument type="String" name="genere"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getDni" returnType="String" visibility="public"/>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="getCognoms" returnType="String" visibility="public"/>
+        <Method name="getDataNaixement" returnType="LocalDate" visibility="public"/>
+        <Method name="getGenere" returnType="String" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="setNom" returnType="void" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="setCognoms" returnType="void" visibility="public">
+          <Argument type="String" name="cognoms"/>
+        </Method>
+        <Method name="setDataNaixement" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="dataNaixement"/>
+        </Method>
+        <Method name="setGenere" returnType="void" visibility="public">
+          <Argument type="String" name="genere"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Urgencia" package="cat.institutmvm.buisness.entities" visibility="public" xPosition="1305.0" yPosition="505.0">
+      <Fields>
+        <Field name="dni" type="String" visibility="private"/>
+        <Field name="torn" type="int" visibility="private"/>
+        <Field name="data" type="LocalDate" visibility="private"/>
+        <Field name="paci" type="Pacient" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="dni"/>
+          <Argument type="String" name="motiu"/>
+          <Argument type="int" name="torn"/>
+          <Argument type="int" name="nivell"/>
+          <Argument type="LocalDate" name="data"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getDni" returnType="String" visibility="public"/>
+        <Method name="getMotiu" returnType="String" visibility="public"/>
+        <Method name="getTorn" returnType="int" visibility="public"/>
+        <Method name="getNivell" returnType="int" visibility="public"/>
+        <Method name="getData" returnType="LocalDate" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="setMotiu" returnType="void" visibility="public">
+          <Argument type="String" name="motiu"/>
+        </Method>
+        <Method name="setTorn" returnType="void" visibility="public">
+          <Argument type="int" name="torn"/>
+        </Method>
+        <Method name="setNivell" returnType="void" visibility="public">
+          <Argument type="int" name="nivell"/>
+        </Method>
+        <Method name="setData" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="data"/>
+        </Method>
+        <Method name="random" returnType="int" visibility="public">
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="dataActual" returnType="LocalDate" visibility="public"/>
+        <Method name="nivell" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public">
+          <Argument type="int" name="integer"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PacientJDBCDAO" package="cat.institutmvm.persistence.daos.impl" visibility="public" xPosition="585.0" yPosition="426.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getPacientByDni" returnType="Pacient" visibility="public">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="getList" returnType="List&lt;Pacient&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UrgenciaJDBCDAO" package="cat.institutmvm.persistence.daos.impl" visibility="public" xPosition="1336.0" yPosition="1225.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getUrgenciaByDni" returnType="void" visibility="public">
+          <Argument type="String" name="dni"/>
+          <Argument type="LocalDate" name="data"/>
+          <Argument type="String" name="motiu"/>
+          <Argument type="int" name="nivell"/>
+          <Argument type="int" name="torn"/>
+        </Method>
+        <Method name="getUrgenciaByDni" returnType="Urgencia" visibility="public">
+          <Argument type="LocalDate" name="data"/>
+        </Method>
+        <Method name="getList" returnType="List&lt;Urgencia&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DAOException" package="cat.institutmvm.persistence.exceptions" visibility="public" xPosition="856.0" yPosition="695.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="JDBCUtils" package="cat.institutmvm.persistence.utils" visibility="public" isFinal="true" xPosition="344.0" yPosition="559.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="openConnection" returnType="Connection" visibility="public" isStatic="true"/>
+        <Method name="getUrgencia" returnType="Urgencia" visibility="public" isStatic="true">
+          <Argument type="ResultSet" name="reader"/>
+        </Method>
+        <Method name="getPacient" returnType="Pacient" visibility="public" isStatic="true">
+          <Argument type="ResultSet" name="reader"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MyFrame" package="cat.institutmvm.ui" visibility="public" xPosition="620.0" yPosition="735.0">
+      <Fields>
+        <Field name="labelSubtitulo" type="JLabel" visibility="private"/>
+        <Field name="txtDni" type="JTextField" visibility="private"/>
+        <Field name="txtMotiu" type="JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MySecFrame" package="cat.institutmvm.ui" visibility="public" xPosition="104.0" yPosition="1056.0">
+      <Fields>
+        <Field name="pacientDAO" type="PacientJDBCDAO" visibility="private"/>
+        <Field name="urgenciaDAO" type="UrgenciaJDBCDAO" visibility="private"/>
+        <Field name="urg" type="Urgencia" visibility="private"/>
+        <Field name="pac" type="Pacient" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getUrgenciasByDay" returnType="List&lt;Urgencia&gt;" visibility="public">
+          <Argument type="LocalDate" name="date"/>
+        </Method>
+        <Method name="getUrgenciasByGender" returnType="List&lt;Pacient&gt;" visibility="public">
+          <Argument type="List&lt;Urgencia&gt;" name="urgencias"/>
+          <Argument type="String" name="gender"/>
+        </Method>
+        <Method name="formatPacient" returnType="String" visibility="public">
+          <Argument type="Pacient" name="pacient"/>
+        </Method>
+        <Method name="getMinAge" returnType="int" visibility="public">
+          <Argument type="List&lt;Urgencia&gt;" name="urgencias"/>
+        </Method>
+        <Method name="getMaxAge" returnType="int" visibility="public">
+          <Argument type="List&lt;Urgencia&gt;" name="urgencias"/>
+        </Method>
+        <Method name="getAverageAge" returnType="double" visibility="public">
+          <Argument type="List&lt;Urgencia&gt;" name="urgencias"/>
+        </Method>
+        <Method name="getPacientByDni" returnType="Pacient" visibility="public">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="generateXMLDocument" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GenericMethods" package="cat.institutmvm.utils" visibility="public" xPosition="1755.0" yPosition="869.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="Visita" package="cat.institutmvm.buisness.entities" visibility="public" xPosition="1948.0" yPosition="606.0">
+      <Methods>
+        <Method name="random" returnType="int" visibility="public">
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="dataActual" returnType="LocalDate" visibility="public"/>
+        <Method name="nivell" returnType="int" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="PacientDAO" package="cat.institutmvm.persistence.daos.contracts" visibility="public" xPosition="1016.0" yPosition="247.0">
+      <Methods>
+        <Method name="getPacientByDni" returnType="Pacient" visibility="package">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="getList" returnType="List&lt;Pacient&gt;" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="PersonaDAO" package="cat.institutmvm.persistence.daos.contracts" visibility="public" xPosition="2142.0" yPosition="316.0">
+      <Methods>
+        <Method name="getPersonaByDni" returnType="Persona" visibility="package">
+          <Argument type="String" name="dni"/>
+        </Method>
+        <Method name="getPersonas" returnType="List&lt;Persona&gt;" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Interface name="UrgenciaDAO" package="cat.institutmvm.persistence.daos.contracts" visibility="public" xPosition="1979.0" yPosition="927.0">
+      <Methods>
+        <Method name="getUrgenciaByDni" returnType="void" visibility="package">
+          <Argument type="String" name="dni"/>
+          <Argument type="LocalDate" name="data"/>
+          <Argument type="String" name="motiu"/>
+          <Argument type="int" name="nivell"/>
+          <Argument type="int" name="torn"/>
+        </Method>
+        <Method name="getUrgenciaByDni" returnType="Urgencia" visibility="package">
+          <Argument type="LocalDate" name="data"/>
+        </Method>
+        <Method name="getList" returnType="List&lt;Urgencia&gt;" visibility="package"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="pacientDAO" source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.persistence.daos.impl.PacientJDBCDAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.buisness.entities.Urgencia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.buisness.entities.Pacient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="urg" source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.buisness.entities.Urgencia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pac" source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.buisness.entities.Pacient" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO" target="cat.institutmvm.buisness.entities.Urgencia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.utils.JDBCUtils" target="cat.institutmvm.buisness.entities.Urgencia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.daos.contracts.UrgenciaDAO" target="cat.institutmvm.buisness.entities.Urgencia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.daos.contracts.PersonaDAO" target="cat.institutmvm.buisness.entities.Persona" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="cat.institutmvm.buisness.entities.Pacient" target="cat.institutmvm.buisness.entities.Persona"/>
+    <HasRelation name="urgenciaDAO" source="cat.institutmvm.ui.MySecFrame" target="cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="cat.institutmvm.persistence.daos.impl.PacientJDBCDAO" target="cat.institutmvm.persistence.daos.contracts.PacientDAO"/>
+    <HasRelation name="paci" source="cat.institutmvm.buisness.entities.Urgencia" target="cat.institutmvm.buisness.entities.Pacient" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.daos.contracts.PacientDAO" target="cat.institutmvm.buisness.entities.Pacient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="cat.institutmvm.buisness.entities.Urgencia" target="cat.institutmvm.buisness.entities.Visita"/>
+    <UseRelation source="cat.institutmvm.persistence.utils.JDBCUtils" target="cat.institutmvm.buisness.entities.Pacient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="cat.institutmvm.persistence.daos.impl.PacientJDBCDAO" target="cat.institutmvm.buisness.entities.Pacient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO" target="cat.institutmvm.persistence.daos.contracts.UrgenciaDAO"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

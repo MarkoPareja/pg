@@ -17,8 +17,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 
+ * @author marko
+ */
 public class UrgenciaJDBCDAO implements UrgenciaDAO{
-
+    /**
+     * 
+     * @param dni
+     * @param data
+     * @param motiu
+     * @param nivell
+     * @param torn
+     * @throws DAOException 
+     */
     @Override
     public void getUrgenciaByDni(String dni, LocalDate data, String motiu, int nivell, int torn) throws DAOException {
         var dataDate = java.sql.Date.valueOf(data);
@@ -38,7 +50,13 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
             throw new DAOException(ex);
         }
     }
-
+    
+    /**
+     * 
+     * @param data
+     * @return La sentencia que arriva per SQL
+     * @throws DAOException 
+     */
     @Override
     public Urgencia getUrgenciaByDni(LocalDate data) throws DAOException {
         Urgencia urg = null;
@@ -60,7 +78,12 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
         }
         return urg;
     }
-
+    
+    /**
+     * 
+     * @return La sentencia que arriva per SQL
+     * @throws DAOException 
+     */
     @Override
     public List<Urgencia> getList() throws DAOException {
         List<Urgencia> urg = new ArrayList<>();

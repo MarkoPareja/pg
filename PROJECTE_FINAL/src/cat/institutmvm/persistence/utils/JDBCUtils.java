@@ -13,13 +13,22 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
+/**
+ * 
+ * @author marko
+ */
 public final class JDBCUtils {
 
     
     private JDBCUtils() {
     }
 
+    /**
+     * 
+     * @return La conexió amb la base de dades
+     * @throws SQLException
+     * @throws IOException 
+     */
     public static Connection openConnection() throws SQLException, IOException {
         Properties props = new Properties();
         props.load(new FileReader("config/jdbc.properties"));
@@ -28,6 +37,12 @@ public final class JDBCUtils {
                                            props.getProperty("mysql.password"));
     }
     
+    /**
+     * 
+     * @param reader
+     * @return Retorna a cada variable els valors de SQL
+     * @throws SQLException 
+     */
     public static Urgencia getUrgencia(ResultSet reader) throws SQLException {
         /*
         Pacient pac = new Pacient(reader.getString("pa.tsi"), reader.getString("p.dni"), 
@@ -40,6 +55,12 @@ public final class JDBCUtils {
         return urg;
     }
     
+    /**
+     * 
+     * @param reader
+     * @return Retorna a cada variable els valors de SQL
+     * @throws SQLException 
+     */
     public static Pacient getPacient(ResultSet reader) throws SQLException {
         Pacient pac = new Pacient(reader.getString("pa.tsi"), reader.getString("p.dni"), 
         reader.getString("p.nom"), reader.getString("p.cognom"), 

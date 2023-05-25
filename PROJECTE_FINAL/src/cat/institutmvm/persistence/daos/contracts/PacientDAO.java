@@ -8,8 +8,23 @@ import cat.institutmvm.buisness.entities.Pacient;
 import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.exceptions.DAOException;
 import java.util.List;
-
+/**
+ * 
+ * @author marko
+ */
 public interface PacientDAO {
+    /**
+     * 
+     * @param dni
+     * @return Pacient
+     * @throws DAOException 
+     */
     Pacient getPacientByDni(String dni) throws DAOException;
+    
+    /**
+     * 
+     * @return List<Pacient>
+     * @throws DAOException 
+     */
     List<Pacient> getList() throws DAOException;
 }

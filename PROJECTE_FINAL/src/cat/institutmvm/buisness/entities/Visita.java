@@ -12,9 +12,22 @@ import java.util.Date;
  * @author marko
  */
 public interface Visita {
+    /**
+     * 
+     * @param max
+     * @return Numero random
+     */
     public int random(int max);
     
+    /**
+     * 
+     * @return La data actual
+     */
     public LocalDate dataActual();
     
+    /**
+     * 
+     * @return Nivell 0
+     */
     public int nivell();
 }

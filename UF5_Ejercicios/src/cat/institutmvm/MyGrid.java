@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MyGrid extends JFrame{
     public MyGrid(){
-          Toolkit screen = Toolkit.getDefaultToolkit();
+        Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screenSize = screen.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;

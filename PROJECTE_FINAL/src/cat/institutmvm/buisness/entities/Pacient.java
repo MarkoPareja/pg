@@ -14,31 +14,61 @@ import java.time.Period;
 public class Pacient extends Persona {
     private String tsi;
     
+    /**
+     * 
+     * @param tsi
+     * @param dni
+     * @param nom
+     * @param cognoms
+     * @param dataNaixement
+     * @param genere 
+     */
     public Pacient(String tsi, String dni, String nom, String cognoms, LocalDate dataNaixement, String genere) {
         super(dni, nom, cognoms, dataNaixement, genere);
         this.setTsi(tsi);
     }
     
     public Pacient(){}
-
+    
+    /**
+     * 
+     * @return tsi
+     */
     public String getTsi() {
         return tsi;
     }
-
+    
+    /**
+     * 
+     * @param tsi 
+     */
     public void setTsi(String tsi) {
         this.tsi = tsi;
     }
     
+    /**
+     * 
+     * @return age
+     */
     public int getAge(){
         return Period.between(this.getDataNaixement(), LocalDate.now()).getYears();
     }
 
+    /**
+     * 
+     * @param integer
+     * @return sb
+     */
     public String toString(int integer) {
         StringBuilder sb = new StringBuilder();
         sb.append(integer);
         return sb.toString();
     }
     
+    /**
+     * 
+     * @return String
+     */
     @Override
     public String toString() {
         return String.format("Pacient: DNI=%s, Nom=%s, Cognoms=%s, DataNaixement=%s, Genere=%s, TSI=%s",

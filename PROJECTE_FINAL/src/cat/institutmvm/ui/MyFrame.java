@@ -34,7 +34,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 /**
- *
+ * 
  * @author marko
  */
 public class MyFrame extends JFrame {
@@ -44,6 +44,7 @@ public class MyFrame extends JFrame {
     private JTextField txtDni, txtNom, txtTsi, txtData, txtEdat, txtGen;
     private JTextArea txtMotiu;
 
+    
     public MyFrame() {
         //<editor-fold desc="Centrar frame">
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -113,7 +114,7 @@ public class MyFrame extends JFrame {
         labelMotiu = new JLabel("Motiu de la urgència:");
 
         txtMotiu = new JTextArea(9, 31);
-
+        
         JScrollPane scroll = new JScrollPane(txtMotiu,
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -130,7 +131,7 @@ public class MyFrame extends JFrame {
         for (int i = 0; i <= 100; i++) {
             edad.addItem(i);
         }
-
+        
         cuestionariNom.add(labelDni);
         cuestionariNomtxt.add(txtDni);
         cuestionariCognom.add(labelNom);
@@ -200,7 +201,7 @@ public class MyFrame extends JFrame {
 
         //GRAELLA
         JPanel tabla1 = new JPanel();
-
+        
         String[] columnNames = {"DNI", "Data", "Motiu", "Nivell", "Torn"};
         Object[][] datos = {};
 
@@ -247,7 +248,10 @@ public class MyFrame extends JFrame {
         //Override de botones
         btnCheck.addActionListener(new ActionListener() {
             PacientJDBCDAO pac = new PacientJDBCDAO();
-
+            /**
+             * 
+             * @param ev 
+             */
             @Override
             public void actionPerformed(ActionEvent ev) {
                 Pacient dbPacient;
@@ -267,7 +271,10 @@ public class MyFrame extends JFrame {
         btnAfegir.addActionListener(new ActionListener() {
             UrgenciaJDBCDAO urg = new UrgenciaJDBCDAO();
             Urgencia urge = new Urgencia();
-
+            /**
+             * 
+             * @param ev 
+             */
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
@@ -284,14 +291,17 @@ public class MyFrame extends JFrame {
             Urgencia urge = new Urgencia();
             boolean isExpanded = false;
             boolean enabled = false;
-
+            /**
+             * 
+             * @param ev 
+             */
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
                     List<Urgencia> dbUrgencia = urg.getList();
 
                     boolean tableVisible = tabla2.isVisible();
-
+                    
                     if (!isExpanded) {
                         isExpanded = true;
                         tableVisible = true;
@@ -328,7 +338,10 @@ public class MyFrame extends JFrame {
         btnEstats.addActionListener(new ActionListener() {
             MySecFrame sf = new MySecFrame();
 
-
+            /**
+             * 
+             * @param e 
+             */
             public void actionPerformed(ActionEvent e) {
                 List<Urgencia> urgencias = sf.getUrgenciasByDay(LocalDate.now());
                 List<Pacient> urgenciasFemeninas = sf.getUrgenciasByGender(urgencias, "Femení");
@@ -380,7 +393,7 @@ public class MyFrame extends JFrame {
                 sf.generateXMLDocument();
             }
         });
-
+        
         JSplitPane mainPanel
                 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                         cuestionari, txtOut);
