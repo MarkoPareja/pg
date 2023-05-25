@@ -9,14 +9,17 @@ import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.daos.impl.PacientJDBCDAO;
 import cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,11 +31,14 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -199,6 +205,39 @@ public class MyFrame extends JFrame {
         //cuestionariBoton.setBorder(new EmptyBorder(20,0,0,160));
         //cuestionariBoton.setBackground(Color.white);
 
+        //GRAELLA
+        JPanel tabla1 = new JPanel();
+
+        String[] columnNames = {"DNI", "Data", "Motiu", "Nivell", "Torn"};
+        Object[][] datos = {};
+
+        DefaultTableModel dtm = new DefaultTableModel(datos, columnNames);
+
+        JTable table = new JTable(dtm);
+        tabla1.add(table);
+        table.setRowHeight(20);
+        
+        //cuestionari.add(tabla1);
+
+        JTableHeader header = table.getTableHeader();
+        JTableHeader add = new JTableHeader();
+        add.setBackground(Color.gray);
+        add.setPreferredSize(header.getPreferredSize());
+
+        Box head = Box.createVerticalBox();
+        head.add(header);
+        head.add(add);
+
+        JScrollPane scrollPane = new JScrollPane(tabla1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setColumnHeaderView(header);
+        
+        JPanel tabla2 = new JPanel();
+        tabla2.add(scrollPane);
+        cuestionari.add(tabla2);
+        tabla2.setVisible(false);
+
+        //Bordes del cuestionario
         cuestionari.setBorder(new EmptyBorder(120, 120, 20, 0));
         cuestionari.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(), "Dades del pacient",
@@ -254,48 +293,39 @@ public class MyFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ev) {
-                Urgencia dbUrgencia;
+                //Urgencia dbUrgencia;
                 
-                //Creem la taula
-                    String[] columnNames = {"DNI", "Data", "Motiu", "Nivell", "Torn"};
-                    DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-                    
-                    JTable table = new JTable();
-                    table.setModel(tableModel);
-                    JPanel tabla1 = new JPanel();
-
-                    tabla1.add(table);
-                    cuestionari.add(tabla1);
-                    tabla1.setVisible(false);
-                    tabla1.setBorder(new EmptyBorder(50, 0, 0, 0));
-                    table.setEnabled(true);
+                List<Urgencia> dbUrgencia = new ArrayList<>();
+                dbUrgencia = new();
                 
                 try {
-                    dbUrgencia = urg.getUrgenciaByDni(urge.dataActual());
-                    
+                    dbUrgencia = urg.getList(urge.dataActual());
                     // Agregar los registros filtrados a la tabla
                     //while (dbUrgencia.) {
-                        if (isExpanded) {
-                            setSize(485, 740);
-                            isExpanded = false;
-                            tabla1.setVisible(false);
-                        } else if(enabled && !isExpanded){
-                            setSize(485, 740 + 200);
-                            isExpanded = true;
-                            tabla1.setVisible(true);
-                        } else {
-                            enabled = true;
-                            String dni = dbUrgencia.getDni();
-                            LocalDate data = dbUrgencia.getData();
-                            String motiu = dbUrgencia.getMotiu();
-                            int nivell = dbUrgencia.getNivell();
-                            int torn = dbUrgencia.getTorn();
-                            
-                            tableModel.addRow(new Object[]{dni, data, motiu, nivell, torn});
-                            setSize(485, 740 + 200);
-                            isExpanded = true;
-                            tabla1.setVisible(true);
-                        }
+                    if (isExpanded) {
+                        setSize(485, 740);
+                        isExpanded = false;
+                        //scrollPane.setBorder(new EmptyBorder(600, 0, 0, 0));
+                        tabla2.setVisible(false);
+                    } else if (enabled && !isExpanded) {
+                        setSize(485, 740 + 180);
+                        isExpanded = true;
+                        tabla2.setVisible(true);
+                        //scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+                    } else {
+                        enabled = true;
+                        String dni = dbUrgencia.getDni();
+                        LocalDate data = dbUrgencia.getData();
+                        String motiu = dbUrgencia.getMotiu();
+                        int nivell = dbUrgencia.getNivell();
+                        int torn = dbUrgencia.getTorn();
+                        dtm.addRow(new Object[]{dni, data, motiu, nivell, torn});
+                        setSize(485, 740 + 200);
+                        isExpanded = true;
+                        tabla2.setVisible(true);
+                        //scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+                    }
+                    scrollPane.setVisible(true);
                     //}
                 } catch (DAOException e) {
                     e.printStackTrace();

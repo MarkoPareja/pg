@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import cat.institutmvm.persistence.daos.contracts.UrgenciaDAO;
 import cat.institutmvm.persistence.utils.JDBCUtils;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class UrgenciaJDBCDAO implements UrgenciaDAO{
 
@@ -58,4 +60,24 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
         }
         return urg;
     }
+
+    @Override
+    public List<Urgencia> getList(LocalDate data) throws DAOException {
+        List<Urgencia> urg = new ArrayList<>();
+        
+        try (var connection = JDBCUtils.openConnection();
+            PreparedStatement sentSQL = connection.prepareStatement("SELECT u.dni, u.data, u.motiu, u.nivell, u.torn FROM Urgencia AS u JOIN Persona AS p WHERE data = ?")) {
+            
+            try (ResultSet reader = sentSQL.executeQuery()) {
+                if (reader.next()) {
+                    urg.add(JDBCUtils.getUrgencia(reader));
+                }            
+            }
+        }
+        catch (SQLException  | IOException ex) {
+            throw new DAOException(ex);
+        }
+        return urg;
+    }
+
 }
