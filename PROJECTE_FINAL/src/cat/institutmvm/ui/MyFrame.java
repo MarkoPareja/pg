@@ -295,11 +295,8 @@ public class MyFrame extends JFrame {
             public void actionPerformed(ActionEvent ev) {
                 //Urgencia dbUrgencia;
                 
-                List<Urgencia> dbUrgencia = new ArrayList<>();
-                dbUrgencia = new();
-                
                 try {
-                    dbUrgencia = urg.getList(urge.dataActual());
+                    List<Urgencia> dbUrgencia = urg.getList();
                     // Agregar los registros filtrados a la tabla
                     //while (dbUrgencia.) {
                     if (isExpanded) {

@@ -62,11 +62,11 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
     }
 
     @Override
-    public List<Urgencia> getList(LocalDate data) throws DAOException {
+    public List<Urgencia> getList() throws DAOException {
         List<Urgencia> urg = new ArrayList<>();
         
         try (var connection = JDBCUtils.openConnection();
-            PreparedStatement sentSQL = connection.prepareStatement("SELECT u.dni, u.data, u.motiu, u.nivell, u.torn FROM Urgencia AS u JOIN Persona AS p WHERE data = ?")) {
+            PreparedStatement sentSQL = connection.prepareStatement("SELECT DISTINCT u.dni, u.data, u.motiu, u.nivell, u.torn FROM Urgencia AS u JOIN Persona AS p WHERE data = CURDATE()")) {
             
             try (ResultSet reader = sentSQL.executeQuery()) {
                 if (reader.next()) {
