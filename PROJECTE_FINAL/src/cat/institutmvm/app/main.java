@@ -12,5 +12,11 @@ public class main {
         MyFrame efrm = new MyFrame();
         efrm.setVisible(true);
         efrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+    }
+    public void run() {
+        MyFrame frame = new MyFrame();
+        frame.setVisible(true);
     }
 }

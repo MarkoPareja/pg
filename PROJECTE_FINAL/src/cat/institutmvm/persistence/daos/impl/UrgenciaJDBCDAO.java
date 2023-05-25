@@ -64,20 +64,20 @@ public class UrgenciaJDBCDAO implements UrgenciaDAO{
     @Override
     public List<Urgencia> getList() throws DAOException {
         List<Urgencia> urg = new ArrayList<>();
-        
+
         try (var connection = JDBCUtils.openConnection();
             PreparedStatement sentSQL = connection.prepareStatement("SELECT DISTINCT u.dni, u.data, u.motiu, u.nivell, u.torn FROM Urgencia AS u JOIN Persona AS p WHERE data = CURDATE()")) {
-            
+
             try (ResultSet reader = sentSQL.executeQuery()) {
-                if (reader.next()) {
+                while (reader.next()) {
                     urg.add(JDBCUtils.getUrgencia(reader));
                 }            
             }
         }
-        catch (SQLException  | IOException ex) {
+        catch (SQLException | IOException ex) {
             throw new DAOException(ex);
         }
         return urg;
     }
-
+    
 }

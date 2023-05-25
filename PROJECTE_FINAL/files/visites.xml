@@ -1,0 +1,34 @@
+<visites>
+	<visita>
+		<dni>54038744Z</dni>
+		<nom>Marko</nom>
+		<cognoms>Pareja Bailén</cognoms>
+		<dataNaixement>2004-01-30</dataNaixement>
+		<genere>Masculí</genere>
+		<tsi>PABA 001000214</tsi>
+	</visita>
+	<visita>
+		<dni>39966796H</dni>
+		<nom>Alejandro</nom>
+		<cognoms>Garcia Dopico</cognoms>
+		<dataNaixement>1996-02-17</dataNaixement>
+		<genere>Masculí</genere>
+		<tsi>GADO 001254852</tsi>
+	</visita>
+	<visita>
+		<dni>54038744Z</dni>
+		<nom>Marko</nom>
+		<cognoms>Pareja Bailén</cognoms>
+		<dataNaixement>2004-01-30</dataNaixement>
+		<genere>Masculí</genere>
+		<tsi>PABA 001000214</tsi>
+	</visita>
+	<visita>
+		<dni>55425436G</dni>
+		<nom>Maria</nom>
+		<cognoms>Pareja Bailén</cognoms>
+		<dataNaixement>2010-08-30</dataNaixement>
+		<genere>Femení</genere>
+		<tsi>PABA 002140214</tsi>
+	</visita>
+</visites>

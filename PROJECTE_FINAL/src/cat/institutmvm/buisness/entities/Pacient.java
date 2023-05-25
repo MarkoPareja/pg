@@ -38,4 +38,10 @@ public class Pacient extends Persona {
         sb.append(integer);
         return sb.toString();
     }
+    
+    @Override
+    public String toString() {
+        return String.format("Pacient: DNI=%s, Nom=%s, Cognoms=%s, DataNaixement=%s, Genere=%s, TSI=%s",
+                getDni(), getNom(), getCognoms(), getDataNaixement(), getGenere(), getTsi());
+    }
 }

@@ -5,6 +5,7 @@
 package cat.institutmvm.persistence.daos.impl;
 
 import cat.institutmvm.buisness.entities.Pacient;
+import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.daos.contracts.PacientDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import cat.institutmvm.persistence.utils.JDBCUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PacientJDBCDAO implements PacientDAO{
 
@@ -31,6 +34,25 @@ public class PacientJDBCDAO implements PacientDAO{
             }
         }
         catch (SQLException  | IOException ex) {
+            throw new DAOException(ex);
+        }
+        return pac;
+    }
+    
+    @Override
+    public List<Pacient> getList() throws DAOException {
+        List<Pacient> pac = new ArrayList<>();
+
+        try (var connection = JDBCUtils.openConnection();
+            PreparedStatement sentSQL = connection.prepareStatement("SELECT DISTINCT p.dni, pa.tsi, p.cognom, p.nom, p.data_naixement, p.genere FROM Persona AS p JOIN Pacient AS pa WHERE data = CURDATE()")) {
+
+            try (ResultSet reader = sentSQL.executeQuery()) {
+                while (reader.next()) {
+                    pac.add(JDBCUtils.getPacient(reader));
+                }            
+            }
+        }
+        catch (SQLException | IOException ex) {
             throw new DAOException(ex);
         }
         return pac;

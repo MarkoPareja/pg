@@ -9,18 +9,13 @@ import cat.institutmvm.buisness.entities.Urgencia;
 import cat.institutmvm.persistence.daos.impl.PacientJDBCDAO;
 import cat.institutmvm.persistence.daos.impl.UrgenciaJDBCDAO;
 import cat.institutmvm.persistence.exceptions.DAOException;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -32,14 +27,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
-
 /**
  *
  * @author marko
@@ -216,9 +209,8 @@ public class MyFrame extends JFrame {
         JTable table = new JTable(dtm);
         tabla1.add(table);
         table.setRowHeight(20);
-        
-        //cuestionari.add(tabla1);
 
+        //cuestionari.add(tabla1);
         JTableHeader header = table.getTableHeader();
         JTableHeader add = new JTableHeader();
         add.setBackground(Color.gray);
@@ -231,12 +223,14 @@ public class MyFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tabla1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setColumnHeaderView(header);
-        
+
         JPanel tabla2 = new JPanel();
         tabla2.add(scrollPane);
         cuestionari.add(tabla2);
         tabla2.setVisible(false);
-
+        table.setEnabled(false);
+        table.getTableHeader().setReorderingAllowed(false);
+        
         //Bordes del cuestionario
         cuestionari.setBorder(new EmptyBorder(120, 120, 20, 0));
         cuestionari.setBorder(BorderFactory.createTitledBorder(
@@ -293,40 +287,97 @@ public class MyFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ev) {
-                //Urgencia dbUrgencia;
-                
                 try {
                     List<Urgencia> dbUrgencia = urg.getList();
-                    // Agregar los registros filtrados a la tabla
-                    //while (dbUrgencia.) {
-                    if (isExpanded) {
-                        setSize(485, 740);
-                        isExpanded = false;
-                        //scrollPane.setBorder(new EmptyBorder(600, 0, 0, 0));
-                        tabla2.setVisible(false);
-                    } else if (enabled && !isExpanded) {
-                        setSize(485, 740 + 180);
+
+                    boolean tableVisible = tabla2.isVisible();
+
+                    if (!isExpanded) {
                         isExpanded = true;
-                        tabla2.setVisible(true);
-                        //scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-                    } else {
-                        enabled = true;
-                        String dni = dbUrgencia.getDni();
-                        LocalDate data = dbUrgencia.getData();
-                        String motiu = dbUrgencia.getMotiu();
-                        int nivell = dbUrgencia.getNivell();
-                        int torn = dbUrgencia.getTorn();
-                        dtm.addRow(new Object[]{dni, data, motiu, nivell, torn});
+                        tableVisible = true;
                         setSize(485, 740 + 200);
-                        isExpanded = true;
-                        tabla2.setVisible(true);
-                        //scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+                    } else {
+                        isExpanded = false;
+                        tableVisible = false;
+                        setSize(485, 740);
                     }
-                    scrollPane.setVisible(true);
-                    //}
+
+                    // Actualizar la visibilidad de la tabla
+                    tabla2.setVisible(tableVisible);
+
+                    DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+                    dtm.setRowCount(0);
+
+                    // Llenar los datos en la tabla
+                    for (Urgencia urgencia : dbUrgencia) {
+                        Object[] rowData = {
+                            urgencia.getDni(),
+                            urgencia.getData(),
+                            urgencia.getMotiu(),
+                            urgencia.getNivell(),
+                            urgencia.getTorn()
+                        };
+                        dtm.addRow(rowData);
+                    }
                 } catch (DAOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        btnEstats.addActionListener(new ActionListener() {
+            MySecFrame sf = new MySecFrame();
+
+
+            public void actionPerformed(ActionEvent e) {
+                List<Urgencia> urgencias = sf.getUrgenciasByDay(LocalDate.now());
+                List<Pacient> urgenciasFemeninas = sf.getUrgenciasByGender(urgencias, "Femení");
+                List<Pacient> urgenciasMasculinas = sf.getUrgenciasByGender(urgencias, "Masculí");
+                int edadMinima = sf.getMinAge(urgencias);
+                int edadMaxima = sf.getMaxAge(urgencias);
+                double edadPromedio = sf.getAverageAge(urgencias);
+                int totalPacientes = urgencias.size();
+
+                StringBuilder sb = new StringBuilder();
+                sb.append("Urgències filtrades per gènere (femení):\n");
+                sb.append("--------------------------------------\n");
+                if (urgenciasFemeninas.isEmpty()) {
+                    sb.append("No hi ha urgències femenines.\n");
+                } else {
+                    for (Pacient paciente : urgenciasFemeninas) {
+                        sb.append(sf.formatPacient(paciente));
+                        sb.append("--------------------------------------\n");
+                    }
+                }
+                sb.append("\nUrgències filtrades per gènere (masculí):\n");
+                sb.append("---------------------------------------\n");
+                if (urgenciasMasculinas.isEmpty()) {
+                    sb.append("No hi ha urgències masculines.\n");
+                } else {
+                    for (Pacient paciente : urgenciasMasculinas) {
+                        sb.append(sf.formatPacient(paciente));
+                        sb.append("---------------------------------------\n");
+                    }
+                }
+                sb.append("\nEdat mínima dels pacients: ").append(edadMinima).append(" anys\n");
+                sb.append("Edat màxima dels pacients: ").append(edadMaxima).append(" anys\n");
+                sb.append("Edat mitjana dels pacients: ").append(String.format("%.2f", edadPromedio)).append(" anys\n\n");
+                sb.append("Total de pacients que han anat a urgències avui: ").append(totalPacientes);
+
+                JTextArea textArea = new JTextArea(sb.toString());
+                textArea.setEditable(false);
+                JScrollPane scrollPane = new JScrollPane(textArea);
+                scrollPane.setPreferredSize(new Dimension(400, 400));
+
+                JOptionPane.showMessageDialog(null, scrollPane, "Resultats", JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+        
+        btnFitxer.addActionListener(new ActionListener() {
+            MySecFrame sf = new MySecFrame();
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sf.generateXMLDocument();
             }
         });
 

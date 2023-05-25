@@ -14,6 +14,7 @@ public class Urgencia implements Visita {
     private String dni, motiu;
     private int torn, nivell;
     private LocalDate data;
+    private Pacient paci;
 
     
     public Urgencia(String dni, String motiu, int torn, int nivell, LocalDate data) {
@@ -91,5 +92,11 @@ public class Urgencia implements Visita {
         StringBuilder sb = new StringBuilder();
         sb.append(integer);
         return sb.toString();
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("Urgencia: DNI=%s, Motiu=%s, Torn=%d, Nivell=%d, Data=%s",
+                getDni(), getMotiu(), getTorn(), getNivell(), getData());
     }
 }
